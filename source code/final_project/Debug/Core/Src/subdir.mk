@@ -9,6 +9,7 @@ C_SRCS += \
 ../Core/Src/hardware_layer.c \
 ../Core/Src/input_reading.c \
 ../Core/Src/main.c \
+../Core/Src/pedes_fsm.c \
 ../Core/Src/software_timer.c \
 ../Core/Src/stm32f1xx_hal_msp.c \
 ../Core/Src/stm32f1xx_it.c \
@@ -21,6 +22,7 @@ OBJS += \
 ./Core/Src/hardware_layer.o \
 ./Core/Src/input_reading.o \
 ./Core/Src/main.o \
+./Core/Src/pedes_fsm.o \
 ./Core/Src/software_timer.o \
 ./Core/Src/stm32f1xx_hal_msp.o \
 ./Core/Src/stm32f1xx_it.o \
@@ -33,6 +35,7 @@ C_DEPS += \
 ./Core/Src/hardware_layer.d \
 ./Core/Src/input_reading.d \
 ./Core/Src/main.d \
+./Core/Src/pedes_fsm.d \
 ./Core/Src/software_timer.d \
 ./Core/Src/stm32f1xx_hal_msp.d \
 ./Core/Src/stm32f1xx_it.d \
@@ -48,7 +51,7 @@ Core/Src/%.o Core/Src/%.su: ../Core/Src/%.c Core/Src/subdir.mk
 clean: clean-Core-2f-Src
 
 clean-Core-2f-Src:
-	-$(RM) ./Core/Src/global.d ./Core/Src/global.o ./Core/Src/global.su ./Core/Src/hardware_layer.d ./Core/Src/hardware_layer.o ./Core/Src/hardware_layer.su ./Core/Src/input_reading.d ./Core/Src/input_reading.o ./Core/Src/input_reading.su ./Core/Src/main.d ./Core/Src/main.o ./Core/Src/main.su ./Core/Src/software_timer.d ./Core/Src/software_timer.o ./Core/Src/software_timer.su ./Core/Src/stm32f1xx_hal_msp.d ./Core/Src/stm32f1xx_hal_msp.o ./Core/Src/stm32f1xx_hal_msp.su ./Core/Src/stm32f1xx_it.d ./Core/Src/stm32f1xx_it.o ./Core/Src/stm32f1xx_it.su ./Core/Src/syscalls.d ./Core/Src/syscalls.o ./Core/Src/syscalls.su ./Core/Src/sysmem.d ./Core/Src/sysmem.o ./Core/Src/sysmem.su ./Core/Src/system_stm32f1xx.d ./Core/Src/system_stm32f1xx.o ./Core/Src/system_stm32f1xx.su
+	-$(RM) ./Core/Src/global.d ./Core/Src/global.o ./Core/Src/global.su ./Core/Src/hardware_layer.d ./Core/Src/hardware_layer.o ./Core/Src/hardware_layer.su ./Core/Src/input_reading.d ./Core/Src/input_reading.o ./Core/Src/input_reading.su ./Core/Src/main.d ./Core/Src/main.o ./Core/Src/main.su ./Core/Src/pedes_fsm.d ./Core/Src/pedes_fsm.o ./Core/Src/pedes_fsm.su ./Core/Src/software_timer.d ./Core/Src/software_timer.o ./Core/Src/software_timer.su ./Core/Src/stm32f1xx_hal_msp.d ./Core/Src/stm32f1xx_hal_msp.o ./Core/Src/stm32f1xx_hal_msp.su ./Core/Src/stm32f1xx_it.d ./Core/Src/stm32f1xx_it.o ./Core/Src/stm32f1xx_it.su ./Core/Src/syscalls.d ./Core/Src/syscalls.o ./Core/Src/syscalls.su ./Core/Src/sysmem.d ./Core/Src/sysmem.o ./Core/Src/sysmem.su ./Core/Src/system_stm32f1xx.d ./Core/Src/system_stm32f1xx.o ./Core/Src/system_stm32f1xx.su
 
 .PHONY: clean-Core-2f-Src
 
