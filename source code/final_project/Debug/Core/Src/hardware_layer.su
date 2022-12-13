@@ -1,0 +1,3 @@
+../Core/Src/hardware_layer.c:12:6:set_color_light1	16	static
+../Core/Src/hardware_layer.c:35:6:set_color_light2	16	static
+../Core/Src/hardware_layer.c:58:6:set_color_pedestrian_light	16	static
