@@ -449,6 +449,155 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x16 ./Core/Src/main.o
  .debug_macro   0x0000000000000000      0x145 ./Core/Src/main.o
  .debug_macro   0x0000000000000000       0x34 ./Core/Src/main.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/manual_fsm.o
+ .text          0x0000000000000000        0x0 ./Core/Src/manual_fsm.o
+ .data          0x0000000000000000        0x0 ./Core/Src/manual_fsm.o
+ .bss           0x0000000000000000        0x0 ./Core/Src/manual_fsm.o
+ .debug_info    0x0000000000000000       0x76 ./Core/Src/manual_fsm.o
+ .debug_abbrev  0x0000000000000000       0x29 ./Core/Src/manual_fsm.o
+ .debug_aranges
+                0x0000000000000000       0x18 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000      0x339 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000      0xa6c ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0x4c ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0x1c ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0x34 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0x10 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0x22 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0x4c ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0x18 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0x94 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0x3c ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0x34 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0x16 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0x57 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0x97 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000      0x341 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0xfd ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0x10 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0x16 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0x43 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0x34 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0x10 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0x58 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0x71 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0x1c ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000      0x12a ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0x10 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0x6a ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0x1c ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0x52 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0x22 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0x10 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0x52 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0xd5 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0x1c ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0x3d ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0x16 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000      0x145 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000      0x21b ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0x2e ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0x22 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000      0x103 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000      0x1df ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0x1c ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0x22 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0xbd ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000      0xd23 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000     0xe09e ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0x6d ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000     0x3468 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0x56 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000      0x5be ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000      0x289 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000      0x1cb ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000      0x114 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000      0x1b2 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0x27 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000      0x136 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000      0x1bc ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0x34 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0x3c ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0x57 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0x88 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000      0x241 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000      0x141 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000      0x8d1 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000      0x279 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0x83 ./Core/Src/manual_fsm.o
+ .debug_macro   0x0000000000000000       0x88 ./Core/Src/manual_fsm.o
+ .debug_line    0x0000000000000000      0x882 ./Core/Src/manual_fsm.o
+ .debug_str     0x0000000000000000    0x872ff ./Core/Src/manual_fsm.o
+ .comment       0x0000000000000000       0x51 ./Core/Src/manual_fsm.o
+ .ARM.attributes
+                0x0000000000000000       0x2d ./Core/Src/manual_fsm.o
  .group         0x0000000000000000        0xc ./Core/Src/pedes_fsm.o
  .text          0x0000000000000000        0x0 ./Core/Src/pedes_fsm.o
  .data          0x0000000000000000        0x0 ./Core/Src/pedes_fsm.o
@@ -457,13 +606,28 @@ Discarded input sections
  .debug_abbrev  0x0000000000000000       0x13 ./Core/Src/pedes_fsm.o
  .debug_aranges
                 0x0000000000000000       0x18 ./Core/Src/pedes_fsm.o
- .debug_macro   0x0000000000000000       0x11 ./Core/Src/pedes_fsm.o
+ .debug_macro   0x0000000000000000       0x1b ./Core/Src/pedes_fsm.o
  .debug_macro   0x0000000000000000      0xa6c ./Core/Src/pedes_fsm.o
- .debug_line    0x0000000000000000       0x38 ./Core/Src/pedes_fsm.o
- .debug_str     0x0000000000000000     0x2cb3 ./Core/Src/pedes_fsm.o
+ .debug_line    0x0000000000000000       0x53 ./Core/Src/pedes_fsm.o
+ .debug_str     0x0000000000000000     0x2cc5 ./Core/Src/pedes_fsm.o
  .comment       0x0000000000000000       0x51 ./Core/Src/pedes_fsm.o
  .ARM.attributes
                 0x0000000000000000       0x2d ./Core/Src/pedes_fsm.o
+ .group         0x0000000000000000        0xc ./Core/Src/setting_fsm.o
+ .text          0x0000000000000000        0x0 ./Core/Src/setting_fsm.o
+ .data          0x0000000000000000        0x0 ./Core/Src/setting_fsm.o
+ .bss           0x0000000000000000        0x0 ./Core/Src/setting_fsm.o
+ .debug_info    0x0000000000000000       0x21 ./Core/Src/setting_fsm.o
+ .debug_abbrev  0x0000000000000000       0x13 ./Core/Src/setting_fsm.o
+ .debug_aranges
+                0x0000000000000000       0x18 ./Core/Src/setting_fsm.o
+ .debug_macro   0x0000000000000000       0x11 ./Core/Src/setting_fsm.o
+ .debug_macro   0x0000000000000000      0xa6c ./Core/Src/setting_fsm.o
+ .debug_line    0x0000000000000000       0x3a ./Core/Src/setting_fsm.o
+ .debug_str     0x0000000000000000     0x2cb5 ./Core/Src/setting_fsm.o
+ .comment       0x0000000000000000       0x51 ./Core/Src/setting_fsm.o
+ .ARM.attributes
+                0x0000000000000000       0x2d ./Core/Src/setting_fsm.o
  .group         0x0000000000000000        0xc ./Core/Src/software_timer.o
  .group         0x0000000000000000        0xc ./Core/Src/software_timer.o
  .text          0x0000000000000000        0x0 ./Core/Src/software_timer.o
@@ -2751,7 +2915,9 @@ LOAD ./Core/Src/global.o
 LOAD ./Core/Src/hardware_layer.o
 LOAD ./Core/Src/input_reading.o
 LOAD ./Core/Src/main.o
+LOAD ./Core/Src/manual_fsm.o
 LOAD ./Core/Src/pedes_fsm.o
+LOAD ./Core/Src/setting_fsm.o
 LOAD ./Core/Src/software_timer.o
 LOAD ./Core/Src/stm32f1xx_hal_msp.o
 LOAD ./Core/Src/stm32f1xx_it.o

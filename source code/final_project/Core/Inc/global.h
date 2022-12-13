@@ -32,4 +32,6 @@ extern int state;
 extern int manual_state;
 extern int pedes_state;
 
+
+extern UART_HandleTypeDef huart2;
 #endif /* INC_GLOBAL_H_ */
