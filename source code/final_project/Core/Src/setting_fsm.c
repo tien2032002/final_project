@@ -14,8 +14,6 @@
 #include "stdint.h"
 
 
-char str[50];
-
 void setting_fsm() {
 	switch (state) {
 	case SETTING_RED:

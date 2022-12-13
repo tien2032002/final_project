@@ -15,7 +15,6 @@
 #include "main.h"
 #include "stdint.h"
 
-char str[50];
 
 void manual_fsm() {
 	switch(state){

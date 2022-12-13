@@ -8,6 +8,8 @@
 #ifndef INC_GLOBAL_H_
 #define INC_GLOBAL_H_
 
+#include "main.h"
+
 //fsm traffic light state
 #define INIT 			0
 #define AUTO_RED		1
@@ -32,6 +34,7 @@ extern int state;
 extern int manual_state;
 extern int pedes_state;
 
+extern char str[50];
 
 extern UART_HandleTypeDef huart2;
 #endif /* INC_GLOBAL_H_ */
