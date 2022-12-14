@@ -71,6 +71,18 @@ void HAL_TIM_PeriodElapsedCallback ( TIM_HandleTypeDef * htim ){
 	timer2_run();
 	input_reading();
 }
+void test_IO(){
+	if (is_button_pressed(STATE_IDX)==1) set_color_light1(XANH);
+	if (is_button_pressed(SETTING_IDX)==1) set_color_light2(DO);
+	if (is_button_pressed(MANUAL_IDX)==1) set_color_pedestrian_light(VANG);
+	if (is_button_pressed(PEDES_IDX)==1) {
+		__HAL_TIM_SetCompare (&htim3,TIM_CHANNEL_1,10);
+		  HAL_Delay(1000);
+		  __HAL_TIM_SetCompare (&htim3,TIM_CHANNEL_1,100);
+		  HAL_Delay(1000);
+		  __HAL_TIM_SetCompare (&htim3,TIM_CHANNEL_1,0);
+	}
+}
 /* USER CODE END 0 */
 
 /**
@@ -113,6 +125,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  test_IO();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
