@@ -1,3 +1,4 @@
+"./Core/Src/auto_fsm.o"
 "./Core/Src/global.o"
 "./Core/Src/hardware_layer.o"
 "./Core/Src/input_reading.o"

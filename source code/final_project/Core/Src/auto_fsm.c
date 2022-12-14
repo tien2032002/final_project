@@ -8,7 +8,6 @@
 
 #include "auto_fsm.h"
 #include "global.h"
-#include "scheduler.h"
 #include "hardware_layer.h"
 #include "input_reading.h"
 #include "software_timer.h"
@@ -16,7 +15,7 @@
 #include "main.h"
 #include "stdint.h"
 char str[50];
-void fsm(){
+void auto_fsm(){
 	switch(state){
 	case INIT:
 		red_duration=5;
@@ -34,7 +33,7 @@ void fsm(){
 		//hien thi mau do tren den giao thong 1
 		set_color_light1(DO);
 		//hien thi den giao thong 2
-		if (counter1>=yellow_duration) set_color_light2(XANH);
+		if (counter1>yellow_duration) set_color_light2(XANH);
 		else set_color_light2(VANG);
 		//dem lui moi 1s
 		if(timer1_flag==1){

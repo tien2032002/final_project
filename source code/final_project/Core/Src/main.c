@@ -28,6 +28,10 @@
 #include "stdio.h"
 #include "stdint.h"
 #include "input_reading.h"
+#include "auto_fsm.h"
+#include "setting_fsm.h"
+#include "pedes_fsm.h"
+#include "manual_fsm.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -123,9 +127,21 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  setTimer1(1000);
+  red_duration=5;
+  green_duration=3;
+  yellow_duration=2;
+  counter1=5;
+  state=INIT;
+  manual_state=1;
+  pedes_state=10;
   while (1)
   {
-	  test_IO();
+	  pedestrian_fsm();
+	  auto_fsm();
+	  setting_fsm();
+	  manual_fsm();
+//	  test_IO();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
