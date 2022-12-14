@@ -1,0 +1,752 @@
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 6
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"auto_fsm.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.comm	str,50,4
+  16              		.section	.rodata
+  17              		.align	2
+  18              	.LC0:
+  19 0000 7265643D 		.ascii	"red=%d\015\012\000"
+  19      25640D0A 
+  19      00
+  20 0009 000000   		.align	2
+  21              	.LC1:
+  22 000c 67726565 		.ascii	"green=%d\015\012\000"
+  22      6E3D2564 
+  22      0D0A00
+  23 0017 00       		.align	2
+  24              	.LC2:
+  25 0018 73657474 		.ascii	"setting_red=%d\015\012\000"
+  25      696E675F 
+  25      7265643D 
+  25      25640D0A 
+  25      00
+  26 0029 000000   		.align	2
+  27              	.LC3:
+  28 002c 79656C6C 		.ascii	"yellow=%d\015\012\000"
+  28      6F773D25 
+  28      640D0A00 
+  29              		.section	.text.auto_fsm,"ax",%progbits
+  30              		.align	1
+  31              		.global	auto_fsm
+  32              		.arch armv7-m
+  33              		.syntax unified
+  34              		.thumb
+  35              		.thumb_func
+  36              		.fpu softvfp
+  38              	auto_fsm:
+  39              	.LFB68:
+  40              		.file 1 "./Core/Src/auto_fsm.c"
+   1:./Core/Src/auto_fsm.c **** /*
+   2:./Core/Src/auto_fsm.c ****  * auto_fsm.c
+   3:./Core/Src/auto_fsm.c ****  *
+   4:./Core/Src/auto_fsm.c ****  *  Created on: Nov 26, 2022
+   5:./Core/Src/auto_fsm.c ****  *      Author: legolas
+   6:./Core/Src/auto_fsm.c ****  */
+   7:./Core/Src/auto_fsm.c **** 
+   8:./Core/Src/auto_fsm.c **** 
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s 			page 2
+
+
+   9:./Core/Src/auto_fsm.c **** #include "auto_fsm.h"
+  10:./Core/Src/auto_fsm.c **** #include "global.h"
+  11:./Core/Src/auto_fsm.c **** #include "hardware_layer.h"
+  12:./Core/Src/auto_fsm.c **** #include "input_reading.h"
+  13:./Core/Src/auto_fsm.c **** #include "software_timer.h"
+  14:./Core/Src/auto_fsm.c **** #include "stdio.h"
+  15:./Core/Src/auto_fsm.c **** #include "main.h"
+  16:./Core/Src/auto_fsm.c **** #include "stdint.h"
+  17:./Core/Src/auto_fsm.c **** char str[50];
+  18:./Core/Src/auto_fsm.c **** void auto_fsm(){
+  41              		.loc 1 18 16
+  42              		.cfi_startproc
+  43              		@ args = 0, pretend = 0, frame = 0
+  44              		@ frame_needed = 1, uses_anonymous_args = 0
+  45 0000 80B5     		push	{r7, lr}
+  46              		.cfi_def_cfa_offset 8
+  47              		.cfi_offset 7, -8
+  48              		.cfi_offset 14, -4
+  49 0002 00AF     		add	r7, sp, #0
+  50              		.cfi_def_cfa_register 7
+  19:./Core/Src/auto_fsm.c **** 	switch(state){
+  51              		.loc 1 19 2
+  52 0004 AD4B     		ldr	r3, .L28
+  53 0006 1B68     		ldr	r3, [r3]
+  54 0008 032B     		cmp	r3, #3
+  55 000a 00F24D81 		bhi	.L23
+  56 000e 01A2     		adr	r2, .L4
+  57 0010 52F823F0 		ldr	pc, [r2, r3, lsl #2]
+  58              		.p2align 2
+  59              	.L4:
+  60 0014 25000000 		.word	.L7+1
+  61 0018 6B000000 		.word	.L6+1
+  62 001c 39010000 		.word	.L5+1
+  63 0020 F1010000 		.word	.L3+1
+  64              		.p2align 1
+  65              	.L7:
+  20:./Core/Src/auto_fsm.c **** 	case INIT:
+  21:./Core/Src/auto_fsm.c **** 		red_duration=5;
+  66              		.loc 1 21 15
+  67 0024 A64B     		ldr	r3, .L28+4
+  68 0026 0522     		movs	r2, #5
+  69 0028 1A60     		str	r2, [r3]
+  22:./Core/Src/auto_fsm.c **** 		green_duration=3;
+  70              		.loc 1 22 17
+  71 002a A64B     		ldr	r3, .L28+8
+  72 002c 0322     		movs	r2, #3
+  73 002e 1A60     		str	r2, [r3]
+  23:./Core/Src/auto_fsm.c **** 		yellow_duration=2;
+  74              		.loc 1 23 18
+  75 0030 A54B     		ldr	r3, .L28+12
+  76 0032 0222     		movs	r2, #2
+  77 0034 1A60     		str	r2, [r3]
+  24:./Core/Src/auto_fsm.c **** 		counter1=red_duration;
+  78              		.loc 1 24 11
+  79 0036 A24B     		ldr	r3, .L28+4
+  80 0038 1B68     		ldr	r3, [r3]
+  81 003a A44A     		ldr	r2, .L28+16
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s 			page 3
+
+
+  82 003c 1360     		str	r3, [r2]
+  25:./Core/Src/auto_fsm.c **** 		HAL_UART_Transmit(&huart2 ,(void*)str,sprintf(str,"red=%d\r\n"
+  83              		.loc 1 25 41
+  84 003e A34B     		ldr	r3, .L28+16
+  85 0040 1B68     		ldr	r3, [r3]
+  86 0042 1A46     		mov	r2, r3
+  87 0044 A249     		ldr	r1, .L28+20
+  88 0046 A348     		ldr	r0, .L28+24
+  89 0048 FFF7FEFF 		bl	sprintf
+  90 004c 0346     		mov	r3, r0
+  91              		.loc 1 25 3
+  92 004e 9AB2     		uxth	r2, r3
+  93 0050 4FF47A73 		mov	r3, #1000
+  94 0054 9F49     		ldr	r1, .L28+24
+  95 0056 A048     		ldr	r0, .L28+28
+  96 0058 FFF7FEFF 		bl	HAL_UART_Transmit
+  26:./Core/Src/auto_fsm.c **** 							  		,counter1),1000) ;
+  27:./Core/Src/auto_fsm.c **** 		setTimer1(1000);
+  97              		.loc 1 27 3
+  98 005c 4FF47A70 		mov	r0, #1000
+  99 0060 FFF7FEFF 		bl	setTimer1
+  28:./Core/Src/auto_fsm.c **** 		state=AUTO_RED;
+ 100              		.loc 1 28 8
+ 101 0064 954B     		ldr	r3, .L28
+ 102 0066 0122     		movs	r2, #1
+ 103 0068 1A60     		str	r2, [r3]
+ 104              	.L6:
+  29:./Core/Src/auto_fsm.c **** 	case AUTO_RED:
+  30:./Core/Src/auto_fsm.c **** 		//reset flag for setting button and manual button
+  31:./Core/Src/auto_fsm.c **** 		is_button_pressed(SETTING_IDX);
+ 105              		.loc 1 31 3
+ 106 006a 0120     		movs	r0, #1
+ 107 006c FFF7FEFF 		bl	is_button_pressed
+  32:./Core/Src/auto_fsm.c **** 		is_button_pressed(MANUAL_IDX);
+ 108              		.loc 1 32 3
+ 109 0070 0220     		movs	r0, #2
+ 110 0072 FFF7FEFF 		bl	is_button_pressed
+  33:./Core/Src/auto_fsm.c **** 		//hien thi mau do tren den giao thong 1
+  34:./Core/Src/auto_fsm.c **** 		set_color_light1(DO);
+ 111              		.loc 1 34 3
+ 112 0076 0120     		movs	r0, #1
+ 113 0078 FFF7FEFF 		bl	set_color_light1
+  35:./Core/Src/auto_fsm.c **** 		//hien thi den giao thong 2
+  36:./Core/Src/auto_fsm.c **** 		if (counter1>yellow_duration) set_color_light2(XANH);
+ 114              		.loc 1 36 15
+ 115 007c 934B     		ldr	r3, .L28+16
+ 116 007e 1A68     		ldr	r2, [r3]
+ 117 0080 914B     		ldr	r3, .L28+12
+ 118 0082 1B68     		ldr	r3, [r3]
+ 119              		.loc 1 36 6
+ 120 0084 9A42     		cmp	r2, r3
+ 121 0086 03DD     		ble	.L8
+ 122              		.loc 1 36 33 discriminator 1
+ 123 0088 0320     		movs	r0, #3
+ 124 008a FFF7FEFF 		bl	set_color_light2
+ 125 008e 02E0     		b	.L9
+ 126              	.L8:
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s 			page 4
+
+
+  37:./Core/Src/auto_fsm.c **** 		else set_color_light2(VANG);
+ 127              		.loc 1 37 8
+ 128 0090 0220     		movs	r0, #2
+ 129 0092 FFF7FEFF 		bl	set_color_light2
+ 130              	.L9:
+  38:./Core/Src/auto_fsm.c **** 		//dem lui moi 1s
+  39:./Core/Src/auto_fsm.c **** 		if(timer1_flag==1){
+ 131              		.loc 1 39 17
+ 132 0096 914B     		ldr	r3, .L28+32
+ 133 0098 1B68     		ldr	r3, [r3]
+ 134              		.loc 1 39 5
+ 135 009a 012B     		cmp	r3, #1
+ 136 009c 32D1     		bne	.L10
+  40:./Core/Src/auto_fsm.c **** 			counter1--;
+ 137              		.loc 1 40 12
+ 138 009e 8B4B     		ldr	r3, .L28+16
+ 139 00a0 1B68     		ldr	r3, [r3]
+ 140 00a2 013B     		subs	r3, r3, #1
+ 141 00a4 894A     		ldr	r2, .L28+16
+ 142 00a6 1360     		str	r3, [r2]
+  41:./Core/Src/auto_fsm.c **** 			if (counter1<=0) {
+ 143              		.loc 1 41 16
+ 144 00a8 884B     		ldr	r3, .L28+16
+ 145 00aa 1B68     		ldr	r3, [r3]
+ 146              		.loc 1 41 7
+ 147 00ac 002B     		cmp	r3, #0
+ 148 00ae 16DC     		bgt	.L11
+  42:./Core/Src/auto_fsm.c **** 				counter1=green_duration;//nap lai thoi gian cho duration
+ 149              		.loc 1 42 13
+ 150 00b0 844B     		ldr	r3, .L28+8
+ 151 00b2 1B68     		ldr	r3, [r3]
+ 152 00b4 854A     		ldr	r2, .L28+16
+ 153 00b6 1360     		str	r3, [r2]
+  43:./Core/Src/auto_fsm.c **** 				state=AUTO_GREEN;
+ 154              		.loc 1 43 10
+ 155 00b8 804B     		ldr	r3, .L28
+ 156 00ba 0222     		movs	r2, #2
+ 157 00bc 1A60     		str	r2, [r3]
+  44:./Core/Src/auto_fsm.c **** 				HAL_UART_Transmit(&huart2 ,(void*)str,sprintf(str,"green=%d\r\n"
+ 158              		.loc 1 44 43
+ 159 00be 834B     		ldr	r3, .L28+16
+ 160 00c0 1B68     		ldr	r3, [r3]
+ 161 00c2 1A46     		mov	r2, r3
+ 162 00c4 8649     		ldr	r1, .L28+36
+ 163 00c6 8348     		ldr	r0, .L28+24
+ 164 00c8 FFF7FEFF 		bl	sprintf
+ 165 00cc 0346     		mov	r3, r0
+ 166              		.loc 1 44 5
+ 167 00ce 9AB2     		uxth	r2, r3
+ 168 00d0 4FF47A73 		mov	r3, #1000
+ 169 00d4 7F49     		ldr	r1, .L28+24
+ 170 00d6 8048     		ldr	r0, .L28+28
+ 171 00d8 FFF7FEFF 		bl	HAL_UART_Transmit
+ 172 00dc 0EE0     		b	.L12
+ 173              	.L11:
+  45:./Core/Src/auto_fsm.c **** 												  		,counter1),1000) ;
+  46:./Core/Src/auto_fsm.c **** 			}//nguoc lai van o trang thai auto_red
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s 			page 5
+
+
+  47:./Core/Src/auto_fsm.c **** 			else
+  48:./Core/Src/auto_fsm.c **** 			HAL_UART_Transmit(&huart2 ,(void*)str,sprintf(str,"red=%d\r\n"
+ 174              		.loc 1 48 42
+ 175 00de 7B4B     		ldr	r3, .L28+16
+ 176 00e0 1B68     		ldr	r3, [r3]
+ 177 00e2 1A46     		mov	r2, r3
+ 178 00e4 7A49     		ldr	r1, .L28+20
+ 179 00e6 7B48     		ldr	r0, .L28+24
+ 180 00e8 FFF7FEFF 		bl	sprintf
+ 181 00ec 0346     		mov	r3, r0
+ 182              		.loc 1 48 4
+ 183 00ee 9AB2     		uxth	r2, r3
+ 184 00f0 4FF47A73 		mov	r3, #1000
+ 185 00f4 7749     		ldr	r1, .L28+24
+ 186 00f6 7848     		ldr	r0, .L28+28
+ 187 00f8 FFF7FEFF 		bl	HAL_UART_Transmit
+ 188              	.L12:
+  49:./Core/Src/auto_fsm.c **** 								  		,counter1),1000) ;
+  50:./Core/Src/auto_fsm.c **** 			setTimer1(1000);
+ 189              		.loc 1 50 4
+ 190 00fc 4FF47A70 		mov	r0, #1000
+ 191 0100 FFF7FEFF 		bl	setTimer1
+ 192              	.L10:
+  51:./Core/Src/auto_fsm.c **** 		}
+  52:./Core/Src/auto_fsm.c **** 
+  53:./Core/Src/auto_fsm.c **** 		//neu an nut 1 thi chuyen sang trang thai setting
+  54:./Core/Src/auto_fsm.c **** 		if (is_button_pressed(STATE_IDX))
+ 193              		.loc 1 54 7
+ 194 0104 0020     		movs	r0, #0
+ 195 0106 FFF7FEFF 		bl	is_button_pressed
+ 196 010a 0346     		mov	r3, r0
+ 197              		.loc 1 54 6
+ 198 010c 002B     		cmp	r3, #0
+ 199 010e 00F0CD80 		beq	.L24
+  55:./Core/Src/auto_fsm.c **** 			{
+  56:./Core/Src/auto_fsm.c **** 			HAL_UART_Transmit(&huart2 ,(void*)str,sprintf(str,"setting_red=%d\r\n"
+ 200              		.loc 1 56 42
+ 201 0112 6B4B     		ldr	r3, .L28+4
+ 202 0114 1B68     		ldr	r3, [r3]
+ 203 0116 1A46     		mov	r2, r3
+ 204 0118 7249     		ldr	r1, .L28+40
+ 205 011a 6E48     		ldr	r0, .L28+24
+ 206 011c FFF7FEFF 		bl	sprintf
+ 207 0120 0346     		mov	r3, r0
+ 208              		.loc 1 56 4
+ 209 0122 9AB2     		uxth	r2, r3
+ 210 0124 4FF47A73 		mov	r3, #1000
+ 211 0128 6A49     		ldr	r1, .L28+24
+ 212 012a 6B48     		ldr	r0, .L28+28
+ 213 012c FFF7FEFF 		bl	HAL_UART_Transmit
+  57:./Core/Src/auto_fsm.c **** 										,red_duration),1000);
+  58:./Core/Src/auto_fsm.c **** 			state=SETTING_RED;
+ 214              		.loc 1 58 9
+ 215 0130 624B     		ldr	r3, .L28
+ 216 0132 0422     		movs	r2, #4
+ 217 0134 1A60     		str	r2, [r3]
+  59:./Core/Src/auto_fsm.c **** 			}
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s 			page 6
+
+
+  60:./Core/Src/auto_fsm.c **** 		break;
+ 218              		.loc 1 60 3
+ 219 0136 B9E0     		b	.L24
+ 220              	.L5:
+  61:./Core/Src/auto_fsm.c **** 	case AUTO_GREEN:
+  62:./Core/Src/auto_fsm.c **** 		//reset flag for setting button and manual button
+  63:./Core/Src/auto_fsm.c **** 		is_button_pressed(SETTING_IDX);
+ 221              		.loc 1 63 3
+ 222 0138 0120     		movs	r0, #1
+ 223 013a FFF7FEFF 		bl	is_button_pressed
+  64:./Core/Src/auto_fsm.c **** 		is_button_pressed(MANUAL_IDX);
+ 224              		.loc 1 64 3
+ 225 013e 0220     		movs	r0, #2
+ 226 0140 FFF7FEFF 		bl	is_button_pressed
+  65:./Core/Src/auto_fsm.c **** 		//hien thi mau xanh tren den giao thong 1
+  66:./Core/Src/auto_fsm.c **** 		set_color_light1(XANH);
+ 227              		.loc 1 66 3
+ 228 0144 0320     		movs	r0, #3
+ 229 0146 FFF7FEFF 		bl	set_color_light1
+  67:./Core/Src/auto_fsm.c **** 		//hien thi den giao thong 2
+  68:./Core/Src/auto_fsm.c **** 		set_color_light2(DO);
+ 230              		.loc 1 68 3
+ 231 014a 0120     		movs	r0, #1
+ 232 014c FFF7FEFF 		bl	set_color_light2
+  69:./Core/Src/auto_fsm.c **** 		//gui tin hieu uart de hien thi thoi gian
+  70:./Core/Src/auto_fsm.c **** 			//can bo sung them ham trong hardware_layer
+  71:./Core/Src/auto_fsm.c **** 		//dem lui moi 1s
+  72:./Core/Src/auto_fsm.c **** 		if(timer1_flag==1){
+ 233              		.loc 1 72 17
+ 234 0150 624B     		ldr	r3, .L28+32
+ 235 0152 1B68     		ldr	r3, [r3]
+ 236              		.loc 1 72 5
+ 237 0154 012B     		cmp	r3, #1
+ 238 0156 32D1     		bne	.L15
+  73:./Core/Src/auto_fsm.c **** 			counter1--;
+ 239              		.loc 1 73 12
+ 240 0158 5C4B     		ldr	r3, .L28+16
+ 241 015a 1B68     		ldr	r3, [r3]
+ 242 015c 013B     		subs	r3, r3, #1
+ 243 015e 5B4A     		ldr	r2, .L28+16
+ 244 0160 1360     		str	r3, [r2]
+  74:./Core/Src/auto_fsm.c **** 			if (counter1<=0) {
+ 245              		.loc 1 74 16
+ 246 0162 5A4B     		ldr	r3, .L28+16
+ 247 0164 1B68     		ldr	r3, [r3]
+ 248              		.loc 1 74 7
+ 249 0166 002B     		cmp	r3, #0
+ 250 0168 16DC     		bgt	.L16
+  75:./Core/Src/auto_fsm.c **** 				counter1=yellow_duration;//nap lai thoi gian cho duration
+ 251              		.loc 1 75 13
+ 252 016a 574B     		ldr	r3, .L28+12
+ 253 016c 1B68     		ldr	r3, [r3]
+ 254 016e 574A     		ldr	r2, .L28+16
+ 255 0170 1360     		str	r3, [r2]
+  76:./Core/Src/auto_fsm.c **** 				state=AUTO_YELLOW;
+ 256              		.loc 1 76 10
+ 257 0172 524B     		ldr	r3, .L28
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s 			page 7
+
+
+ 258 0174 0322     		movs	r2, #3
+ 259 0176 1A60     		str	r2, [r3]
+  77:./Core/Src/auto_fsm.c **** 				HAL_UART_Transmit(&huart2 ,(void*)str,sprintf(str,"yellow=%d\r\n"
+ 260              		.loc 1 77 43
+ 261 0178 544B     		ldr	r3, .L28+16
+ 262 017a 1B68     		ldr	r3, [r3]
+ 263 017c 1A46     		mov	r2, r3
+ 264 017e 5A49     		ldr	r1, .L28+44
+ 265 0180 5448     		ldr	r0, .L28+24
+ 266 0182 FFF7FEFF 		bl	sprintf
+ 267 0186 0346     		mov	r3, r0
+ 268              		.loc 1 77 5
+ 269 0188 9AB2     		uxth	r2, r3
+ 270 018a 4FF47A73 		mov	r3, #1000
+ 271 018e 5149     		ldr	r1, .L28+24
+ 272 0190 5148     		ldr	r0, .L28+28
+ 273 0192 FFF7FEFF 		bl	HAL_UART_Transmit
+ 274 0196 0EE0     		b	.L17
+ 275              	.L16:
+  78:./Core/Src/auto_fsm.c **** 												  		,counter1),1000) ;
+  79:./Core/Src/auto_fsm.c **** 			}//nguoc lai van o trang thai auto_green
+  80:./Core/Src/auto_fsm.c **** 			else
+  81:./Core/Src/auto_fsm.c **** 			HAL_UART_Transmit(&huart2 ,(void*)str,sprintf(str,"green=%d\r\n"
+ 276              		.loc 1 81 42
+ 277 0198 4C4B     		ldr	r3, .L28+16
+ 278 019a 1B68     		ldr	r3, [r3]
+ 279 019c 1A46     		mov	r2, r3
+ 280 019e 5049     		ldr	r1, .L28+36
+ 281 01a0 4C48     		ldr	r0, .L28+24
+ 282 01a2 FFF7FEFF 		bl	sprintf
+ 283 01a6 0346     		mov	r3, r0
+ 284              		.loc 1 81 4
+ 285 01a8 9AB2     		uxth	r2, r3
+ 286 01aa 4FF47A73 		mov	r3, #1000
+ 287 01ae 4949     		ldr	r1, .L28+24
+ 288 01b0 4948     		ldr	r0, .L28+28
+ 289 01b2 FFF7FEFF 		bl	HAL_UART_Transmit
+ 290              	.L17:
+  82:./Core/Src/auto_fsm.c **** 											  		,counter1),1000) ;
+  83:./Core/Src/auto_fsm.c **** 			setTimer1(1000);
+ 291              		.loc 1 83 4
+ 292 01b6 4FF47A70 		mov	r0, #1000
+ 293 01ba FFF7FEFF 		bl	setTimer1
+ 294              	.L15:
+  84:./Core/Src/auto_fsm.c **** 		}
+  85:./Core/Src/auto_fsm.c **** 		//neu counter1 == 0 chuyen trang thai sang auto_yellow
+  86:./Core/Src/auto_fsm.c **** 
+  87:./Core/Src/auto_fsm.c **** 
+  88:./Core/Src/auto_fsm.c **** 		//neu an nut 1 thi chuyen sang trang thai setting_red
+  89:./Core/Src/auto_fsm.c **** 		if (is_button_pressed(STATE_IDX))
+ 295              		.loc 1 89 7
+ 296 01be 0020     		movs	r0, #0
+ 297 01c0 FFF7FEFF 		bl	is_button_pressed
+ 298 01c4 0346     		mov	r3, r0
+ 299              		.loc 1 89 6
+ 300 01c6 002B     		cmp	r3, #0
+ 301 01c8 72D0     		beq	.L25
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s 			page 8
+
+
+  90:./Core/Src/auto_fsm.c **** 		{
+  91:./Core/Src/auto_fsm.c **** 			HAL_UART_Transmit(&huart2 ,(void*)str,sprintf(str,"setting_red=%d\r\n"
+ 302              		.loc 1 91 42
+ 303 01ca 3D4B     		ldr	r3, .L28+4
+ 304 01cc 1B68     		ldr	r3, [r3]
+ 305 01ce 1A46     		mov	r2, r3
+ 306 01d0 4449     		ldr	r1, .L28+40
+ 307 01d2 4048     		ldr	r0, .L28+24
+ 308 01d4 FFF7FEFF 		bl	sprintf
+ 309 01d8 0346     		mov	r3, r0
+ 310              		.loc 1 91 4
+ 311 01da 9AB2     		uxth	r2, r3
+ 312 01dc 4FF47A73 		mov	r3, #1000
+ 313 01e0 3C49     		ldr	r1, .L28+24
+ 314 01e2 3D48     		ldr	r0, .L28+28
+ 315 01e4 FFF7FEFF 		bl	HAL_UART_Transmit
+  92:./Core/Src/auto_fsm.c **** 										,red_duration),1000);
+  93:./Core/Src/auto_fsm.c **** 			state=SETTING_RED;
+ 316              		.loc 1 93 9
+ 317 01e8 344B     		ldr	r3, .L28
+ 318 01ea 0422     		movs	r2, #4
+ 319 01ec 1A60     		str	r2, [r3]
+  94:./Core/Src/auto_fsm.c **** 		}
+  95:./Core/Src/auto_fsm.c **** 		break;
+ 320              		.loc 1 95 3
+ 321 01ee 5FE0     		b	.L25
+ 322              	.L3:
+  96:./Core/Src/auto_fsm.c **** 	case AUTO_YELLOW:
+  97:./Core/Src/auto_fsm.c **** 		//reset flag for setting button and manual button
+  98:./Core/Src/auto_fsm.c **** 		is_button_pressed(SETTING_IDX);
+ 323              		.loc 1 98 3
+ 324 01f0 0120     		movs	r0, #1
+ 325 01f2 FFF7FEFF 		bl	is_button_pressed
+  99:./Core/Src/auto_fsm.c **** 		is_button_pressed(MANUAL_IDX);
+ 326              		.loc 1 99 3
+ 327 01f6 0220     		movs	r0, #2
+ 328 01f8 FFF7FEFF 		bl	is_button_pressed
+ 100:./Core/Src/auto_fsm.c **** 		//hien thi mau xanh tren den giao thong 1
+ 101:./Core/Src/auto_fsm.c **** 		set_color_light1(VANG);
+ 329              		.loc 1 101 3
+ 330 01fc 0220     		movs	r0, #2
+ 331 01fe FFF7FEFF 		bl	set_color_light1
+ 102:./Core/Src/auto_fsm.c **** 		//hien thi den giao thong 2
+ 103:./Core/Src/auto_fsm.c **** 		set_color_light2(DO);
+ 332              		.loc 1 103 3
+ 333 0202 0120     		movs	r0, #1
+ 334 0204 FFF7FEFF 		bl	set_color_light2
+ 104:./Core/Src/auto_fsm.c **** 		//gui tin hieu uart de hien thi thoi gian
+ 105:./Core/Src/auto_fsm.c **** 			//can bo sung them ham trong hardware_layer
+ 106:./Core/Src/auto_fsm.c **** 		//dem lui moi 1s
+ 107:./Core/Src/auto_fsm.c **** 		if(timer1_flag==1){
+ 335              		.loc 1 107 17
+ 336 0208 344B     		ldr	r3, .L28+32
+ 337 020a 1B68     		ldr	r3, [r3]
+ 338              		.loc 1 107 5
+ 339 020c 012B     		cmp	r3, #1
+ 340 020e 32D1     		bne	.L19
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s 			page 9
+
+
+ 108:./Core/Src/auto_fsm.c **** 			counter1--;
+ 341              		.loc 1 108 12
+ 342 0210 2E4B     		ldr	r3, .L28+16
+ 343 0212 1B68     		ldr	r3, [r3]
+ 344 0214 013B     		subs	r3, r3, #1
+ 345 0216 2D4A     		ldr	r2, .L28+16
+ 346 0218 1360     		str	r3, [r2]
+ 109:./Core/Src/auto_fsm.c **** 			//neu counter1 == 0 chuyen trang thai sang auto_red
+ 110:./Core/Src/auto_fsm.c **** 			if (counter1==0) {
+ 347              		.loc 1 110 16
+ 348 021a 2C4B     		ldr	r3, .L28+16
+ 349 021c 1B68     		ldr	r3, [r3]
+ 350              		.loc 1 110 7
+ 351 021e 002B     		cmp	r3, #0
+ 352 0220 16D1     		bne	.L20
+ 111:./Core/Src/auto_fsm.c **** 				counter1=red_duration;//nap lai thoi gian cho duration
+ 353              		.loc 1 111 13
+ 354 0222 274B     		ldr	r3, .L28+4
+ 355 0224 1B68     		ldr	r3, [r3]
+ 356 0226 294A     		ldr	r2, .L28+16
+ 357 0228 1360     		str	r3, [r2]
+ 112:./Core/Src/auto_fsm.c **** 				HAL_UART_Transmit(&huart2 ,(void*)str,sprintf(str,"red=%d\r\n"
+ 358              		.loc 1 112 43
+ 359 022a 284B     		ldr	r3, .L28+16
+ 360 022c 1B68     		ldr	r3, [r3]
+ 361 022e 1A46     		mov	r2, r3
+ 362 0230 2749     		ldr	r1, .L28+20
+ 363 0232 2848     		ldr	r0, .L28+24
+ 364 0234 FFF7FEFF 		bl	sprintf
+ 365 0238 0346     		mov	r3, r0
+ 366              		.loc 1 112 5
+ 367 023a 9AB2     		uxth	r2, r3
+ 368 023c 4FF47A73 		mov	r3, #1000
+ 369 0240 2449     		ldr	r1, .L28+24
+ 370 0242 2548     		ldr	r0, .L28+28
+ 371 0244 FFF7FEFF 		bl	HAL_UART_Transmit
+ 113:./Core/Src/auto_fsm.c **** 															  		,counter1),1000) ;
+ 114:./Core/Src/auto_fsm.c **** 				state=AUTO_RED;
+ 372              		.loc 1 114 10
+ 373 0248 1C4B     		ldr	r3, .L28
+ 374 024a 0122     		movs	r2, #1
+ 375 024c 1A60     		str	r2, [r3]
+ 376 024e 0EE0     		b	.L21
+ 377              	.L20:
+ 115:./Core/Src/auto_fsm.c **** 			}//nguoc lai van o trang thai auto_yellow
+ 116:./Core/Src/auto_fsm.c **** 			else HAL_UART_Transmit(&huart2 ,(void*)str,sprintf(str,"yellow=%d\r\n"
+ 378              		.loc 1 116 47
+ 379 0250 1E4B     		ldr	r3, .L28+16
+ 380 0252 1B68     		ldr	r3, [r3]
+ 381 0254 1A46     		mov	r2, r3
+ 382 0256 2449     		ldr	r1, .L28+44
+ 383 0258 1E48     		ldr	r0, .L28+24
+ 384 025a FFF7FEFF 		bl	sprintf
+ 385 025e 0346     		mov	r3, r0
+ 386              		.loc 1 116 9
+ 387 0260 9AB2     		uxth	r2, r3
+ 388 0262 4FF47A73 		mov	r3, #1000
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s 			page 10
+
+
+ 389 0266 1B49     		ldr	r1, .L28+24
+ 390 0268 1B48     		ldr	r0, .L28+28
+ 391 026a FFF7FEFF 		bl	HAL_UART_Transmit
+ 392              	.L21:
+ 117:./Core/Src/auto_fsm.c **** 														  		,counter1),1000) ;
+ 118:./Core/Src/auto_fsm.c **** 			setTimer1(1000);
+ 393              		.loc 1 118 4
+ 394 026e 4FF47A70 		mov	r0, #1000
+ 395 0272 FFF7FEFF 		bl	setTimer1
+ 396              	.L19:
+ 119:./Core/Src/auto_fsm.c **** 		}
+ 120:./Core/Src/auto_fsm.c **** 
+ 121:./Core/Src/auto_fsm.c **** 
+ 122:./Core/Src/auto_fsm.c **** 		//neu an nut 1 thi chuyen sang trang thai setting_red
+ 123:./Core/Src/auto_fsm.c **** 		if (is_button_pressed(STATE_IDX))
+ 397              		.loc 1 123 7
+ 398 0276 0020     		movs	r0, #0
+ 399 0278 FFF7FEFF 		bl	is_button_pressed
+ 400 027c 0346     		mov	r3, r0
+ 401              		.loc 1 123 6
+ 402 027e 002B     		cmp	r3, #0
+ 403 0280 18D0     		beq	.L26
+ 124:./Core/Src/auto_fsm.c **** 		{
+ 125:./Core/Src/auto_fsm.c **** 			HAL_UART_Transmit(&huart2 ,(void*)str,sprintf(str,"setting_red=%d\r\n"
+ 404              		.loc 1 125 42
+ 405 0282 0F4B     		ldr	r3, .L28+4
+ 406 0284 1B68     		ldr	r3, [r3]
+ 407 0286 1A46     		mov	r2, r3
+ 408 0288 1649     		ldr	r1, .L28+40
+ 409 028a 1248     		ldr	r0, .L28+24
+ 410 028c FFF7FEFF 		bl	sprintf
+ 411 0290 0346     		mov	r3, r0
+ 412              		.loc 1 125 4
+ 413 0292 9AB2     		uxth	r2, r3
+ 414 0294 4FF47A73 		mov	r3, #1000
+ 415 0298 0E49     		ldr	r1, .L28+24
+ 416 029a 0F48     		ldr	r0, .L28+28
+ 417 029c FFF7FEFF 		bl	HAL_UART_Transmit
+ 126:./Core/Src/auto_fsm.c **** 							,red_duration),1000) ;
+ 127:./Core/Src/auto_fsm.c **** 			state=SETTING_RED;
+ 418              		.loc 1 127 9
+ 419 02a0 064B     		ldr	r3, .L28
+ 420 02a2 0422     		movs	r2, #4
+ 421 02a4 1A60     		str	r2, [r3]
+ 128:./Core/Src/auto_fsm.c **** 
+ 129:./Core/Src/auto_fsm.c **** 		}
+ 130:./Core/Src/auto_fsm.c **** 		break;
+ 422              		.loc 1 130 3
+ 423 02a6 05E0     		b	.L26
+ 424              	.L23:
+ 131:./Core/Src/auto_fsm.c **** 	default:
+ 132:./Core/Src/auto_fsm.c **** 		break;
+ 425              		.loc 1 132 3
+ 426 02a8 00BF     		nop
+ 427 02aa 04E0     		b	.L27
+ 428              	.L24:
+  60:./Core/Src/auto_fsm.c **** 	case AUTO_GREEN:
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s 			page 11
+
+
+ 429              		.loc 1 60 3
+ 430 02ac 00BF     		nop
+ 431 02ae 02E0     		b	.L27
+ 432              	.L25:
+  95:./Core/Src/auto_fsm.c **** 	case AUTO_YELLOW:
+ 433              		.loc 1 95 3
+ 434 02b0 00BF     		nop
+ 435 02b2 00E0     		b	.L27
+ 436              	.L26:
+ 130:./Core/Src/auto_fsm.c **** 	default:
+ 437              		.loc 1 130 3
+ 438 02b4 00BF     		nop
+ 439              	.L27:
+ 133:./Core/Src/auto_fsm.c **** 	}
+ 134:./Core/Src/auto_fsm.c **** }
+ 440              		.loc 1 134 1
+ 441 02b6 00BF     		nop
+ 442 02b8 80BD     		pop	{r7, pc}
+ 443              	.L29:
+ 444 02ba 00BF     		.align	2
+ 445              	.L28:
+ 446 02bc 00000000 		.word	state
+ 447 02c0 00000000 		.word	red_duration
+ 448 02c4 00000000 		.word	green_duration
+ 449 02c8 00000000 		.word	yellow_duration
+ 450 02cc 00000000 		.word	counter1
+ 451 02d0 00000000 		.word	.LC0
+ 452 02d4 00000000 		.word	str
+ 453 02d8 00000000 		.word	huart2
+ 454 02dc 00000000 		.word	timer1_flag
+ 455 02e0 0C000000 		.word	.LC1
+ 456 02e4 18000000 		.word	.LC2
+ 457 02e8 2C000000 		.word	.LC3
+ 458              		.cfi_endproc
+ 459              	.LFE68:
+ 461              		.text
+ 462              	.Letext0:
+ 463              		.file 2 "c:\\st\\stm32cubeide_1.7.0\\stm32cubeide\\plugins\\com.st.stm32cube.ide.mcu.externaltools
+ 464              		.file 3 "c:\\st\\stm32cubeide_1.7.0\\stm32cubeide\\plugins\\com.st.stm32cube.ide.mcu.externaltools
+ 465              		.file 4 "Drivers/CMSIS/Include/core_cm3.h"
+ 466              		.file 5 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h"
+ 467              		.file 6 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
+ 468              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 469              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
+ 470              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h"
+ 471              		.file 10 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
+ 472              		.file 11 "Core/Inc/global.h"
+ 473              		.file 12 "Core/Inc/input_reading.h"
+ 474              		.file 13 "Core/Inc/software_timer.h"
+ 475              		.file 14 "c:\\st\\stm32cubeide_1.7.0\\stm32cubeide\\plugins\\com.st.stm32cube.ide.mcu.externaltool
+ 476              		.file 15 "c:\\st\\stm32cubeide_1.7.0\\stm32cubeide\\plugins\\com.st.stm32cube.ide.mcu.externaltool
+ 477              		.file 16 "c:\\st\\stm32cubeide_1.7.0\\stm32cubeide\\plugins\\com.st.stm32cube.ide.mcu.externaltool
+ 478              		.file 17 "c:\\st\\stm32cubeide_1.7.0\\stm32cubeide\\plugins\\com.st.stm32cube.ide.mcu.externaltool
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s 			page 12
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 auto_fsm.c
+                            *COM*:0000000000000032 str
+C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s:17     .rodata:0000000000000000 $d
+C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s:30     .text.auto_fsm:0000000000000000 $t
+C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s:38     .text.auto_fsm:0000000000000000 auto_fsm
+C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s:60     .text.auto_fsm:0000000000000014 $d
+C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s:64     .text.auto_fsm:0000000000000024 $t
+C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s:446    .text.auto_fsm:00000000000002bc $d
+                           .group:0000000000000000 wm4.0.e890922d021f7fff2fbf219cb2b38f03
+                           .group:0000000000000000 wm4.stm32f1xx_hal_conf.h.21.98635006afa9a018cfa5e0632ed4968b
+                           .group:0000000000000000 wm4.stm32f1xx.h.39.208bb8a61c892b7c37d899c49a031330
+                           .group:0000000000000000 wm4.stm32f103xb.h.38.ec967d5ad9d3269cb0788eebda048e38
+                           .group:0000000000000000 wm4._newlib_version.h.4.1ef4e12f167f8b69d7c30054be56050d
+                           .group:0000000000000000 wm4.features.h.33.318b64d71e0957639cfb30f1db1f7ec8
+                           .group:0000000000000000 wm4._default_types.h.15.247e5cd201eca3442cbf5404108c4935
+                           .group:0000000000000000 wm4._intsup.h.10.48bafbb683905c4daa4565a85aeeb264
+                           .group:0000000000000000 wm4._stdint.h.10.c24fa3af3bc1706662bb5593a907e841
+                           .group:0000000000000000 wm4.stdint.h.23.d53047a68f4a85177f80b422d52785ed
+                           .group:0000000000000000 wm4.cmsis_version.h.32.4d5822004c01a829a975260e854b5f8e
+                           .group:0000000000000000 wm4.core_cm3.h.66.fc46cac19810db8f98d67da7ef88f42c
+                           .group:0000000000000000 wm4.cmsis_gcc.h.26.225e4f5469716fdeef823d1102f5b23e
+                           .group:0000000000000000 wm4.core_cm3.h.127.f4474120f1a7524deb56f9d74ff175da
+                           .group:0000000000000000 wm4.stm32f103xb.h.573.10249aa7473ca93be896fed94046a725
+                           .group:0000000000000000 wm4.stm32f1xx.h.162.96b09079a093c34dbd7f0b85cbd0ddee
+                           .group:0000000000000000 wm4.stm32_hal_legacy.h.23.91ba5b544a4c2be2620a1e7ff0049e10
+                           .group:0000000000000000 wm4.stddef.h.39.144cf5ddcd53cbfdac30259dc1a6c87f
+                           .group:0000000000000000 wm4.stm32f1xx_hal_def.h.57.18d01ce1aa74e9fb44dbf16f821a574a
+                           .group:0000000000000000 wm4.stm32f1xx_hal_rcc.h.95.21591bbc513aaa813c0b8640c3b32517
+                           .group:0000000000000000 wm4.stm32f1xx_hal_rcc_ex.h.22.8763f99bc1e3e2dcf0febe9161d81b37
+                           .group:0000000000000000 wm4.stm32f1xx_hal_rcc.h.1202.f8e5f9e0cf4eef7840facf5396029056
+                           .group:0000000000000000 wm4.stm32f1xx_hal_gpio.h.22.fa638d688dcc57ca806fe6a7831b0d04
+                           .group:0000000000000000 wm4.stm32f1xx_hal_gpio_ex.h.22.51a50ef3512cd78017ce666a32d364bf
+                           .group:0000000000000000 wm4.stm32f1xx_hal_gpio.h.263.f5ebf2f545ade59412ab9261c8e35dc4
+                           .group:0000000000000000 wm4.stm32f1xx_hal_exti.h.22.e26491d042c8079c3ca67eca341af862
+                           .group:0000000000000000 wm4.stm32f1xx_hal_dma.h.22.3c14338534886827bf3aeaa2a7f412a1
+                           .group:0000000000000000 wm4.stm32f1xx_hal_dma_ex.h.22.001ac4d7f81ccbdcae49bd65c13858c8
+                           .group:0000000000000000 wm4.stm32f1xx_hal_dma.h.409.cafcd2cfe701091535636be537c18293
+                           .group:0000000000000000 wm4.stm32f1xx_hal_cortex.h.22.b5f4174bb6a50d95405567b8f50e0900
+                           .group:0000000000000000 wm4.stm32f1xx_hal_flash.h.22.5cea9a7210e6315b41724b47b5fdf203
+                           .group:0000000000000000 wm4.stm32f1xx_hal_flash_ex.h.22.d4e19c21f2a86fa2f8ec2c2d5f1ab2af
+                           .group:0000000000000000 wm4.stm32f1xx_hal_pwr.h.22.3438c476faafc3240bf146f143df3fcd
+                           .group:0000000000000000 wm4.stm32f1xx_hal_tim.h.22.a16e206564e97dbace9faae59a0d6008
+                           .group:0000000000000000 wm4.stm32f1xx_hal_uart.h.22.5f7992e497faa36aa98f09f7214f4dbb
+                           .group:0000000000000000 wm4.stm32f1xx_hal.h.88.91065c0692bed6019c34f1e9c00589fd
+                           .group:0000000000000000 wm4.main.h.63.9319a86a6f0d78cb5bb2f8204a330e54
+                           .group:0000000000000000 wm4.global.h.14.067c4405627241605fc2a2869313e01e
+                           .group:0000000000000000 wm4.hardware_layer.h.9.cb1b7531ddee951582f588d03a2c24a6
+                           .group:0000000000000000 wm4.input_reading.h.9.a013ca3645af8a0d58d52489a2fa9d43
+                           .group:0000000000000000 wm4.software_timer.h.9.6bf986ebefe70bdf196105c9c027c70a
+                           .group:0000000000000000 wm4.newlib.h.8.7cb3972cd43265932d4782d5eb589854
+                           .group:0000000000000000 wm4.ieeefp.h.77.f33a4dce62116f6f5175ff8bae57a54c
+                           .group:0000000000000000 wm4.config.h.224.c701144a7b0518c6ee9b9b5465b79f81
+                           .group:0000000000000000 wm4._ansi.h.31.de524f58584151836e90d8620a16f8e8
+                           .group:0000000000000000 wm4.stdio.h.31.7c0e28c411445f3f9c5b11accf882760
+                           .group:0000000000000000 wm4.stddef.h.155.ba788add86a0e365f264484f110c3c29
+                           .group:0000000000000000 wm4.cdefs.h.49.75c8cf0da02add7669d4e6b77e254feb
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s 			page 13
+
+
+                           .group:0000000000000000 wm4.stdarg.h.34.3a23a216c0c293b3d2ea2e89281481e6
+                           .group:0000000000000000 wm4._types.h.20.dd0d04dca3800a0d2a6129b87f3adbb2
+                           .group:0000000000000000 wm4.stddef.h.155.3588ebfdd1e8c7ede80509bb9c3b8009
+                           .group:0000000000000000 wm4._types.h.127.34941de1b2539d59d5cac00e0dd27a45
+                           .group:0000000000000000 wm4.reent.h.17.e292bf8b0bec6c96e131a54347145a30
+                           .group:0000000000000000 wm4.lock.h.2.1461d1fff82dffe8bfddc23307f6484f
+                           .group:0000000000000000 wm4.reent.h.77.dcd6129ff07fe81bd5636db29abe53b2
+                           .group:0000000000000000 wm4.types.h.40.8b6acba56cefbb11746718204edc8f5e
+                           .group:0000000000000000 wm4._endian.h.31.65a10590763c3dde1ac4a7f66d7d4891
+                           .group:0000000000000000 wm4.endian.h.9.49f3a4695c1b61e8a0808de3c4a106cb
+                           .group:0000000000000000 wm4._timeval.h.32.bec3221fa7a9bb0bdde696c9c57e47d2
+                           .group:0000000000000000 wm4.timespec.h.41.d855182eb0e690443ab8651bcedca6e1
+                           .group:0000000000000000 wm4.select.h.19.97ca6fd0c752a0f3b6719fd314d361e6
+                           .group:0000000000000000 wm4.types.h.51.5571ec98f267d17d3c670b7a3ba33afa
+                           .group:0000000000000000 wm4.sched.h.22.c60982713a5c428609783c78f9c78d95
+                           .group:0000000000000000 wm4._pthreadtypes.h.36.fcee9961c35163dde6267ef772ad1972
+                           .group:0000000000000000 wm4.stdio.h.2.4aa87247282eca6c8f36f9de33d8df1a
+                           .group:0000000000000000 wm4.stdio.h.81.932d0c162786b883f622b8d05c120c78
+
+UNDEFINED SYMBOLS
+sprintf
+HAL_UART_Transmit
+setTimer1
+is_button_pressed
+set_color_light1
+set_color_light2
+state
+red_duration
+green_duration
+yellow_duration
+counter1
+huart2
+timer1_flag

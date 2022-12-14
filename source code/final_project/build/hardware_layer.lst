@@ -1,0 +1,535 @@
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccn3St27.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 6
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"hardware_layer.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text.set_color_light1,"ax",%progbits
+  16              		.align	1
+  17              		.global	set_color_light1
+  18              		.arch armv7-m
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  22              		.fpu softvfp
+  24              	set_color_light1:
+  25              	.LFB68:
+  26              		.file 1 "./Core/Src/hardware_layer.c"
+   1:./Core/Src/hardware_layer.c **** /*
+   2:./Core/Src/hardware_layer.c ****  * hardware_layer.c
+   3:./Core/Src/hardware_layer.c ****  *
+   4:./Core/Src/hardware_layer.c ****  *  Created on: 13 thg 12, 2022
+   5:./Core/Src/hardware_layer.c ****  *      Author: Administrator
+   6:./Core/Src/hardware_layer.c ****  */
+   7:./Core/Src/hardware_layer.c **** 
+   8:./Core/Src/hardware_layer.c **** 
+   9:./Core/Src/hardware_layer.c **** #include "hardware_layer.h"
+  10:./Core/Src/hardware_layer.c **** #include "main.h"
+  11:./Core/Src/hardware_layer.c **** #include "stdio.h"
+  12:./Core/Src/hardware_layer.c **** void set_color_light1(int color){
+  27              		.loc 1 12 33
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 8
+  30              		@ frame_needed = 1, uses_anonymous_args = 0
+  31 0000 80B5     		push	{r7, lr}
+  32              		.cfi_def_cfa_offset 8
+  33              		.cfi_offset 7, -8
+  34              		.cfi_offset 14, -4
+  35 0002 82B0     		sub	sp, sp, #8
+  36              		.cfi_def_cfa_offset 16
+  37 0004 00AF     		add	r7, sp, #0
+  38              		.cfi_def_cfa_register 7
+  39 0006 7860     		str	r0, [r7, #4]
+  40 0008 7B68     		ldr	r3, [r7, #4]
+  41 000a 032B     		cmp	r3, #3
+  42 000c 3AD8     		bhi	.L9
+  43 000e 01A2     		adr	r2, .L4
+  44 0010 52F823F0 		ldr	pc, [r2, r3, lsl #2]
+  45              		.p2align 2
+  46              	.L4:
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccn3St27.s 			page 2
+
+
+  47 0014 25000000 		.word	.L7+1
+  48 0018 3D000000 		.word	.L6+1
+  49 001c 6D000000 		.word	.L5+1
+  50 0020 55000000 		.word	.L3+1
+  51              		.p2align 1
+  52              	.L7:
+  13:./Core/Src/hardware_layer.c **** 	switch (color){
+  14:./Core/Src/hardware_layer.c **** 	case 0://khong mau
+  15:./Core/Src/hardware_layer.c **** 		HAL_GPIO_WritePin(Light1_1_GPIO_Port, Light1_1_Pin, SET);
+  53              		.loc 1 15 3
+  54 0024 0122     		movs	r2, #1
+  55 0026 4FF48061 		mov	r1, #1024
+  56 002a 1948     		ldr	r0, .L10
+  57 002c FFF7FEFF 		bl	HAL_GPIO_WritePin
+  16:./Core/Src/hardware_layer.c **** 		HAL_GPIO_WritePin(Light1_2_GPIO_Port, Light1_2_Pin, SET);
+  58              		.loc 1 16 3
+  59 0030 0122     		movs	r2, #1
+  60 0032 0821     		movs	r1, #8
+  61 0034 1748     		ldr	r0, .L10+4
+  62 0036 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  17:./Core/Src/hardware_layer.c **** 		break;
+  63              		.loc 1 17 3
+  64 003a 24E0     		b	.L8
+  65              	.L6:
+  18:./Core/Src/hardware_layer.c **** 	case DO://mau do
+  19:./Core/Src/hardware_layer.c **** 		HAL_GPIO_WritePin(Light1_1_GPIO_Port, Light1_1_Pin, RESET);
+  66              		.loc 1 19 3
+  67 003c 0022     		movs	r2, #0
+  68 003e 4FF48061 		mov	r1, #1024
+  69 0042 1348     		ldr	r0, .L10
+  70 0044 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  20:./Core/Src/hardware_layer.c **** 		HAL_GPIO_WritePin(Light1_2_GPIO_Port, Light1_2_Pin, SET);
+  71              		.loc 1 20 3
+  72 0048 0122     		movs	r2, #1
+  73 004a 0821     		movs	r1, #8
+  74 004c 1148     		ldr	r0, .L10+4
+  75 004e FFF7FEFF 		bl	HAL_GPIO_WritePin
+  21:./Core/Src/hardware_layer.c **** 		break;
+  76              		.loc 1 21 3
+  77 0052 18E0     		b	.L8
+  78              	.L3:
+  22:./Core/Src/hardware_layer.c **** 	case XANH://mau xanh
+  23:./Core/Src/hardware_layer.c **** 		HAL_GPIO_WritePin(Light1_1_GPIO_Port, Light1_1_Pin, SET);
+  79              		.loc 1 23 3
+  80 0054 0122     		movs	r2, #1
+  81 0056 4FF48061 		mov	r1, #1024
+  82 005a 0D48     		ldr	r0, .L10
+  83 005c FFF7FEFF 		bl	HAL_GPIO_WritePin
+  24:./Core/Src/hardware_layer.c **** 		HAL_GPIO_WritePin(Light1_2_GPIO_Port, Light1_2_Pin, RESET);
+  84              		.loc 1 24 3
+  85 0060 0022     		movs	r2, #0
+  86 0062 0821     		movs	r1, #8
+  87 0064 0B48     		ldr	r0, .L10+4
+  88 0066 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  25:./Core/Src/hardware_layer.c **** 		break;
+  89              		.loc 1 25 3
+  90 006a 0CE0     		b	.L8
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccn3St27.s 			page 3
+
+
+  91              	.L5:
+  26:./Core/Src/hardware_layer.c **** 	case VANG://mau vang
+  27:./Core/Src/hardware_layer.c **** 		HAL_GPIO_WritePin(Light1_1_GPIO_Port, Light1_1_Pin, RESET);
+  92              		.loc 1 27 3
+  93 006c 0022     		movs	r2, #0
+  94 006e 4FF48061 		mov	r1, #1024
+  95 0072 0748     		ldr	r0, .L10
+  96 0074 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  28:./Core/Src/hardware_layer.c **** 		HAL_GPIO_WritePin(Light1_2_GPIO_Port, Light1_2_Pin, RESET);
+  97              		.loc 1 28 3
+  98 0078 0022     		movs	r2, #0
+  99 007a 0821     		movs	r1, #8
+ 100 007c 0548     		ldr	r0, .L10+4
+ 101 007e FFF7FEFF 		bl	HAL_GPIO_WritePin
+  29:./Core/Src/hardware_layer.c **** 		break;
+ 102              		.loc 1 29 3
+ 103 0082 00E0     		b	.L8
+ 104              	.L9:
+  30:./Core/Src/hardware_layer.c **** 	default:
+  31:./Core/Src/hardware_layer.c **** 		break;
+ 105              		.loc 1 31 3
+ 106 0084 00BF     		nop
+ 107              	.L8:
+  32:./Core/Src/hardware_layer.c **** 	}
+  33:./Core/Src/hardware_layer.c **** }
+ 108              		.loc 1 33 1
+ 109 0086 00BF     		nop
+ 110 0088 0837     		adds	r7, r7, #8
+ 111              		.cfi_def_cfa_offset 8
+ 112 008a BD46     		mov	sp, r7
+ 113              		.cfi_def_cfa_register 13
+ 114              		@ sp needed
+ 115 008c 80BD     		pop	{r7, pc}
+ 116              	.L11:
+ 117 008e 00BF     		.align	2
+ 118              	.L10:
+ 119 0090 00080140 		.word	1073809408
+ 120 0094 000C0140 		.word	1073810432
+ 121              		.cfi_endproc
+ 122              	.LFE68:
+ 124              		.section	.text.set_color_light2,"ax",%progbits
+ 125              		.align	1
+ 126              		.global	set_color_light2
+ 127              		.syntax unified
+ 128              		.thumb
+ 129              		.thumb_func
+ 130              		.fpu softvfp
+ 132              	set_color_light2:
+ 133              	.LFB69:
+  34:./Core/Src/hardware_layer.c **** 
+  35:./Core/Src/hardware_layer.c **** void set_color_light2(int color){
+ 134              		.loc 1 35 33
+ 135              		.cfi_startproc
+ 136              		@ args = 0, pretend = 0, frame = 8
+ 137              		@ frame_needed = 1, uses_anonymous_args = 0
+ 138 0000 80B5     		push	{r7, lr}
+ 139              		.cfi_def_cfa_offset 8
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccn3St27.s 			page 4
+
+
+ 140              		.cfi_offset 7, -8
+ 141              		.cfi_offset 14, -4
+ 142 0002 82B0     		sub	sp, sp, #8
+ 143              		.cfi_def_cfa_offset 16
+ 144 0004 00AF     		add	r7, sp, #0
+ 145              		.cfi_def_cfa_register 7
+ 146 0006 7860     		str	r0, [r7, #4]
+ 147 0008 7B68     		ldr	r3, [r7, #4]
+ 148 000a 032B     		cmp	r3, #3
+ 149 000c 36D8     		bhi	.L20
+ 150 000e 01A2     		adr	r2, .L15
+ 151 0010 52F823F0 		ldr	pc, [r2, r3, lsl #2]
+ 152              		.p2align 2
+ 153              	.L15:
+ 154 0014 25000000 		.word	.L18+1
+ 155 0018 3B000000 		.word	.L17+1
+ 156 001c 67000000 		.word	.L16+1
+ 157 0020 51000000 		.word	.L14+1
+ 158              		.p2align 1
+ 159              	.L18:
+  36:./Core/Src/hardware_layer.c **** 	switch (color){
+  37:./Core/Src/hardware_layer.c **** 		case 0://khong mau
+  38:./Core/Src/hardware_layer.c **** 			HAL_GPIO_WritePin(Light2_1_GPIO_Port, Light2_1_Pin, SET);
+ 160              		.loc 1 38 4
+ 161 0024 0122     		movs	r2, #1
+ 162 0026 1021     		movs	r1, #16
+ 163 0028 1748     		ldr	r0, .L21
+ 164 002a FFF7FEFF 		bl	HAL_GPIO_WritePin
+  39:./Core/Src/hardware_layer.c **** 			HAL_GPIO_WritePin(Light2_2_GPIO_Port, Light2_2_Pin, SET);
+ 165              		.loc 1 39 4
+ 166 002e 0122     		movs	r2, #1
+ 167 0030 2021     		movs	r1, #32
+ 168 0032 1548     		ldr	r0, .L21
+ 169 0034 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  40:./Core/Src/hardware_layer.c **** 			break;
+ 170              		.loc 1 40 4
+ 171 0038 21E0     		b	.L19
+ 172              	.L17:
+  41:./Core/Src/hardware_layer.c **** 		case DO://mau do
+  42:./Core/Src/hardware_layer.c **** 			HAL_GPIO_WritePin(Light2_1_GPIO_Port, Light2_1_Pin, RESET);
+ 173              		.loc 1 42 4
+ 174 003a 0022     		movs	r2, #0
+ 175 003c 1021     		movs	r1, #16
+ 176 003e 1248     		ldr	r0, .L21
+ 177 0040 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  43:./Core/Src/hardware_layer.c **** 			HAL_GPIO_WritePin(Light2_2_GPIO_Port, Light2_2_Pin, SET);
+ 178              		.loc 1 43 4
+ 179 0044 0122     		movs	r2, #1
+ 180 0046 2021     		movs	r1, #32
+ 181 0048 0F48     		ldr	r0, .L21
+ 182 004a FFF7FEFF 		bl	HAL_GPIO_WritePin
+  44:./Core/Src/hardware_layer.c **** 			break;
+ 183              		.loc 1 44 4
+ 184 004e 16E0     		b	.L19
+ 185              	.L14:
+  45:./Core/Src/hardware_layer.c **** 		case XANH://mau xanh
+  46:./Core/Src/hardware_layer.c **** 			HAL_GPIO_WritePin(Light2_1_GPIO_Port, Light2_1_Pin, SET);
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccn3St27.s 			page 5
+
+
+ 186              		.loc 1 46 4
+ 187 0050 0122     		movs	r2, #1
+ 188 0052 1021     		movs	r1, #16
+ 189 0054 0C48     		ldr	r0, .L21
+ 190 0056 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  47:./Core/Src/hardware_layer.c **** 			HAL_GPIO_WritePin(Light2_2_GPIO_Port, Light2_2_Pin, RESET);
+ 191              		.loc 1 47 4
+ 192 005a 0022     		movs	r2, #0
+ 193 005c 2021     		movs	r1, #32
+ 194 005e 0A48     		ldr	r0, .L21
+ 195 0060 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  48:./Core/Src/hardware_layer.c **** 			break;
+ 196              		.loc 1 48 4
+ 197 0064 0BE0     		b	.L19
+ 198              	.L16:
+  49:./Core/Src/hardware_layer.c **** 		case VANG://mau vang
+  50:./Core/Src/hardware_layer.c **** 			HAL_GPIO_WritePin(Light2_1_GPIO_Port, Light2_1_Pin, RESET);
+ 199              		.loc 1 50 4
+ 200 0066 0022     		movs	r2, #0
+ 201 0068 1021     		movs	r1, #16
+ 202 006a 0748     		ldr	r0, .L21
+ 203 006c FFF7FEFF 		bl	HAL_GPIO_WritePin
+  51:./Core/Src/hardware_layer.c **** 			HAL_GPIO_WritePin(Light2_2_GPIO_Port, Light2_2_Pin, RESET);
+ 204              		.loc 1 51 4
+ 205 0070 0022     		movs	r2, #0
+ 206 0072 2021     		movs	r1, #32
+ 207 0074 0448     		ldr	r0, .L21
+ 208 0076 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  52:./Core/Src/hardware_layer.c **** 			break;
+ 209              		.loc 1 52 4
+ 210 007a 00E0     		b	.L19
+ 211              	.L20:
+  53:./Core/Src/hardware_layer.c **** 		default:
+  54:./Core/Src/hardware_layer.c **** 			break;
+ 212              		.loc 1 54 4
+ 213 007c 00BF     		nop
+ 214              	.L19:
+  55:./Core/Src/hardware_layer.c **** 		}
+  56:./Core/Src/hardware_layer.c **** }
+ 215              		.loc 1 56 1
+ 216 007e 00BF     		nop
+ 217 0080 0837     		adds	r7, r7, #8
+ 218              		.cfi_def_cfa_offset 8
+ 219 0082 BD46     		mov	sp, r7
+ 220              		.cfi_def_cfa_register 13
+ 221              		@ sp needed
+ 222 0084 80BD     		pop	{r7, pc}
+ 223              	.L22:
+ 224 0086 00BF     		.align	2
+ 225              	.L21:
+ 226 0088 000C0140 		.word	1073810432
+ 227              		.cfi_endproc
+ 228              	.LFE69:
+ 230              		.section	.text.set_color_pedestrian_light,"ax",%progbits
+ 231              		.align	1
+ 232              		.global	set_color_pedestrian_light
+ 233              		.syntax unified
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccn3St27.s 			page 6
+
+
+ 234              		.thumb
+ 235              		.thumb_func
+ 236              		.fpu softvfp
+ 238              	set_color_pedestrian_light:
+ 239              	.LFB70:
+  57:./Core/Src/hardware_layer.c **** 
+  58:./Core/Src/hardware_layer.c **** void set_color_pedestrian_light(int color){
+ 240              		.loc 1 58 43
+ 241              		.cfi_startproc
+ 242              		@ args = 0, pretend = 0, frame = 8
+ 243              		@ frame_needed = 1, uses_anonymous_args = 0
+ 244 0000 80B5     		push	{r7, lr}
+ 245              		.cfi_def_cfa_offset 8
+ 246              		.cfi_offset 7, -8
+ 247              		.cfi_offset 14, -4
+ 248 0002 82B0     		sub	sp, sp, #8
+ 249              		.cfi_def_cfa_offset 16
+ 250 0004 00AF     		add	r7, sp, #0
+ 251              		.cfi_def_cfa_register 7
+ 252 0006 7860     		str	r0, [r7, #4]
+ 253 0008 7B68     		ldr	r3, [r7, #4]
+ 254 000a 032B     		cmp	r3, #3
+ 255 000c 3ED8     		bhi	.L31
+ 256 000e 01A2     		adr	r2, .L26
+ 257 0010 52F823F0 		ldr	pc, [r2, r3, lsl #2]
+ 258              		.p2align 2
+ 259              	.L26:
+ 260 0014 25000000 		.word	.L29+1
+ 261 0018 3F000000 		.word	.L28+1
+ 262 001c 73000000 		.word	.L27+1
+ 263 0020 59000000 		.word	.L25+1
+ 264              		.p2align 1
+ 265              	.L29:
+  59:./Core/Src/hardware_layer.c **** 	switch (color){
+  60:./Core/Src/hardware_layer.c **** 		case 0://khong mau
+  61:./Core/Src/hardware_layer.c **** 			HAL_GPIO_WritePin(Pedes_light1_GPIO_Port, Pedes_light1_Pin, SET);
+ 266              		.loc 1 61 4
+ 267 0024 0122     		movs	r2, #1
+ 268 0026 4FF48061 		mov	r1, #1024
+ 269 002a 1B48     		ldr	r0, .L32
+ 270 002c FFF7FEFF 		bl	HAL_GPIO_WritePin
+  62:./Core/Src/hardware_layer.c **** 			HAL_GPIO_WritePin(Pedes_light2_GPIO_Port, Pedes_light2_Pin, SET);
+ 271              		.loc 1 62 4
+ 272 0030 0122     		movs	r2, #1
+ 273 0032 4FF48071 		mov	r1, #256
+ 274 0036 1948     		ldr	r0, .L32+4
+ 275 0038 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  63:./Core/Src/hardware_layer.c **** 			break;
+ 276              		.loc 1 63 4
+ 277 003c 27E0     		b	.L30
+ 278              	.L28:
+  64:./Core/Src/hardware_layer.c **** 		case DO://mau do
+  65:./Core/Src/hardware_layer.c **** 			HAL_GPIO_WritePin(Pedes_light1_GPIO_Port, Pedes_light1_Pin, RESET);
+ 279              		.loc 1 65 4
+ 280 003e 0022     		movs	r2, #0
+ 281 0040 4FF48061 		mov	r1, #1024
+ 282 0044 1448     		ldr	r0, .L32
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccn3St27.s 			page 7
+
+
+ 283 0046 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  66:./Core/Src/hardware_layer.c **** 			HAL_GPIO_WritePin(Pedes_light2_GPIO_Port, Pedes_light2_Pin, SET);
+ 284              		.loc 1 66 4
+ 285 004a 0122     		movs	r2, #1
+ 286 004c 4FF48071 		mov	r1, #256
+ 287 0050 1248     		ldr	r0, .L32+4
+ 288 0052 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  67:./Core/Src/hardware_layer.c **** 			break;
+ 289              		.loc 1 67 4
+ 290 0056 1AE0     		b	.L30
+ 291              	.L25:
+  68:./Core/Src/hardware_layer.c **** 		case XANH://mau xanh
+  69:./Core/Src/hardware_layer.c **** 			HAL_GPIO_WritePin(Pedes_light1_GPIO_Port, Pedes_light1_Pin, SET);
+ 292              		.loc 1 69 4
+ 293 0058 0122     		movs	r2, #1
+ 294 005a 4FF48061 		mov	r1, #1024
+ 295 005e 0E48     		ldr	r0, .L32
+ 296 0060 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  70:./Core/Src/hardware_layer.c **** 			HAL_GPIO_WritePin(Pedes_light2_GPIO_Port, Pedes_light2_Pin, RESET);
+ 297              		.loc 1 70 4
+ 298 0064 0022     		movs	r2, #0
+ 299 0066 4FF48071 		mov	r1, #256
+ 300 006a 0C48     		ldr	r0, .L32+4
+ 301 006c FFF7FEFF 		bl	HAL_GPIO_WritePin
+  71:./Core/Src/hardware_layer.c **** 			break;
+ 302              		.loc 1 71 4
+ 303 0070 0DE0     		b	.L30
+ 304              	.L27:
+  72:./Core/Src/hardware_layer.c **** 		case VANG://mau vang
+  73:./Core/Src/hardware_layer.c **** 			HAL_GPIO_WritePin(Pedes_light1_GPIO_Port, Pedes_light1_Pin, RESET);
+ 305              		.loc 1 73 4
+ 306 0072 0022     		movs	r2, #0
+ 307 0074 4FF48061 		mov	r1, #1024
+ 308 0078 0748     		ldr	r0, .L32
+ 309 007a FFF7FEFF 		bl	HAL_GPIO_WritePin
+  74:./Core/Src/hardware_layer.c **** 			HAL_GPIO_WritePin(Pedes_light2_GPIO_Port, Pedes_light2_Pin, RESET);
+ 310              		.loc 1 74 4
+ 311 007e 0022     		movs	r2, #0
+ 312 0080 4FF48071 		mov	r1, #256
+ 313 0084 0548     		ldr	r0, .L32+4
+ 314 0086 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  75:./Core/Src/hardware_layer.c **** 			break;
+ 315              		.loc 1 75 4
+ 316 008a 00E0     		b	.L30
+ 317              	.L31:
+  76:./Core/Src/hardware_layer.c **** 		default:
+  77:./Core/Src/hardware_layer.c **** 			break;
+ 318              		.loc 1 77 4
+ 319 008c 00BF     		nop
+ 320              	.L30:
+  78:./Core/Src/hardware_layer.c **** 		}
+  79:./Core/Src/hardware_layer.c **** }
+ 321              		.loc 1 79 1
+ 322 008e 00BF     		nop
+ 323 0090 0837     		adds	r7, r7, #8
+ 324              		.cfi_def_cfa_offset 8
+ 325 0092 BD46     		mov	sp, r7
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccn3St27.s 			page 8
+
+
+ 326              		.cfi_def_cfa_register 13
+ 327              		@ sp needed
+ 328 0094 80BD     		pop	{r7, pc}
+ 329              	.L33:
+ 330 0096 00BF     		.align	2
+ 331              	.L32:
+ 332 0098 000C0140 		.word	1073810432
+ 333 009c 00080140 		.word	1073809408
+ 334              		.cfi_endproc
+ 335              	.LFE70:
+ 337              		.text
+ 338              	.Letext0:
+ 339              		.file 2 "c:\\st\\stm32cubeide_1.7.0\\stm32cubeide\\plugins\\com.st.stm32cube.ide.mcu.externaltools
+ 340              		.file 3 "c:\\st\\stm32cubeide_1.7.0\\stm32cubeide\\plugins\\com.st.stm32cube.ide.mcu.externaltools
+ 341              		.file 4 "Drivers/CMSIS/Include/core_cm3.h"
+ 342              		.file 5 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h"
+ 343              		.file 6 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
+ 344              		.file 7 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h"
+ 345              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
+ 346              		.file 9 "c:\\st\\stm32cubeide_1.7.0\\stm32cubeide\\plugins\\com.st.stm32cube.ide.mcu.externaltools
+ 347              		.file 10 "c:\\st\\stm32cubeide_1.7.0\\stm32cubeide\\plugins\\com.st.stm32cube.ide.mcu.externaltool
+ 348              		.file 11 "c:\\st\\stm32cubeide_1.7.0\\stm32cubeide\\plugins\\com.st.stm32cube.ide.mcu.externaltool
+ 349              		.file 12 "c:\\st\\stm32cubeide_1.7.0\\stm32cubeide\\plugins\\com.st.stm32cube.ide.mcu.externaltool
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccn3St27.s 			page 9
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 hardware_layer.c
+C:\Users\ADMINI~1\AppData\Local\Temp\ccn3St27.s:16     .text.set_color_light1:0000000000000000 $t
+C:\Users\ADMINI~1\AppData\Local\Temp\ccn3St27.s:24     .text.set_color_light1:0000000000000000 set_color_light1
+C:\Users\ADMINI~1\AppData\Local\Temp\ccn3St27.s:47     .text.set_color_light1:0000000000000014 $d
+C:\Users\ADMINI~1\AppData\Local\Temp\ccn3St27.s:51     .text.set_color_light1:0000000000000024 $t
+C:\Users\ADMINI~1\AppData\Local\Temp\ccn3St27.s:119    .text.set_color_light1:0000000000000090 $d
+C:\Users\ADMINI~1\AppData\Local\Temp\ccn3St27.s:125    .text.set_color_light2:0000000000000000 $t
+C:\Users\ADMINI~1\AppData\Local\Temp\ccn3St27.s:132    .text.set_color_light2:0000000000000000 set_color_light2
+C:\Users\ADMINI~1\AppData\Local\Temp\ccn3St27.s:154    .text.set_color_light2:0000000000000014 $d
+C:\Users\ADMINI~1\AppData\Local\Temp\ccn3St27.s:158    .text.set_color_light2:0000000000000024 $t
+C:\Users\ADMINI~1\AppData\Local\Temp\ccn3St27.s:226    .text.set_color_light2:0000000000000088 $d
+C:\Users\ADMINI~1\AppData\Local\Temp\ccn3St27.s:231    .text.set_color_pedestrian_light:0000000000000000 $t
+C:\Users\ADMINI~1\AppData\Local\Temp\ccn3St27.s:238    .text.set_color_pedestrian_light:0000000000000000 set_color_pedestrian_light
+C:\Users\ADMINI~1\AppData\Local\Temp\ccn3St27.s:260    .text.set_color_pedestrian_light:0000000000000014 $d
+C:\Users\ADMINI~1\AppData\Local\Temp\ccn3St27.s:264    .text.set_color_pedestrian_light:0000000000000024 $t
+C:\Users\ADMINI~1\AppData\Local\Temp\ccn3St27.s:332    .text.set_color_pedestrian_light:0000000000000098 $d
+                           .group:0000000000000000 wm4.0.e890922d021f7fff2fbf219cb2b38f03
+                           .group:0000000000000000 wm4.hardware_layer.h.9.cb1b7531ddee951582f588d03a2c24a6
+                           .group:0000000000000000 wm4.stm32f1xx_hal_conf.h.21.98635006afa9a018cfa5e0632ed4968b
+                           .group:0000000000000000 wm4.stm32f1xx.h.39.208bb8a61c892b7c37d899c49a031330
+                           .group:0000000000000000 wm4.stm32f103xb.h.38.ec967d5ad9d3269cb0788eebda048e38
+                           .group:0000000000000000 wm4._newlib_version.h.4.1ef4e12f167f8b69d7c30054be56050d
+                           .group:0000000000000000 wm4.features.h.33.318b64d71e0957639cfb30f1db1f7ec8
+                           .group:0000000000000000 wm4._default_types.h.15.247e5cd201eca3442cbf5404108c4935
+                           .group:0000000000000000 wm4._intsup.h.10.48bafbb683905c4daa4565a85aeeb264
+                           .group:0000000000000000 wm4._stdint.h.10.c24fa3af3bc1706662bb5593a907e841
+                           .group:0000000000000000 wm4.stdint.h.23.d53047a68f4a85177f80b422d52785ed
+                           .group:0000000000000000 wm4.cmsis_version.h.32.4d5822004c01a829a975260e854b5f8e
+                           .group:0000000000000000 wm4.core_cm3.h.66.fc46cac19810db8f98d67da7ef88f42c
+                           .group:0000000000000000 wm4.cmsis_gcc.h.26.225e4f5469716fdeef823d1102f5b23e
+                           .group:0000000000000000 wm4.core_cm3.h.127.f4474120f1a7524deb56f9d74ff175da
+                           .group:0000000000000000 wm4.stm32f103xb.h.573.10249aa7473ca93be896fed94046a725
+                           .group:0000000000000000 wm4.stm32f1xx.h.162.96b09079a093c34dbd7f0b85cbd0ddee
+                           .group:0000000000000000 wm4.stm32_hal_legacy.h.23.91ba5b544a4c2be2620a1e7ff0049e10
+                           .group:0000000000000000 wm4.stddef.h.39.144cf5ddcd53cbfdac30259dc1a6c87f
+                           .group:0000000000000000 wm4.stm32f1xx_hal_def.h.57.18d01ce1aa74e9fb44dbf16f821a574a
+                           .group:0000000000000000 wm4.stm32f1xx_hal_rcc.h.95.21591bbc513aaa813c0b8640c3b32517
+                           .group:0000000000000000 wm4.stm32f1xx_hal_rcc_ex.h.22.8763f99bc1e3e2dcf0febe9161d81b37
+                           .group:0000000000000000 wm4.stm32f1xx_hal_rcc.h.1202.f8e5f9e0cf4eef7840facf5396029056
+                           .group:0000000000000000 wm4.stm32f1xx_hal_gpio.h.22.fa638d688dcc57ca806fe6a7831b0d04
+                           .group:0000000000000000 wm4.stm32f1xx_hal_gpio_ex.h.22.51a50ef3512cd78017ce666a32d364bf
+                           .group:0000000000000000 wm4.stm32f1xx_hal_gpio.h.263.f5ebf2f545ade59412ab9261c8e35dc4
+                           .group:0000000000000000 wm4.stm32f1xx_hal_exti.h.22.e26491d042c8079c3ca67eca341af862
+                           .group:0000000000000000 wm4.stm32f1xx_hal_dma.h.22.3c14338534886827bf3aeaa2a7f412a1
+                           .group:0000000000000000 wm4.stm32f1xx_hal_dma_ex.h.22.001ac4d7f81ccbdcae49bd65c13858c8
+                           .group:0000000000000000 wm4.stm32f1xx_hal_dma.h.409.cafcd2cfe701091535636be537c18293
+                           .group:0000000000000000 wm4.stm32f1xx_hal_cortex.h.22.b5f4174bb6a50d95405567b8f50e0900
+                           .group:0000000000000000 wm4.stm32f1xx_hal_flash.h.22.5cea9a7210e6315b41724b47b5fdf203
+                           .group:0000000000000000 wm4.stm32f1xx_hal_flash_ex.h.22.d4e19c21f2a86fa2f8ec2c2d5f1ab2af
+                           .group:0000000000000000 wm4.stm32f1xx_hal_pwr.h.22.3438c476faafc3240bf146f143df3fcd
+                           .group:0000000000000000 wm4.stm32f1xx_hal_tim.h.22.a16e206564e97dbace9faae59a0d6008
+                           .group:0000000000000000 wm4.stm32f1xx_hal_uart.h.22.5f7992e497faa36aa98f09f7214f4dbb
+                           .group:0000000000000000 wm4.stm32f1xx_hal.h.88.91065c0692bed6019c34f1e9c00589fd
+                           .group:0000000000000000 wm4.main.h.63.9319a86a6f0d78cb5bb2f8204a330e54
+                           .group:0000000000000000 wm4.newlib.h.8.7cb3972cd43265932d4782d5eb589854
+                           .group:0000000000000000 wm4.ieeefp.h.77.f33a4dce62116f6f5175ff8bae57a54c
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccn3St27.s 			page 10
+
+
+                           .group:0000000000000000 wm4.config.h.224.c701144a7b0518c6ee9b9b5465b79f81
+                           .group:0000000000000000 wm4._ansi.h.31.de524f58584151836e90d8620a16f8e8
+                           .group:0000000000000000 wm4.stdio.h.31.7c0e28c411445f3f9c5b11accf882760
+                           .group:0000000000000000 wm4.stddef.h.155.ba788add86a0e365f264484f110c3c29
+                           .group:0000000000000000 wm4.cdefs.h.49.75c8cf0da02add7669d4e6b77e254feb
+                           .group:0000000000000000 wm4.stdarg.h.34.3a23a216c0c293b3d2ea2e89281481e6
+                           .group:0000000000000000 wm4._types.h.20.dd0d04dca3800a0d2a6129b87f3adbb2
+                           .group:0000000000000000 wm4.stddef.h.155.3588ebfdd1e8c7ede80509bb9c3b8009
+                           .group:0000000000000000 wm4._types.h.127.34941de1b2539d59d5cac00e0dd27a45
+                           .group:0000000000000000 wm4.reent.h.17.e292bf8b0bec6c96e131a54347145a30
+                           .group:0000000000000000 wm4.lock.h.2.1461d1fff82dffe8bfddc23307f6484f
+                           .group:0000000000000000 wm4.reent.h.77.dcd6129ff07fe81bd5636db29abe53b2
+                           .group:0000000000000000 wm4.types.h.40.8b6acba56cefbb11746718204edc8f5e
+                           .group:0000000000000000 wm4._endian.h.31.65a10590763c3dde1ac4a7f66d7d4891
+                           .group:0000000000000000 wm4.endian.h.9.49f3a4695c1b61e8a0808de3c4a106cb
+                           .group:0000000000000000 wm4._timeval.h.32.bec3221fa7a9bb0bdde696c9c57e47d2
+                           .group:0000000000000000 wm4.timespec.h.41.d855182eb0e690443ab8651bcedca6e1
+                           .group:0000000000000000 wm4.select.h.19.97ca6fd0c752a0f3b6719fd314d361e6
+                           .group:0000000000000000 wm4.types.h.51.5571ec98f267d17d3c670b7a3ba33afa
+                           .group:0000000000000000 wm4.sched.h.22.c60982713a5c428609783c78f9c78d95
+                           .group:0000000000000000 wm4._pthreadtypes.h.36.fcee9961c35163dde6267ef772ad1972
+                           .group:0000000000000000 wm4.stdio.h.2.4aa87247282eca6c8f36f9de33d8df1a
+                           .group:0000000000000000 wm4.stdio.h.81.932d0c162786b883f622b8d05c120c78
+
+UNDEFINED SYMBOLS
+HAL_GPIO_WritePin

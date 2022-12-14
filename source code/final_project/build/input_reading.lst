@@ -1,0 +1,593 @@
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccQbcMjo.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 6
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"input_reading.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.global	button_flag
+  16              		.section	.bss.button_flag,"aw",%nobits
+  17              		.align	2
+  20              	button_flag:
+  21 0000 00000000 		.space	16
+  21      00000000 
+  21      00000000 
+  21      00000000 
+  22              		.global	KeyReg0
+  23              		.section	.data.KeyReg0,"aw"
+  24              		.align	2
+  27              	KeyReg0:
+  28 0000 01000000 		.word	1
+  29 0004 00000000 		.space	12
+  29      00000000 
+  29      00000000 
+  30              		.global	KeyReg1
+  31              		.section	.data.KeyReg1,"aw"
+  32              		.align	2
+  35              	KeyReg1:
+  36 0000 01000000 		.word	1
+  37 0004 00000000 		.space	12
+  37      00000000 
+  37      00000000 
+  38              		.global	KeyReg2
+  39              		.section	.data.KeyReg2,"aw"
+  40              		.align	2
+  43              	KeyReg2:
+  44 0000 01000000 		.word	1
+  45 0004 00000000 		.space	12
+  45      00000000 
+  45      00000000 
+  46              		.global	KeyReg3
+  47              		.section	.data.KeyReg3,"aw"
+  48              		.align	2
+  51              	KeyReg3:
+  52 0000 01000000 		.word	1
+  53 0004 00000000 		.space	12
+  53      00000000 
+  53      00000000 
+  54              		.global	FlagFor3secPressed
+  55              		.section	.bss.FlagFor3secPressed,"aw",%nobits
+  56              		.align	2
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccQbcMjo.s 			page 2
+
+
+  59              	FlagFor3secPressed:
+  60 0000 00000000 		.space	16
+  60      00000000 
+  60      00000000 
+  60      00000000 
+  61              		.global	TimeForKeyPress
+  62              		.section	.data.TimeForKeyPress,"aw"
+  63              		.align	2
+  66              	TimeForKeyPress:
+  67 0000 2C010000 		.word	300
+  68              		.section	.text.is_button_pressed,"ax",%progbits
+  69              		.align	1
+  70              		.global	is_button_pressed
+  71              		.arch armv7-m
+  72              		.syntax unified
+  73              		.thumb
+  74              		.thumb_func
+  75              		.fpu softvfp
+  77              	is_button_pressed:
+  78              	.LFB65:
+  79              		.file 1 "./Core/Src/input_reading.c"
+   1:./Core/Src/input_reading.c **** /*
+   2:./Core/Src/input_reading.c ****  * input_reading.c
+   3:./Core/Src/input_reading.c ****  *
+   4:./Core/Src/input_reading.c ****  *  Created on: 13 thg 12, 2022
+   5:./Core/Src/input_reading.c ****  *      Author: Administrator
+   6:./Core/Src/input_reading.c ****  */
+   7:./Core/Src/input_reading.c **** 
+   8:./Core/Src/input_reading.c **** 
+   9:./Core/Src/input_reading.c **** #include "input_reading.h"
+  10:./Core/Src/input_reading.c **** #include "math.h"
+  11:./Core/Src/input_reading.c **** #include "main.h"
+  12:./Core/Src/input_reading.c **** 
+  13:./Core/Src/input_reading.c **** int button_flag[NO_OF_BUTTONS]={0};
+  14:./Core/Src/input_reading.c **** int KeyReg0[NO_OF_BUTTONS] = {NORMAL_STATE};
+  15:./Core/Src/input_reading.c **** int KeyReg1[NO_OF_BUTTONS] = {NORMAL_STATE};
+  16:./Core/Src/input_reading.c **** int KeyReg2[NO_OF_BUTTONS] = {NORMAL_STATE};
+  17:./Core/Src/input_reading.c **** int KeyReg3[NO_OF_BUTTONS] = {NORMAL_STATE};
+  18:./Core/Src/input_reading.c **** int FlagFor3secPressed[NO_OF_BUTTONS] = {0};
+  19:./Core/Src/input_reading.c **** int TimeForKeyPress = 300;
+  20:./Core/Src/input_reading.c **** 
+  21:./Core/Src/input_reading.c **** int is_button_pressed(int index){
+  80              		.loc 1 21 33
+  81              		.cfi_startproc
+  82              		@ args = 0, pretend = 0, frame = 8
+  83              		@ frame_needed = 1, uses_anonymous_args = 0
+  84              		@ link register save eliminated.
+  85 0000 80B4     		push	{r7}
+  86              		.cfi_def_cfa_offset 4
+  87              		.cfi_offset 7, -4
+  88 0002 83B0     		sub	sp, sp, #12
+  89              		.cfi_def_cfa_offset 16
+  90 0004 00AF     		add	r7, sp, #0
+  91              		.cfi_def_cfa_register 7
+  92 0006 7860     		str	r0, [r7, #4]
+  22:./Core/Src/input_reading.c **** 	if(button_flag[index]==1){
+  93              		.loc 1 22 16
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccQbcMjo.s 			page 3
+
+
+  94 0008 094A     		ldr	r2, .L4
+  95 000a 7B68     		ldr	r3, [r7, #4]
+  96 000c 52F82330 		ldr	r3, [r2, r3, lsl #2]
+  97              		.loc 1 22 4
+  98 0010 012B     		cmp	r3, #1
+  99 0012 06D1     		bne	.L2
+  23:./Core/Src/input_reading.c **** 		button_flag[index]=0;
+ 100              		.loc 1 23 21
+ 101 0014 064A     		ldr	r2, .L4
+ 102 0016 7B68     		ldr	r3, [r7, #4]
+ 103 0018 0021     		movs	r1, #0
+ 104 001a 42F82310 		str	r1, [r2, r3, lsl #2]
+  24:./Core/Src/input_reading.c **** 		return 1;
+ 105              		.loc 1 24 10
+ 106 001e 0123     		movs	r3, #1
+ 107 0020 00E0     		b	.L3
+ 108              	.L2:
+  25:./Core/Src/input_reading.c **** 	}
+  26:./Core/Src/input_reading.c **** 	return 0;
+ 109              		.loc 1 26 9
+ 110 0022 0023     		movs	r3, #0
+ 111              	.L3:
+  27:./Core/Src/input_reading.c **** }
+ 112              		.loc 1 27 1
+ 113 0024 1846     		mov	r0, r3
+ 114 0026 0C37     		adds	r7, r7, #12
+ 115              		.cfi_def_cfa_offset 4
+ 116 0028 BD46     		mov	sp, r7
+ 117              		.cfi_def_cfa_register 13
+ 118              		@ sp needed
+ 119 002a 80BC     		pop	{r7}
+ 120              		.cfi_restore 7
+ 121              		.cfi_def_cfa_offset 0
+ 122 002c 7047     		bx	lr
+ 123              	.L5:
+ 124 002e 00BF     		.align	2
+ 125              	.L4:
+ 126 0030 00000000 		.word	button_flag
+ 127              		.cfi_endproc
+ 128              	.LFE65:
+ 130              		.section	.text.read_pin,"ax",%progbits
+ 131              		.align	1
+ 132              		.global	read_pin
+ 133              		.syntax unified
+ 134              		.thumb
+ 135              		.thumb_func
+ 136              		.fpu softvfp
+ 138              	read_pin:
+ 139              	.LFB66:
+  28:./Core/Src/input_reading.c **** void read_pin(int i){
+ 140              		.loc 1 28 21
+ 141              		.cfi_startproc
+ 142              		@ args = 0, pretend = 0, frame = 8
+ 143              		@ frame_needed = 1, uses_anonymous_args = 0
+ 144 0000 80B5     		push	{r7, lr}
+ 145              		.cfi_def_cfa_offset 8
+ 146              		.cfi_offset 7, -8
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccQbcMjo.s 			page 4
+
+
+ 147              		.cfi_offset 14, -4
+ 148 0002 82B0     		sub	sp, sp, #8
+ 149              		.cfi_def_cfa_offset 16
+ 150 0004 00AF     		add	r7, sp, #0
+ 151              		.cfi_def_cfa_register 7
+ 152 0006 7860     		str	r0, [r7, #4]
+ 153 0008 7B68     		ldr	r3, [r7, #4]
+ 154 000a 032B     		cmp	r3, #3
+ 155 000c 2ED8     		bhi	.L14
+ 156 000e 01A2     		adr	r2, .L9
+ 157 0010 52F823F0 		ldr	pc, [r2, r3, lsl #2]
+ 158              		.p2align 2
+ 159              	.L9:
+ 160 0014 25000000 		.word	.L12+1
+ 161 0018 37000000 		.word	.L11+1
+ 162 001c 49000000 		.word	.L10+1
+ 163 0020 5B000000 		.word	.L8+1
+ 164              		.p2align 1
+ 165              	.L12:
+  29:./Core/Src/input_reading.c **** 	switch (i){
+  30:./Core/Src/input_reading.c **** 	case 0:
+  31:./Core/Src/input_reading.c **** 		KeyReg2[0]=HAL_GPIO_ReadPin(Button1_GPIO_Port, Button1_Pin);
+ 166              		.loc 1 31 14
+ 167 0024 0221     		movs	r1, #2
+ 168 0026 1448     		ldr	r0, .L15
+ 169 0028 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 170 002c 0346     		mov	r3, r0
+ 171 002e 1A46     		mov	r2, r3
+ 172              		.loc 1 31 13
+ 173 0030 124B     		ldr	r3, .L15+4
+ 174 0032 1A60     		str	r2, [r3]
+  32:./Core/Src/input_reading.c **** 		break;
+ 175              		.loc 1 32 3
+ 176 0034 1BE0     		b	.L13
+ 177              	.L11:
+  33:./Core/Src/input_reading.c **** 	case 1:
+  34:./Core/Src/input_reading.c **** 		KeyReg2[1]=HAL_GPIO_ReadPin(Button2_GPIO_Port, Button2_Pin);
+ 178              		.loc 1 34 14
+ 179 0036 1021     		movs	r1, #16
+ 180 0038 0F48     		ldr	r0, .L15
+ 181 003a FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 182 003e 0346     		mov	r3, r0
+ 183 0040 1A46     		mov	r2, r3
+ 184              		.loc 1 34 13
+ 185 0042 0E4B     		ldr	r3, .L15+4
+ 186 0044 5A60     		str	r2, [r3, #4]
+  35:./Core/Src/input_reading.c **** 		break;
+ 187              		.loc 1 35 3
+ 188 0046 12E0     		b	.L13
+ 189              	.L10:
+  36:./Core/Src/input_reading.c **** 	case 2:
+  37:./Core/Src/input_reading.c **** 		KeyReg2[2]=HAL_GPIO_ReadPin(Button3_GPIO_Port, Button3_Pin);
+ 190              		.loc 1 37 14
+ 191 0048 0121     		movs	r1, #1
+ 192 004a 0D48     		ldr	r0, .L15+8
+ 193 004c FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 194 0050 0346     		mov	r3, r0
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccQbcMjo.s 			page 5
+
+
+ 195 0052 1A46     		mov	r2, r3
+ 196              		.loc 1 37 13
+ 197 0054 094B     		ldr	r3, .L15+4
+ 198 0056 9A60     		str	r2, [r3, #8]
+  38:./Core/Src/input_reading.c **** 		break;
+ 199              		.loc 1 38 3
+ 200 0058 09E0     		b	.L13
+ 201              	.L8:
+  39:./Core/Src/input_reading.c **** 	case 3:
+  40:./Core/Src/input_reading.c **** 		KeyReg2[3]=HAL_GPIO_ReadPin(Pedes_button_GPIO_Port, Pedes_button_Pin);
+ 202              		.loc 1 40 14
+ 203 005a 0121     		movs	r1, #1
+ 204 005c 0648     		ldr	r0, .L15
+ 205 005e FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 206 0062 0346     		mov	r3, r0
+ 207 0064 1A46     		mov	r2, r3
+ 208              		.loc 1 40 13
+ 209 0066 054B     		ldr	r3, .L15+4
+ 210 0068 DA60     		str	r2, [r3, #12]
+  41:./Core/Src/input_reading.c **** 				break;
+ 211              		.loc 1 41 5
+ 212 006a 00E0     		b	.L13
+ 213              	.L14:
+  42:./Core/Src/input_reading.c **** 	default:
+  43:./Core/Src/input_reading.c **** 		break;
+ 214              		.loc 1 43 3
+ 215 006c 00BF     		nop
+ 216              	.L13:
+  44:./Core/Src/input_reading.c **** 	}
+  45:./Core/Src/input_reading.c **** }
+ 217              		.loc 1 45 1
+ 218 006e 00BF     		nop
+ 219 0070 0837     		adds	r7, r7, #8
+ 220              		.cfi_def_cfa_offset 8
+ 221 0072 BD46     		mov	sp, r7
+ 222              		.cfi_def_cfa_register 13
+ 223              		@ sp needed
+ 224 0074 80BD     		pop	{r7, pc}
+ 225              	.L16:
+ 226 0076 00BF     		.align	2
+ 227              	.L15:
+ 228 0078 00080140 		.word	1073809408
+ 229 007c 00000000 		.word	KeyReg2
+ 230 0080 000C0140 		.word	1073810432
+ 231              		.cfi_endproc
+ 232              	.LFE66:
+ 234              		.section	.text.input_reading,"ax",%progbits
+ 235              		.align	1
+ 236              		.global	input_reading
+ 237              		.syntax unified
+ 238              		.thumb
+ 239              		.thumb_func
+ 240              		.fpu softvfp
+ 242              	input_reading:
+ 243              	.LFB67:
+  46:./Core/Src/input_reading.c **** 
+  47:./Core/Src/input_reading.c **** void input_reading(){
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccQbcMjo.s 			page 6
+
+
+ 244              		.loc 1 47 21
+ 245              		.cfi_startproc
+ 246              		@ args = 0, pretend = 0, frame = 8
+ 247              		@ frame_needed = 1, uses_anonymous_args = 0
+ 248 0000 80B5     		push	{r7, lr}
+ 249              		.cfi_def_cfa_offset 8
+ 250              		.cfi_offset 7, -8
+ 251              		.cfi_offset 14, -4
+ 252 0002 82B0     		sub	sp, sp, #8
+ 253              		.cfi_def_cfa_offset 16
+ 254 0004 00AF     		add	r7, sp, #0
+ 255              		.cfi_def_cfa_register 7
+ 256              	.LBB2:
+  48:./Core/Src/input_reading.c **** for(int i=0;i<4;i++){
+ 257              		.loc 1 48 9
+ 258 0006 0023     		movs	r3, #0
+ 259 0008 7B60     		str	r3, [r7, #4]
+ 260              		.loc 1 48 1
+ 261 000a 5DE0     		b	.L18
+ 262              	.L21:
+  49:./Core/Src/input_reading.c **** 	KeyReg0[i]=KeyReg1[i];
+ 263              		.loc 1 49 20
+ 264 000c 324A     		ldr	r2, .L22
+ 265 000e 7B68     		ldr	r3, [r7, #4]
+ 266 0010 52F82320 		ldr	r2, [r2, r3, lsl #2]
+ 267              		.loc 1 49 12
+ 268 0014 3149     		ldr	r1, .L22+4
+ 269 0016 7B68     		ldr	r3, [r7, #4]
+ 270 0018 41F82320 		str	r2, [r1, r3, lsl #2]
+  50:./Core/Src/input_reading.c **** 	KeyReg1[i]=KeyReg2[i];
+ 271              		.loc 1 50 20
+ 272 001c 304A     		ldr	r2, .L22+8
+ 273 001e 7B68     		ldr	r3, [r7, #4]
+ 274 0020 52F82320 		ldr	r2, [r2, r3, lsl #2]
+ 275              		.loc 1 50 12
+ 276 0024 2C49     		ldr	r1, .L22
+ 277 0026 7B68     		ldr	r3, [r7, #4]
+ 278 0028 41F82320 		str	r2, [r1, r3, lsl #2]
+  51:./Core/Src/input_reading.c **** 	//sua lai ham readpin
+  52:./Core/Src/input_reading.c **** 	read_pin(i);
+ 279              		.loc 1 52 2
+ 280 002c 7868     		ldr	r0, [r7, #4]
+ 281 002e FFF7FEFF 		bl	read_pin
+  53:./Core/Src/input_reading.c **** 	if((KeyReg0[i]==KeyReg1[i])&&(KeyReg1[i]==KeyReg2[i])){
+ 282              		.loc 1 53 13
+ 283 0032 2A4A     		ldr	r2, .L22+4
+ 284 0034 7B68     		ldr	r3, [r7, #4]
+ 285 0036 52F82320 		ldr	r2, [r2, r3, lsl #2]
+ 286              		.loc 1 53 25
+ 287 003a 2749     		ldr	r1, .L22
+ 288 003c 7B68     		ldr	r3, [r7, #4]
+ 289 003e 51F82330 		ldr	r3, [r1, r3, lsl #2]
+ 290              		.loc 1 53 4
+ 291 0042 9A42     		cmp	r2, r3
+ 292 0044 3DD1     		bne	.L19
+ 293              		.loc 1 53 39 discriminator 1
+ 294 0046 244A     		ldr	r2, .L22
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccQbcMjo.s 			page 7
+
+
+ 295 0048 7B68     		ldr	r3, [r7, #4]
+ 296 004a 52F82320 		ldr	r2, [r2, r3, lsl #2]
+ 297              		.loc 1 53 51 discriminator 1
+ 298 004e 2449     		ldr	r1, .L22+8
+ 299 0050 7B68     		ldr	r3, [r7, #4]
+ 300 0052 51F82330 		ldr	r3, [r1, r3, lsl #2]
+ 301              		.loc 1 53 29 discriminator 1
+ 302 0056 9A42     		cmp	r2, r3
+ 303 0058 33D1     		bne	.L19
+  54:./Core/Src/input_reading.c **** 		if(KeyReg3[i]!=KeyReg2[i]){
+ 304              		.loc 1 54 13
+ 305 005a 224A     		ldr	r2, .L22+12
+ 306 005c 7B68     		ldr	r3, [r7, #4]
+ 307 005e 52F82320 		ldr	r2, [r2, r3, lsl #2]
+ 308              		.loc 1 54 25
+ 309 0062 1F49     		ldr	r1, .L22+8
+ 310 0064 7B68     		ldr	r3, [r7, #4]
+ 311 0066 51F82330 		ldr	r3, [r1, r3, lsl #2]
+ 312              		.loc 1 54 5
+ 313 006a 9A42     		cmp	r2, r3
+ 314 006c 17D0     		beq	.L20
+  55:./Core/Src/input_reading.c **** 			KeyReg3[i]=KeyReg2[i];
+ 315              		.loc 1 55 22
+ 316 006e 1C4A     		ldr	r2, .L22+8
+ 317 0070 7B68     		ldr	r3, [r7, #4]
+ 318 0072 52F82320 		ldr	r2, [r2, r3, lsl #2]
+ 319              		.loc 1 55 14
+ 320 0076 1B49     		ldr	r1, .L22+12
+ 321 0078 7B68     		ldr	r3, [r7, #4]
+ 322 007a 41F82320 		str	r2, [r1, r3, lsl #2]
+  56:./Core/Src/input_reading.c **** 			if(KeyReg2[i]==PRESSED_STATE){
+ 323              		.loc 1 56 14
+ 324 007e 184A     		ldr	r2, .L22+8
+ 325 0080 7B68     		ldr	r3, [r7, #4]
+ 326 0082 52F82330 		ldr	r3, [r2, r3, lsl #2]
+ 327              		.loc 1 56 6
+ 328 0086 002B     		cmp	r3, #0
+ 329 0088 1BD1     		bne	.L19
+  57:./Core/Src/input_reading.c **** 				button_flag[i]=1;
+ 330              		.loc 1 57 19
+ 331 008a 174A     		ldr	r2, .L22+16
+ 332 008c 7B68     		ldr	r3, [r7, #4]
+ 333 008e 0121     		movs	r1, #1
+ 334 0090 42F82310 		str	r1, [r2, r3, lsl #2]
+  58:./Core/Src/input_reading.c **** 
+  59:./Core/Src/input_reading.c **** 				//after 3 sec button change to pressed_more_than_3sec_state
+  60:./Core/Src/input_reading.c **** 				TimeForKeyPress=300;
+ 335              		.loc 1 60 20
+ 336 0094 154B     		ldr	r3, .L22+20
+ 337 0096 4FF49672 		mov	r2, #300
+ 338 009a 1A60     		str	r2, [r3]
+ 339 009c 11E0     		b	.L19
+ 340              	.L20:
+  61:./Core/Src/input_reading.c **** 				}
+  62:./Core/Src/input_reading.c **** 		}else{
+  63:./Core/Src/input_reading.c **** 			TimeForKeyPress--;
+ 341              		.loc 1 63 19
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccQbcMjo.s 			page 8
+
+
+ 342 009e 134B     		ldr	r3, .L22+20
+ 343 00a0 1B68     		ldr	r3, [r3]
+ 344 00a2 013B     		subs	r3, r3, #1
+ 345 00a4 114A     		ldr	r2, .L22+20
+ 346 00a6 1360     		str	r3, [r2]
+  64:./Core/Src/input_reading.c **** 			if(TimeForKeyPress==0) {
+ 347              		.loc 1 64 22
+ 348 00a8 104B     		ldr	r3, .L22+20
+ 349 00aa 1B68     		ldr	r3, [r3]
+ 350              		.loc 1 64 6
+ 351 00ac 002B     		cmp	r3, #0
+ 352 00ae 08D1     		bne	.L19
+  65:./Core/Src/input_reading.c **** 				//pressed_more_than_3sec_state
+  66:./Core/Src/input_reading.c **** 			    //PressedKeyProcess(index);
+  67:./Core/Src/input_reading.c **** 				if(KeyReg2[i]==PRESSED_STATE) //TODO
+ 353              		.loc 1 67 15
+ 354 00b0 0B4A     		ldr	r2, .L22+8
+ 355 00b2 7B68     		ldr	r3, [r7, #4]
+ 356 00b4 52F82330 		ldr	r3, [r2, r3, lsl #2]
+ 357              		.loc 1 67 7
+ 358 00b8 002B     		cmp	r3, #0
+ 359 00ba 02D1     		bne	.L19
+  68:./Core/Src/input_reading.c **** 				TimeForKeyPress=100;
+ 360              		.loc 1 68 20
+ 361 00bc 0B4B     		ldr	r3, .L22+20
+ 362 00be 6422     		movs	r2, #100
+ 363 00c0 1A60     		str	r2, [r3]
+ 364              	.L19:
+  48:./Core/Src/input_reading.c **** 	KeyReg0[i]=KeyReg1[i];
+ 365              		.loc 1 48 18 discriminator 2
+ 366 00c2 7B68     		ldr	r3, [r7, #4]
+ 367 00c4 0133     		adds	r3, r3, #1
+ 368 00c6 7B60     		str	r3, [r7, #4]
+ 369              	.L18:
+  48:./Core/Src/input_reading.c **** 	KeyReg0[i]=KeyReg1[i];
+ 370              		.loc 1 48 1 discriminator 1
+ 371 00c8 7B68     		ldr	r3, [r7, #4]
+ 372 00ca 032B     		cmp	r3, #3
+ 373 00cc 9EDD     		ble	.L21
+ 374              	.LBE2:
+  69:./Core/Src/input_reading.c **** 				}
+  70:./Core/Src/input_reading.c **** 			}
+  71:./Core/Src/input_reading.c **** 	}//end if
+  72:./Core/Src/input_reading.c **** }//end for
+  73:./Core/Src/input_reading.c **** 
+  74:./Core/Src/input_reading.c **** }
+ 375              		.loc 1 74 1
+ 376 00ce 00BF     		nop
+ 377 00d0 00BF     		nop
+ 378 00d2 0837     		adds	r7, r7, #8
+ 379              		.cfi_def_cfa_offset 8
+ 380 00d4 BD46     		mov	sp, r7
+ 381              		.cfi_def_cfa_register 13
+ 382              		@ sp needed
+ 383 00d6 80BD     		pop	{r7, pc}
+ 384              	.L23:
+ 385              		.align	2
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccQbcMjo.s 			page 9
+
+
+ 386              	.L22:
+ 387 00d8 00000000 		.word	KeyReg1
+ 388 00dc 00000000 		.word	KeyReg0
+ 389 00e0 00000000 		.word	KeyReg2
+ 390 00e4 00000000 		.word	KeyReg3
+ 391 00e8 00000000 		.word	button_flag
+ 392 00ec 00000000 		.word	TimeForKeyPress
+ 393              		.cfi_endproc
+ 394              	.LFE67:
+ 396              		.text
+ 397              	.Letext0:
+ 398              		.file 2 "Core/Inc/input_reading.h"
+ 399              		.file 3 "c:\\st\\stm32cubeide_1.7.0\\stm32cubeide\\plugins\\com.st.stm32cube.ide.mcu.externaltools
+ 400              		.file 4 "c:\\st\\stm32cubeide_1.7.0\\stm32cubeide\\plugins\\com.st.stm32cube.ide.mcu.externaltools
+ 401              		.file 5 "c:\\st\\stm32cubeide_1.7.0\\stm32cubeide\\plugins\\com.st.stm32cube.ide.mcu.externaltools
+ 402              		.file 6 "c:\\st\\stm32cubeide_1.7.0\\stm32cubeide\\plugins\\com.st.stm32cube.ide.mcu.externaltools
+ 403              		.file 7 "c:\\st\\stm32cubeide_1.7.0\\stm32cubeide\\plugins\\com.st.stm32cube.ide.mcu.externaltools
+ 404              		.file 8 "c:\\st\\stm32cubeide_1.7.0\\stm32cubeide\\plugins\\com.st.stm32cube.ide.mcu.externaltools
+ 405              		.file 9 "c:\\st\\stm32cubeide_1.7.0\\stm32cubeide\\plugins\\com.st.stm32cube.ide.mcu.externaltools
+ 406              		.file 10 "Drivers/CMSIS/Include/core_cm3.h"
+ 407              		.file 11 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h"
+ 408              		.file 12 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
+ 409              		.file 13 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
+ 410              		.file 14 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccQbcMjo.s 			page 10
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 input_reading.c
+C:\Users\ADMINI~1\AppData\Local\Temp\ccQbcMjo.s:20     .bss.button_flag:0000000000000000 button_flag
+C:\Users\ADMINI~1\AppData\Local\Temp\ccQbcMjo.s:17     .bss.button_flag:0000000000000000 $d
+C:\Users\ADMINI~1\AppData\Local\Temp\ccQbcMjo.s:27     .data.KeyReg0:0000000000000000 KeyReg0
+C:\Users\ADMINI~1\AppData\Local\Temp\ccQbcMjo.s:24     .data.KeyReg0:0000000000000000 $d
+C:\Users\ADMINI~1\AppData\Local\Temp\ccQbcMjo.s:35     .data.KeyReg1:0000000000000000 KeyReg1
+C:\Users\ADMINI~1\AppData\Local\Temp\ccQbcMjo.s:32     .data.KeyReg1:0000000000000000 $d
+C:\Users\ADMINI~1\AppData\Local\Temp\ccQbcMjo.s:43     .data.KeyReg2:0000000000000000 KeyReg2
+C:\Users\ADMINI~1\AppData\Local\Temp\ccQbcMjo.s:40     .data.KeyReg2:0000000000000000 $d
+C:\Users\ADMINI~1\AppData\Local\Temp\ccQbcMjo.s:51     .data.KeyReg3:0000000000000000 KeyReg3
+C:\Users\ADMINI~1\AppData\Local\Temp\ccQbcMjo.s:48     .data.KeyReg3:0000000000000000 $d
+C:\Users\ADMINI~1\AppData\Local\Temp\ccQbcMjo.s:59     .bss.FlagFor3secPressed:0000000000000000 FlagFor3secPressed
+C:\Users\ADMINI~1\AppData\Local\Temp\ccQbcMjo.s:56     .bss.FlagFor3secPressed:0000000000000000 $d
+C:\Users\ADMINI~1\AppData\Local\Temp\ccQbcMjo.s:66     .data.TimeForKeyPress:0000000000000000 TimeForKeyPress
+C:\Users\ADMINI~1\AppData\Local\Temp\ccQbcMjo.s:63     .data.TimeForKeyPress:0000000000000000 $d
+C:\Users\ADMINI~1\AppData\Local\Temp\ccQbcMjo.s:69     .text.is_button_pressed:0000000000000000 $t
+C:\Users\ADMINI~1\AppData\Local\Temp\ccQbcMjo.s:77     .text.is_button_pressed:0000000000000000 is_button_pressed
+C:\Users\ADMINI~1\AppData\Local\Temp\ccQbcMjo.s:126    .text.is_button_pressed:0000000000000030 $d
+C:\Users\ADMINI~1\AppData\Local\Temp\ccQbcMjo.s:131    .text.read_pin:0000000000000000 $t
+C:\Users\ADMINI~1\AppData\Local\Temp\ccQbcMjo.s:138    .text.read_pin:0000000000000000 read_pin
+C:\Users\ADMINI~1\AppData\Local\Temp\ccQbcMjo.s:160    .text.read_pin:0000000000000014 $d
+C:\Users\ADMINI~1\AppData\Local\Temp\ccQbcMjo.s:164    .text.read_pin:0000000000000024 $t
+C:\Users\ADMINI~1\AppData\Local\Temp\ccQbcMjo.s:228    .text.read_pin:0000000000000078 $d
+C:\Users\ADMINI~1\AppData\Local\Temp\ccQbcMjo.s:235    .text.input_reading:0000000000000000 $t
+C:\Users\ADMINI~1\AppData\Local\Temp\ccQbcMjo.s:242    .text.input_reading:0000000000000000 input_reading
+C:\Users\ADMINI~1\AppData\Local\Temp\ccQbcMjo.s:387    .text.input_reading:00000000000000d8 $d
+                           .group:0000000000000000 wm4.0.e890922d021f7fff2fbf219cb2b38f03
+                           .group:0000000000000000 wm4.input_reading.h.9.a013ca3645af8a0d58d52489a2fa9d43
+                           .group:0000000000000000 wm4._newlib_version.h.4.1ef4e12f167f8b69d7c30054be56050d
+                           .group:0000000000000000 wm4.newlib.h.18.1c9fedb6b3cd797cff253cc0fd593ef2
+                           .group:0000000000000000 wm4.ieeefp.h.77.f33a4dce62116f6f5175ff8bae57a54c
+                           .group:0000000000000000 wm4.features.h.22.fad1cec3bc7ff06488171438dbdcfd02
+                           .group:0000000000000000 wm4.config.h.224.c701144a7b0518c6ee9b9b5465b79f81
+                           .group:0000000000000000 wm4._ansi.h.31.de524f58584151836e90d8620a16f8e8
+                           .group:0000000000000000 wm4.stddef.h.39.144cf5ddcd53cbfdac30259dc1a6c87f
+                           .group:0000000000000000 wm4._types.h.20.dd0d04dca3800a0d2a6129b87f3adbb2
+                           .group:0000000000000000 wm4.stddef.h.155.3588ebfdd1e8c7ede80509bb9c3b8009
+                           .group:0000000000000000 wm4._default_types.h.6.959254cf5f09734ea7516c89e8bb21bd
+                           .group:0000000000000000 wm4._types.h.127.34941de1b2539d59d5cac00e0dd27a45
+                           .group:0000000000000000 wm4.reent.h.17.e292bf8b0bec6c96e131a54347145a30
+                           .group:0000000000000000 wm4.lock.h.2.1461d1fff82dffe8bfddc23307f6484f
+                           .group:0000000000000000 wm4.reent.h.77.dcd6129ff07fe81bd5636db29abe53b2
+                           .group:0000000000000000 wm4.cdefs.h.49.6260d97adb8d27534cbdc0f868b8ea87
+                           .group:0000000000000000 wm4.math.h.13.97100c05caf9f40dd9f5a3cda48ccc01
+                           .group:0000000000000000 wm4.stm32f1xx_hal_conf.h.21.98635006afa9a018cfa5e0632ed4968b
+                           .group:0000000000000000 wm4.stm32f1xx.h.39.208bb8a61c892b7c37d899c49a031330
+                           .group:0000000000000000 wm4.stm32f103xb.h.38.ec967d5ad9d3269cb0788eebda048e38
+                           .group:0000000000000000 wm4._intsup.h.10.48bafbb683905c4daa4565a85aeeb264
+                           .group:0000000000000000 wm4._stdint.h.10.c24fa3af3bc1706662bb5593a907e841
+                           .group:0000000000000000 wm4.stdint.h.23.d53047a68f4a85177f80b422d52785ed
+                           .group:0000000000000000 wm4.cmsis_version.h.32.4d5822004c01a829a975260e854b5f8e
+                           .group:0000000000000000 wm4.core_cm3.h.66.fc46cac19810db8f98d67da7ef88f42c
+                           .group:0000000000000000 wm4.cmsis_gcc.h.26.4f5798e999d5690b80e6ded3ecc94b37
+                           .group:0000000000000000 wm4.core_cm3.h.127.f4474120f1a7524deb56f9d74ff175da
+                           .group:0000000000000000 wm4.stm32f103xb.h.573.10249aa7473ca93be896fed94046a725
+                           .group:0000000000000000 wm4.stm32f1xx.h.162.96b09079a093c34dbd7f0b85cbd0ddee
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccQbcMjo.s 			page 11
+
+
+                           .group:0000000000000000 wm4.stm32_hal_legacy.h.23.91ba5b544a4c2be2620a1e7ff0049e10
+                           .group:0000000000000000 wm4.stm32f1xx_hal_def.h.57.41a4613fd5751fa2224a0bf945cee91b
+                           .group:0000000000000000 wm4.stm32f1xx_hal_rcc.h.95.21591bbc513aaa813c0b8640c3b32517
+                           .group:0000000000000000 wm4.stm32f1xx_hal_rcc_ex.h.22.8763f99bc1e3e2dcf0febe9161d81b37
+                           .group:0000000000000000 wm4.stm32f1xx_hal_rcc.h.1202.f8e5f9e0cf4eef7840facf5396029056
+                           .group:0000000000000000 wm4.stm32f1xx_hal_gpio.h.22.fa638d688dcc57ca806fe6a7831b0d04
+                           .group:0000000000000000 wm4.stm32f1xx_hal_gpio_ex.h.22.51a50ef3512cd78017ce666a32d364bf
+                           .group:0000000000000000 wm4.stm32f1xx_hal_gpio.h.263.f5ebf2f545ade59412ab9261c8e35dc4
+                           .group:0000000000000000 wm4.stm32f1xx_hal_exti.h.22.e26491d042c8079c3ca67eca341af862
+                           .group:0000000000000000 wm4.stm32f1xx_hal_dma.h.22.3c14338534886827bf3aeaa2a7f412a1
+                           .group:0000000000000000 wm4.stm32f1xx_hal_dma_ex.h.22.001ac4d7f81ccbdcae49bd65c13858c8
+                           .group:0000000000000000 wm4.stm32f1xx_hal_dma.h.409.cafcd2cfe701091535636be537c18293
+                           .group:0000000000000000 wm4.stm32f1xx_hal_cortex.h.22.b5f4174bb6a50d95405567b8f50e0900
+                           .group:0000000000000000 wm4.stm32f1xx_hal_flash.h.22.5cea9a7210e6315b41724b47b5fdf203
+                           .group:0000000000000000 wm4.stm32f1xx_hal_flash_ex.h.22.d4e19c21f2a86fa2f8ec2c2d5f1ab2af
+                           .group:0000000000000000 wm4.stm32f1xx_hal_pwr.h.22.3438c476faafc3240bf146f143df3fcd
+                           .group:0000000000000000 wm4.stm32f1xx_hal_tim.h.22.a16e206564e97dbace9faae59a0d6008
+                           .group:0000000000000000 wm4.stm32f1xx_hal_uart.h.22.5f7992e497faa36aa98f09f7214f4dbb
+                           .group:0000000000000000 wm4.stm32f1xx_hal.h.88.91065c0692bed6019c34f1e9c00589fd
+                           .group:0000000000000000 wm4.main.h.63.9319a86a6f0d78cb5bb2f8204a330e54
+
+UNDEFINED SYMBOLS
+HAL_GPIO_ReadPin
