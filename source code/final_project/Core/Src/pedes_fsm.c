@@ -14,6 +14,8 @@
 #include "main.h"
 #include "stdint.h"
 
+extern TIM_HandleTypeDef htim3;
+
 void pedestrian_fsm(){
 	switch (pedes_state){
 	case NONE:
@@ -33,9 +35,15 @@ void pedestrian_fsm(){
 			(state==AUTO_GREEN)||
 			(state==SETTING_GREEN)||
 			(state==MANUAL&&manual_state==2)
-		) pedes_state=NONE;
+		) {
+			pedes_state=NONE;
+			__HAL_TIM_SetCompare (&htim3,TIM_CHANNEL_1, 0);
+		}
 		//PWM
-		//__HAL_TIM_SetCompare (&htim3,TIM_CHANNEL_1, counter1/red_duration*100);
+//		  if (timer3_flag==1){
+			  if (pedes_state==GREEN) __HAL_TIM_SetCompare (&htim3,TIM_CHANNEL_1, 100-(counter1*100/red_duration));
+//			  setTimer3(10);
+//		  }
 		break;
 	case RED:
 		set_color_pedestrian_light(DO);

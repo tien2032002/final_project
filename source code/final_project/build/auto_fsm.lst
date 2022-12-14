@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s 			page 1
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\cc9fGT4c.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s 			page 1
    6:./Core/Src/auto_fsm.c ****  */
    7:./Core/Src/auto_fsm.c **** 
    8:./Core/Src/auto_fsm.c **** 
-ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s 			page 2
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\cc9fGT4c.s 			page 2
 
 
    9:./Core/Src/auto_fsm.c **** #include "auto_fsm.h"
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s 			page 1
   79 0036 A24B     		ldr	r3, .L28+4
   80 0038 1B68     		ldr	r3, [r3]
   81 003a A44A     		ldr	r2, .L28+16
-ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s 			page 3
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\cc9fGT4c.s 			page 3
 
 
   82 003c 1360     		str	r3, [r2]
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s 			page 1
  124 008a FFF7FEFF 		bl	set_color_light2
  125 008e 02E0     		b	.L9
  126              	.L8:
-ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s 			page 4
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\cc9fGT4c.s 			page 4
 
 
   37:./Core/Src/auto_fsm.c **** 		else set_color_light2(VANG);
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s 			page 1
  173              	.L11:
   45:./Core/Src/auto_fsm.c **** 												  		,counter1),1000) ;
   46:./Core/Src/auto_fsm.c **** 			}//nguoc lai van o trang thai auto_red
-ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s 			page 5
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\cc9fGT4c.s 			page 5
 
 
   47:./Core/Src/auto_fsm.c **** 			else
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s 			page 1
  216 0132 0422     		movs	r2, #4
  217 0134 1A60     		str	r2, [r3]
   59:./Core/Src/auto_fsm.c **** 			}
-ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s 			page 6
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\cc9fGT4c.s 			page 6
 
 
   60:./Core/Src/auto_fsm.c **** 		break;
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s 			page 1
   76:./Core/Src/auto_fsm.c **** 				state=AUTO_YELLOW;
  256              		.loc 1 76 10
  257 0172 524B     		ldr	r3, .L28
-ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s 			page 7
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\cc9fGT4c.s 			page 7
 
 
  258 0174 0322     		movs	r2, #3
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s 			page 1
  299              		.loc 1 89 6
  300 01c6 002B     		cmp	r3, #0
  301 01c8 72D0     		beq	.L25
-ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s 			page 8
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\cc9fGT4c.s 			page 8
 
 
   90:./Core/Src/auto_fsm.c **** 		{
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s 			page 1
  338              		.loc 1 107 5
  339 020c 012B     		cmp	r3, #1
  340 020e 32D1     		bne	.L19
-ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s 			page 9
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\cc9fGT4c.s 			page 9
 
 
  108:./Core/Src/auto_fsm.c **** 			counter1--;
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s 			page 1
  386              		.loc 1 116 9
  387 0260 9AB2     		uxth	r2, r3
  388 0262 4FF47A73 		mov	r3, #1000
-ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s 			page 10
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\cc9fGT4c.s 			page 10
 
 
  389 0266 1B49     		ldr	r1, .L28+24
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s 			page 1
  427 02aa 04E0     		b	.L27
  428              	.L24:
   60:./Core/Src/auto_fsm.c **** 	case AUTO_GREEN:
-ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s 			page 11
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\cc9fGT4c.s 			page 11
 
 
  429              		.loc 1 60 3
@@ -654,18 +654,18 @@ ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s 			page 1
  476              		.file 15 "c:\\st\\stm32cubeide_1.7.0\\stm32cubeide\\plugins\\com.st.stm32cube.ide.mcu.externaltool
  477              		.file 16 "c:\\st\\stm32cubeide_1.7.0\\stm32cubeide\\plugins\\com.st.stm32cube.ide.mcu.externaltool
  478              		.file 17 "c:\\st\\stm32cubeide_1.7.0\\stm32cubeide\\plugins\\com.st.stm32cube.ide.mcu.externaltool
-ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s 			page 12
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\cc9fGT4c.s 			page 12
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 auto_fsm.c
                             *COM*:0000000000000032 str
-C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s:17     .rodata:0000000000000000 $d
-C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s:30     .text.auto_fsm:0000000000000000 $t
-C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s:38     .text.auto_fsm:0000000000000000 auto_fsm
-C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s:60     .text.auto_fsm:0000000000000014 $d
-C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s:64     .text.auto_fsm:0000000000000024 $t
-C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s:446    .text.auto_fsm:00000000000002bc $d
+C:\Users\ADMINI~1\AppData\Local\Temp\cc9fGT4c.s:17     .rodata:0000000000000000 $d
+C:\Users\ADMINI~1\AppData\Local\Temp\cc9fGT4c.s:30     .text.auto_fsm:0000000000000000 $t
+C:\Users\ADMINI~1\AppData\Local\Temp\cc9fGT4c.s:38     .text.auto_fsm:0000000000000000 auto_fsm
+C:\Users\ADMINI~1\AppData\Local\Temp\cc9fGT4c.s:60     .text.auto_fsm:0000000000000014 $d
+C:\Users\ADMINI~1\AppData\Local\Temp\cc9fGT4c.s:64     .text.auto_fsm:0000000000000024 $t
+C:\Users\ADMINI~1\AppData\Local\Temp\cc9fGT4c.s:446    .text.auto_fsm:00000000000002bc $d
                            .group:0000000000000000 wm4.0.e890922d021f7fff2fbf219cb2b38f03
                            .group:0000000000000000 wm4.stm32f1xx_hal_conf.h.21.98635006afa9a018cfa5e0632ed4968b
                            .group:0000000000000000 wm4.stm32f1xx.h.39.208bb8a61c892b7c37d899c49a031330
@@ -714,7 +714,7 @@ C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s:446    .text.auto_fsm:0000000000
                            .group:0000000000000000 wm4.stdio.h.31.7c0e28c411445f3f9c5b11accf882760
                            .group:0000000000000000 wm4.stddef.h.155.ba788add86a0e365f264484f110c3c29
                            .group:0000000000000000 wm4.cdefs.h.49.75c8cf0da02add7669d4e6b77e254feb
-ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccC9z8yv.s 			page 13
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\cc9fGT4c.s 			page 13
 
 
                            .group:0000000000000000 wm4.stdarg.h.34.3a23a216c0c293b3d2ea2e89281481e6

@@ -73,6 +73,7 @@ static void MX_USART2_UART_Init(void);
 void HAL_TIM_PeriodElapsedCallback ( TIM_HandleTypeDef * htim ){
 	timer1_run();
 	timer2_run();
+	timer3_run();
 	input_reading();
 }
 void test_IO(){
@@ -135,12 +136,15 @@ int main(void)
   state=INIT;
   manual_state=1;
   pedes_state=10;
+  setTimer3(500);
   while (1)
   {
 	  pedestrian_fsm();
 	  auto_fsm();
 	  setting_fsm();
 	  manual_fsm();
+
+
 //	  test_IO();
     /* USER CODE END WHILE */
 

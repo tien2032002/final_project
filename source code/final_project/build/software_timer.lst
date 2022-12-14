@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccU6Amol.s 			page 1
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccRh7SVt.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -35,19 +35,32 @@ ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccU6Amol.s 			page 1
   38              		.align	2
   41              	timer2_counter:
   42 0000 00000000 		.space	4
-  43              		.section	.text.setTimer1,"ax",%progbits
-  44              		.align	1
-  45              		.global	setTimer1
-  46              		.arch armv7-m
-  47              		.syntax unified
-  48              		.thumb
-  49              		.thumb_func
-  50              		.fpu softvfp
-  52              	setTimer1:
-  53              	.LFB0:
-  54              		.file 1 "./Core/Src/software_timer.c"
+  43              		.global	timer3_flag
+  44              		.section	.bss.timer3_flag,"aw",%nobits
+  45              		.align	2
+  48              	timer3_flag:
+  49 0000 00000000 		.space	4
+  50              		.global	timer3_counter
+  51              		.section	.bss.timer3_counter,"aw",%nobits
+  52              		.align	2
+  55              	timer3_counter:
+  56 0000 00000000 		.space	4
+  57              		.section	.text.setTimer1,"ax",%progbits
+  58              		.align	1
+  59              		.global	setTimer1
+  60              		.arch armv7-m
+  61              		.syntax unified
+  62              		.thumb
+  63              		.thumb_func
+  64              		.fpu softvfp
+  66              	setTimer1:
+  67              	.LFB0:
+  68              		.file 1 "./Core/Src/software_timer.c"
    1:./Core/Src/software_timer.c **** /*
    2:./Core/Src/software_timer.c ****  * software_timer.c
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccRh7SVt.s 			page 2
+
+
    3:./Core/Src/software_timer.c ****  *
    4:./Core/Src/software_timer.c ****  *  Created on: 13 thg 12, 2022
    5:./Core/Src/software_timer.c ****  *      Author: Administrator
@@ -58,303 +71,452 @@ ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccU6Amol.s 			page 1
   10:./Core/Src/software_timer.c **** 
   11:./Core/Src/software_timer.c **** int timer1_flag=0;
   12:./Core/Src/software_timer.c **** int timer1_counter=0;
-ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccU6Amol.s 			page 2
-
-
   13:./Core/Src/software_timer.c **** 
   14:./Core/Src/software_timer.c **** int timer2_flag=0;
   15:./Core/Src/software_timer.c **** int timer2_counter=0;
   16:./Core/Src/software_timer.c **** 
-  17:./Core/Src/software_timer.c **** void setTimer1( int duration){
-  55              		.loc 1 17 30
-  56              		.cfi_startproc
-  57              		@ args = 0, pretend = 0, frame = 8
-  58              		@ frame_needed = 1, uses_anonymous_args = 0
-  59              		@ link register save eliminated.
-  60 0000 80B4     		push	{r7}
-  61              		.cfi_def_cfa_offset 4
-  62              		.cfi_offset 7, -4
-  63 0002 83B0     		sub	sp, sp, #12
-  64              		.cfi_def_cfa_offset 16
-  65 0004 00AF     		add	r7, sp, #0
-  66              		.cfi_def_cfa_register 7
-  67 0006 7860     		str	r0, [r7, #4]
-  18:./Core/Src/software_timer.c **** 	timer1_counter=duration/TICK;
-  68              		.loc 1 18 25
-  69 0008 7B68     		ldr	r3, [r7, #4]
-  70 000a 084A     		ldr	r2, .L2
-  71 000c 82FB0312 		smull	r1, r2, r2, r3
-  72 0010 9210     		asrs	r2, r2, #2
-  73 0012 DB17     		asrs	r3, r3, #31
-  74 0014 D31A     		subs	r3, r2, r3
-  75              		.loc 1 18 16
-  76 0016 064A     		ldr	r2, .L2+4
-  77 0018 1360     		str	r3, [r2]
-  19:./Core/Src/software_timer.c **** 	timer1_flag=0;
-  78              		.loc 1 19 13
-  79 001a 064B     		ldr	r3, .L2+8
-  80 001c 0022     		movs	r2, #0
-  81 001e 1A60     		str	r2, [r3]
-  20:./Core/Src/software_timer.c **** }
-  82              		.loc 1 20 1
-  83 0020 00BF     		nop
-  84 0022 0C37     		adds	r7, r7, #12
-  85              		.cfi_def_cfa_offset 4
-  86 0024 BD46     		mov	sp, r7
-  87              		.cfi_def_cfa_register 13
-  88              		@ sp needed
-  89 0026 80BC     		pop	{r7}
-  90              		.cfi_restore 7
-  91              		.cfi_def_cfa_offset 0
-  92 0028 7047     		bx	lr
-  93              	.L3:
-  94 002a 00BF     		.align	2
-  95              	.L2:
-  96 002c 67666666 		.word	1717986919
-  97 0030 00000000 		.word	timer1_counter
-  98 0034 00000000 		.word	timer1_flag
-  99              		.cfi_endproc
- 100              	.LFE0:
- 102              		.section	.text.timer1_run,"ax",%progbits
- 103              		.align	1
- 104              		.global	timer1_run
-ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccU6Amol.s 			page 3
+  17:./Core/Src/software_timer.c **** int timer3_flag=0;
+  18:./Core/Src/software_timer.c **** int timer3_counter=0;
+  19:./Core/Src/software_timer.c **** 
+  20:./Core/Src/software_timer.c **** void setTimer1( int duration){
+  69              		.loc 1 20 30
+  70              		.cfi_startproc
+  71              		@ args = 0, pretend = 0, frame = 8
+  72              		@ frame_needed = 1, uses_anonymous_args = 0
+  73              		@ link register save eliminated.
+  74 0000 80B4     		push	{r7}
+  75              		.cfi_def_cfa_offset 4
+  76              		.cfi_offset 7, -4
+  77 0002 83B0     		sub	sp, sp, #12
+  78              		.cfi_def_cfa_offset 16
+  79 0004 00AF     		add	r7, sp, #0
+  80              		.cfi_def_cfa_register 7
+  81 0006 7860     		str	r0, [r7, #4]
+  21:./Core/Src/software_timer.c **** 	timer1_counter=duration/TICK;
+  82              		.loc 1 21 25
+  83 0008 7B68     		ldr	r3, [r7, #4]
+  84 000a 084A     		ldr	r2, .L2
+  85 000c 82FB0312 		smull	r1, r2, r2, r3
+  86 0010 9210     		asrs	r2, r2, #2
+  87 0012 DB17     		asrs	r3, r3, #31
+  88 0014 D31A     		subs	r3, r2, r3
+  89              		.loc 1 21 16
+  90 0016 064A     		ldr	r2, .L2+4
+  91 0018 1360     		str	r3, [r2]
+  22:./Core/Src/software_timer.c **** 	timer1_flag=0;
+  92              		.loc 1 22 13
+  93 001a 064B     		ldr	r3, .L2+8
+  94 001c 0022     		movs	r2, #0
+  95 001e 1A60     		str	r2, [r3]
+  23:./Core/Src/software_timer.c **** }
+  96              		.loc 1 23 1
+  97 0020 00BF     		nop
+  98 0022 0C37     		adds	r7, r7, #12
+  99              		.cfi_def_cfa_offset 4
+ 100 0024 BD46     		mov	sp, r7
+ 101              		.cfi_def_cfa_register 13
+ 102              		@ sp needed
+ 103 0026 80BC     		pop	{r7}
+ 104              		.cfi_restore 7
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccRh7SVt.s 			page 3
 
 
- 105              		.syntax unified
- 106              		.thumb
- 107              		.thumb_func
- 108              		.fpu softvfp
- 110              	timer1_run:
- 111              	.LFB1:
-  21:./Core/Src/software_timer.c **** 
-  22:./Core/Src/software_timer.c **** void timer1_run(int index){
- 112              		.loc 1 22 27
- 113              		.cfi_startproc
- 114              		@ args = 0, pretend = 0, frame = 8
- 115              		@ frame_needed = 1, uses_anonymous_args = 0
- 116              		@ link register save eliminated.
- 117 0000 80B4     		push	{r7}
- 118              		.cfi_def_cfa_offset 4
- 119              		.cfi_offset 7, -4
- 120 0002 83B0     		sub	sp, sp, #12
- 121              		.cfi_def_cfa_offset 16
- 122 0004 00AF     		add	r7, sp, #0
- 123              		.cfi_def_cfa_register 7
- 124 0006 7860     		str	r0, [r7, #4]
-  23:./Core/Src/software_timer.c **** 	if(timer1_counter>0){
- 125              		.loc 1 23 19
- 126 0008 0A4B     		ldr	r3, .L7
- 127 000a 1B68     		ldr	r3, [r3]
- 128              		.loc 1 23 4
- 129 000c 002B     		cmp	r3, #0
- 130 000e 0BDD     		ble	.L6
-  24:./Core/Src/software_timer.c **** 		timer1_counter--;
- 131              		.loc 1 24 17
- 132 0010 084B     		ldr	r3, .L7
- 133 0012 1B68     		ldr	r3, [r3]
- 134 0014 013B     		subs	r3, r3, #1
- 135 0016 074A     		ldr	r2, .L7
- 136 0018 1360     		str	r3, [r2]
-  25:./Core/Src/software_timer.c **** 		if(timer1_counter<=0) timer1_flag=1;
- 137              		.loc 1 25 20
- 138 001a 064B     		ldr	r3, .L7
- 139 001c 1B68     		ldr	r3, [r3]
- 140              		.loc 1 25 5
- 141 001e 002B     		cmp	r3, #0
- 142 0020 02DC     		bgt	.L6
- 143              		.loc 1 25 36 discriminator 1
- 144 0022 054B     		ldr	r3, .L7+4
- 145 0024 0122     		movs	r2, #1
- 146 0026 1A60     		str	r2, [r3]
- 147              	.L6:
-  26:./Core/Src/software_timer.c **** 	}
-  27:./Core/Src/software_timer.c **** }
- 148              		.loc 1 27 1
- 149 0028 00BF     		nop
- 150 002a 0C37     		adds	r7, r7, #12
- 151              		.cfi_def_cfa_offset 4
- 152 002c BD46     		mov	sp, r7
- 153              		.cfi_def_cfa_register 13
- 154              		@ sp needed
- 155 002e 80BC     		pop	{r7}
-ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccU6Amol.s 			page 4
+ 105              		.cfi_def_cfa_offset 0
+ 106 0028 7047     		bx	lr
+ 107              	.L3:
+ 108 002a 00BF     		.align	2
+ 109              	.L2:
+ 110 002c 67666666 		.word	1717986919
+ 111 0030 00000000 		.word	timer1_counter
+ 112 0034 00000000 		.word	timer1_flag
+ 113              		.cfi_endproc
+ 114              	.LFE0:
+ 116              		.section	.text.timer1_run,"ax",%progbits
+ 117              		.align	1
+ 118              		.global	timer1_run
+ 119              		.syntax unified
+ 120              		.thumb
+ 121              		.thumb_func
+ 122              		.fpu softvfp
+ 124              	timer1_run:
+ 125              	.LFB1:
+  24:./Core/Src/software_timer.c **** 
+  25:./Core/Src/software_timer.c **** void timer1_run(int index){
+ 126              		.loc 1 25 27
+ 127              		.cfi_startproc
+ 128              		@ args = 0, pretend = 0, frame = 8
+ 129              		@ frame_needed = 1, uses_anonymous_args = 0
+ 130              		@ link register save eliminated.
+ 131 0000 80B4     		push	{r7}
+ 132              		.cfi_def_cfa_offset 4
+ 133              		.cfi_offset 7, -4
+ 134 0002 83B0     		sub	sp, sp, #12
+ 135              		.cfi_def_cfa_offset 16
+ 136 0004 00AF     		add	r7, sp, #0
+ 137              		.cfi_def_cfa_register 7
+ 138 0006 7860     		str	r0, [r7, #4]
+  26:./Core/Src/software_timer.c **** 	if(timer1_counter>0){
+ 139              		.loc 1 26 19
+ 140 0008 0A4B     		ldr	r3, .L7
+ 141 000a 1B68     		ldr	r3, [r3]
+ 142              		.loc 1 26 4
+ 143 000c 002B     		cmp	r3, #0
+ 144 000e 0BDD     		ble	.L6
+  27:./Core/Src/software_timer.c **** 		timer1_counter--;
+ 145              		.loc 1 27 17
+ 146 0010 084B     		ldr	r3, .L7
+ 147 0012 1B68     		ldr	r3, [r3]
+ 148 0014 013B     		subs	r3, r3, #1
+ 149 0016 074A     		ldr	r2, .L7
+ 150 0018 1360     		str	r3, [r2]
+  28:./Core/Src/software_timer.c **** 		if(timer1_counter<=0) timer1_flag=1;
+ 151              		.loc 1 28 20
+ 152 001a 064B     		ldr	r3, .L7
+ 153 001c 1B68     		ldr	r3, [r3]
+ 154              		.loc 1 28 5
+ 155 001e 002B     		cmp	r3, #0
+ 156 0020 02DC     		bgt	.L6
+ 157              		.loc 1 28 36 discriminator 1
+ 158 0022 054B     		ldr	r3, .L7+4
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccRh7SVt.s 			page 4
 
 
- 156              		.cfi_restore 7
- 157              		.cfi_def_cfa_offset 0
- 158 0030 7047     		bx	lr
- 159              	.L8:
- 160 0032 00BF     		.align	2
- 161              	.L7:
- 162 0034 00000000 		.word	timer1_counter
- 163 0038 00000000 		.word	timer1_flag
- 164              		.cfi_endproc
- 165              	.LFE1:
- 167              		.section	.text.setTimer2,"ax",%progbits
- 168              		.align	1
- 169              		.global	setTimer2
- 170              		.syntax unified
- 171              		.thumb
- 172              		.thumb_func
- 173              		.fpu softvfp
- 175              	setTimer2:
- 176              	.LFB2:
-  28:./Core/Src/software_timer.c **** 
-  29:./Core/Src/software_timer.c **** void setTimer2( int duration){
- 177              		.loc 1 29 30
- 178              		.cfi_startproc
- 179              		@ args = 0, pretend = 0, frame = 8
- 180              		@ frame_needed = 1, uses_anonymous_args = 0
- 181              		@ link register save eliminated.
- 182 0000 80B4     		push	{r7}
- 183              		.cfi_def_cfa_offset 4
- 184              		.cfi_offset 7, -4
- 185 0002 83B0     		sub	sp, sp, #12
- 186              		.cfi_def_cfa_offset 16
- 187 0004 00AF     		add	r7, sp, #0
- 188              		.cfi_def_cfa_register 7
- 189 0006 7860     		str	r0, [r7, #4]
-  30:./Core/Src/software_timer.c **** 	timer2_counter=duration/TICK;
- 190              		.loc 1 30 25
- 191 0008 7B68     		ldr	r3, [r7, #4]
- 192 000a 084A     		ldr	r2, .L10
- 193 000c 82FB0312 		smull	r1, r2, r2, r3
- 194 0010 9210     		asrs	r2, r2, #2
- 195 0012 DB17     		asrs	r3, r3, #31
- 196 0014 D31A     		subs	r3, r2, r3
- 197              		.loc 1 30 16
- 198 0016 064A     		ldr	r2, .L10+4
- 199 0018 1360     		str	r3, [r2]
-  31:./Core/Src/software_timer.c **** 	timer2_flag=0;
- 200              		.loc 1 31 13
- 201 001a 064B     		ldr	r3, .L10+8
- 202 001c 0022     		movs	r2, #0
- 203 001e 1A60     		str	r2, [r3]
-  32:./Core/Src/software_timer.c **** }
- 204              		.loc 1 32 1
- 205 0020 00BF     		nop
- 206 0022 0C37     		adds	r7, r7, #12
- 207              		.cfi_def_cfa_offset 4
- 208 0024 BD46     		mov	sp, r7
- 209              		.cfi_def_cfa_register 13
-ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccU6Amol.s 			page 5
+ 159 0024 0122     		movs	r2, #1
+ 160 0026 1A60     		str	r2, [r3]
+ 161              	.L6:
+  29:./Core/Src/software_timer.c **** 	}
+  30:./Core/Src/software_timer.c **** }
+ 162              		.loc 1 30 1
+ 163 0028 00BF     		nop
+ 164 002a 0C37     		adds	r7, r7, #12
+ 165              		.cfi_def_cfa_offset 4
+ 166 002c BD46     		mov	sp, r7
+ 167              		.cfi_def_cfa_register 13
+ 168              		@ sp needed
+ 169 002e 80BC     		pop	{r7}
+ 170              		.cfi_restore 7
+ 171              		.cfi_def_cfa_offset 0
+ 172 0030 7047     		bx	lr
+ 173              	.L8:
+ 174 0032 00BF     		.align	2
+ 175              	.L7:
+ 176 0034 00000000 		.word	timer1_counter
+ 177 0038 00000000 		.word	timer1_flag
+ 178              		.cfi_endproc
+ 179              	.LFE1:
+ 181              		.section	.text.setTimer2,"ax",%progbits
+ 182              		.align	1
+ 183              		.global	setTimer2
+ 184              		.syntax unified
+ 185              		.thumb
+ 186              		.thumb_func
+ 187              		.fpu softvfp
+ 189              	setTimer2:
+ 190              	.LFB2:
+  31:./Core/Src/software_timer.c **** 
+  32:./Core/Src/software_timer.c **** void setTimer2( int duration){
+ 191              		.loc 1 32 30
+ 192              		.cfi_startproc
+ 193              		@ args = 0, pretend = 0, frame = 8
+ 194              		@ frame_needed = 1, uses_anonymous_args = 0
+ 195              		@ link register save eliminated.
+ 196 0000 80B4     		push	{r7}
+ 197              		.cfi_def_cfa_offset 4
+ 198              		.cfi_offset 7, -4
+ 199 0002 83B0     		sub	sp, sp, #12
+ 200              		.cfi_def_cfa_offset 16
+ 201 0004 00AF     		add	r7, sp, #0
+ 202              		.cfi_def_cfa_register 7
+ 203 0006 7860     		str	r0, [r7, #4]
+  33:./Core/Src/software_timer.c **** 	timer2_counter=duration/TICK;
+ 204              		.loc 1 33 25
+ 205 0008 7B68     		ldr	r3, [r7, #4]
+ 206 000a 084A     		ldr	r2, .L10
+ 207 000c 82FB0312 		smull	r1, r2, r2, r3
+ 208 0010 9210     		asrs	r2, r2, #2
+ 209 0012 DB17     		asrs	r3, r3, #31
+ 210 0014 D31A     		subs	r3, r2, r3
+ 211              		.loc 1 33 16
+ 212 0016 064A     		ldr	r2, .L10+4
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccRh7SVt.s 			page 5
 
 
- 210              		@ sp needed
- 211 0026 80BC     		pop	{r7}
- 212              		.cfi_restore 7
- 213              		.cfi_def_cfa_offset 0
- 214 0028 7047     		bx	lr
- 215              	.L11:
- 216 002a 00BF     		.align	2
- 217              	.L10:
- 218 002c 67666666 		.word	1717986919
- 219 0030 00000000 		.word	timer2_counter
- 220 0034 00000000 		.word	timer2_flag
- 221              		.cfi_endproc
- 222              	.LFE2:
- 224              		.section	.text.timer2_run,"ax",%progbits
- 225              		.align	1
- 226              		.global	timer2_run
- 227              		.syntax unified
- 228              		.thumb
- 229              		.thumb_func
- 230              		.fpu softvfp
- 232              	timer2_run:
- 233              	.LFB3:
-  33:./Core/Src/software_timer.c **** 
-  34:./Core/Src/software_timer.c **** void timer2_run(int index){
- 234              		.loc 1 34 27
- 235              		.cfi_startproc
- 236              		@ args = 0, pretend = 0, frame = 8
- 237              		@ frame_needed = 1, uses_anonymous_args = 0
- 238              		@ link register save eliminated.
- 239 0000 80B4     		push	{r7}
- 240              		.cfi_def_cfa_offset 4
- 241              		.cfi_offset 7, -4
- 242 0002 83B0     		sub	sp, sp, #12
- 243              		.cfi_def_cfa_offset 16
- 244 0004 00AF     		add	r7, sp, #0
- 245              		.cfi_def_cfa_register 7
- 246 0006 7860     		str	r0, [r7, #4]
-  35:./Core/Src/software_timer.c **** 	if(timer2_counter>0){
- 247              		.loc 1 35 19
- 248 0008 0A4B     		ldr	r3, .L15
- 249 000a 1B68     		ldr	r3, [r3]
- 250              		.loc 1 35 4
- 251 000c 002B     		cmp	r3, #0
- 252 000e 0BDD     		ble	.L14
-  36:./Core/Src/software_timer.c **** 		timer2_counter--;
- 253              		.loc 1 36 17
- 254 0010 084B     		ldr	r3, .L15
- 255 0012 1B68     		ldr	r3, [r3]
- 256 0014 013B     		subs	r3, r3, #1
- 257 0016 074A     		ldr	r2, .L15
- 258 0018 1360     		str	r3, [r2]
-  37:./Core/Src/software_timer.c **** 		if(timer2_counter<=0) timer2_flag=1;
- 259              		.loc 1 37 20
- 260 001a 064B     		ldr	r3, .L15
- 261 001c 1B68     		ldr	r3, [r3]
- 262              		.loc 1 37 5
- 263 001e 002B     		cmp	r3, #0
-ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccU6Amol.s 			page 6
+ 213 0018 1360     		str	r3, [r2]
+  34:./Core/Src/software_timer.c **** 	timer2_flag=0;
+ 214              		.loc 1 34 13
+ 215 001a 064B     		ldr	r3, .L10+8
+ 216 001c 0022     		movs	r2, #0
+ 217 001e 1A60     		str	r2, [r3]
+  35:./Core/Src/software_timer.c **** }
+ 218              		.loc 1 35 1
+ 219 0020 00BF     		nop
+ 220 0022 0C37     		adds	r7, r7, #12
+ 221              		.cfi_def_cfa_offset 4
+ 222 0024 BD46     		mov	sp, r7
+ 223              		.cfi_def_cfa_register 13
+ 224              		@ sp needed
+ 225 0026 80BC     		pop	{r7}
+ 226              		.cfi_restore 7
+ 227              		.cfi_def_cfa_offset 0
+ 228 0028 7047     		bx	lr
+ 229              	.L11:
+ 230 002a 00BF     		.align	2
+ 231              	.L10:
+ 232 002c 67666666 		.word	1717986919
+ 233 0030 00000000 		.word	timer2_counter
+ 234 0034 00000000 		.word	timer2_flag
+ 235              		.cfi_endproc
+ 236              	.LFE2:
+ 238              		.section	.text.timer2_run,"ax",%progbits
+ 239              		.align	1
+ 240              		.global	timer2_run
+ 241              		.syntax unified
+ 242              		.thumb
+ 243              		.thumb_func
+ 244              		.fpu softvfp
+ 246              	timer2_run:
+ 247              	.LFB3:
+  36:./Core/Src/software_timer.c **** 
+  37:./Core/Src/software_timer.c **** void timer2_run(int index){
+ 248              		.loc 1 37 27
+ 249              		.cfi_startproc
+ 250              		@ args = 0, pretend = 0, frame = 8
+ 251              		@ frame_needed = 1, uses_anonymous_args = 0
+ 252              		@ link register save eliminated.
+ 253 0000 80B4     		push	{r7}
+ 254              		.cfi_def_cfa_offset 4
+ 255              		.cfi_offset 7, -4
+ 256 0002 83B0     		sub	sp, sp, #12
+ 257              		.cfi_def_cfa_offset 16
+ 258 0004 00AF     		add	r7, sp, #0
+ 259              		.cfi_def_cfa_register 7
+ 260 0006 7860     		str	r0, [r7, #4]
+  38:./Core/Src/software_timer.c **** 	if(timer2_counter>0){
+ 261              		.loc 1 38 19
+ 262 0008 0A4B     		ldr	r3, .L15
+ 263 000a 1B68     		ldr	r3, [r3]
+ 264              		.loc 1 38 4
+ 265 000c 002B     		cmp	r3, #0
+ 266 000e 0BDD     		ble	.L14
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccRh7SVt.s 			page 6
 
 
- 264 0020 02DC     		bgt	.L14
- 265              		.loc 1 37 36 discriminator 1
- 266 0022 054B     		ldr	r3, .L15+4
- 267 0024 0122     		movs	r2, #1
- 268 0026 1A60     		str	r2, [r3]
- 269              	.L14:
-  38:./Core/Src/software_timer.c **** 	}
-  39:./Core/Src/software_timer.c **** }
- 270              		.loc 1 39 1
- 271 0028 00BF     		nop
- 272 002a 0C37     		adds	r7, r7, #12
- 273              		.cfi_def_cfa_offset 4
- 274 002c BD46     		mov	sp, r7
- 275              		.cfi_def_cfa_register 13
- 276              		@ sp needed
- 277 002e 80BC     		pop	{r7}
- 278              		.cfi_restore 7
- 279              		.cfi_def_cfa_offset 0
- 280 0030 7047     		bx	lr
- 281              	.L16:
- 282 0032 00BF     		.align	2
- 283              	.L15:
- 284 0034 00000000 		.word	timer2_counter
- 285 0038 00000000 		.word	timer2_flag
- 286              		.cfi_endproc
- 287              	.LFE3:
- 289              		.text
- 290              	.Letext0:
- 291              		.file 2 "Core/Inc/software_timer.h"
-ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccU6Amol.s 			page 7
+  39:./Core/Src/software_timer.c **** 		timer2_counter--;
+ 267              		.loc 1 39 17
+ 268 0010 084B     		ldr	r3, .L15
+ 269 0012 1B68     		ldr	r3, [r3]
+ 270 0014 013B     		subs	r3, r3, #1
+ 271 0016 074A     		ldr	r2, .L15
+ 272 0018 1360     		str	r3, [r2]
+  40:./Core/Src/software_timer.c **** 		if(timer2_counter<=0) timer2_flag=1;
+ 273              		.loc 1 40 20
+ 274 001a 064B     		ldr	r3, .L15
+ 275 001c 1B68     		ldr	r3, [r3]
+ 276              		.loc 1 40 5
+ 277 001e 002B     		cmp	r3, #0
+ 278 0020 02DC     		bgt	.L14
+ 279              		.loc 1 40 36 discriminator 1
+ 280 0022 054B     		ldr	r3, .L15+4
+ 281 0024 0122     		movs	r2, #1
+ 282 0026 1A60     		str	r2, [r3]
+ 283              	.L14:
+  41:./Core/Src/software_timer.c **** 	}
+  42:./Core/Src/software_timer.c **** }
+ 284              		.loc 1 42 1
+ 285 0028 00BF     		nop
+ 286 002a 0C37     		adds	r7, r7, #12
+ 287              		.cfi_def_cfa_offset 4
+ 288 002c BD46     		mov	sp, r7
+ 289              		.cfi_def_cfa_register 13
+ 290              		@ sp needed
+ 291 002e 80BC     		pop	{r7}
+ 292              		.cfi_restore 7
+ 293              		.cfi_def_cfa_offset 0
+ 294 0030 7047     		bx	lr
+ 295              	.L16:
+ 296 0032 00BF     		.align	2
+ 297              	.L15:
+ 298 0034 00000000 		.word	timer2_counter
+ 299 0038 00000000 		.word	timer2_flag
+ 300              		.cfi_endproc
+ 301              	.LFE3:
+ 303              		.section	.text.setTimer3,"ax",%progbits
+ 304              		.align	1
+ 305              		.global	setTimer3
+ 306              		.syntax unified
+ 307              		.thumb
+ 308              		.thumb_func
+ 309              		.fpu softvfp
+ 311              	setTimer3:
+ 312              	.LFB4:
+  43:./Core/Src/software_timer.c **** 
+  44:./Core/Src/software_timer.c **** void setTimer3( int duration){
+ 313              		.loc 1 44 30
+ 314              		.cfi_startproc
+ 315              		@ args = 0, pretend = 0, frame = 8
+ 316              		@ frame_needed = 1, uses_anonymous_args = 0
+ 317              		@ link register save eliminated.
+ 318 0000 80B4     		push	{r7}
+ 319              		.cfi_def_cfa_offset 4
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccRh7SVt.s 			page 7
+
+
+ 320              		.cfi_offset 7, -4
+ 321 0002 83B0     		sub	sp, sp, #12
+ 322              		.cfi_def_cfa_offset 16
+ 323 0004 00AF     		add	r7, sp, #0
+ 324              		.cfi_def_cfa_register 7
+ 325 0006 7860     		str	r0, [r7, #4]
+  45:./Core/Src/software_timer.c **** 	timer3_counter=duration/TICK;
+ 326              		.loc 1 45 25
+ 327 0008 7B68     		ldr	r3, [r7, #4]
+ 328 000a 084A     		ldr	r2, .L18
+ 329 000c 82FB0312 		smull	r1, r2, r2, r3
+ 330 0010 9210     		asrs	r2, r2, #2
+ 331 0012 DB17     		asrs	r3, r3, #31
+ 332 0014 D31A     		subs	r3, r2, r3
+ 333              		.loc 1 45 16
+ 334 0016 064A     		ldr	r2, .L18+4
+ 335 0018 1360     		str	r3, [r2]
+  46:./Core/Src/software_timer.c **** 	timer3_flag=0;
+ 336              		.loc 1 46 13
+ 337 001a 064B     		ldr	r3, .L18+8
+ 338 001c 0022     		movs	r2, #0
+ 339 001e 1A60     		str	r2, [r3]
+  47:./Core/Src/software_timer.c **** }
+ 340              		.loc 1 47 1
+ 341 0020 00BF     		nop
+ 342 0022 0C37     		adds	r7, r7, #12
+ 343              		.cfi_def_cfa_offset 4
+ 344 0024 BD46     		mov	sp, r7
+ 345              		.cfi_def_cfa_register 13
+ 346              		@ sp needed
+ 347 0026 80BC     		pop	{r7}
+ 348              		.cfi_restore 7
+ 349              		.cfi_def_cfa_offset 0
+ 350 0028 7047     		bx	lr
+ 351              	.L19:
+ 352 002a 00BF     		.align	2
+ 353              	.L18:
+ 354 002c 67666666 		.word	1717986919
+ 355 0030 00000000 		.word	timer3_counter
+ 356 0034 00000000 		.word	timer3_flag
+ 357              		.cfi_endproc
+ 358              	.LFE4:
+ 360              		.section	.text.timer3_run,"ax",%progbits
+ 361              		.align	1
+ 362              		.global	timer3_run
+ 363              		.syntax unified
+ 364              		.thumb
+ 365              		.thumb_func
+ 366              		.fpu softvfp
+ 368              	timer3_run:
+ 369              	.LFB5:
+  48:./Core/Src/software_timer.c **** 
+  49:./Core/Src/software_timer.c **** void timer3_run(int index){
+ 370              		.loc 1 49 27
+ 371              		.cfi_startproc
+ 372              		@ args = 0, pretend = 0, frame = 8
+ 373              		@ frame_needed = 1, uses_anonymous_args = 0
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccRh7SVt.s 			page 8
+
+
+ 374              		@ link register save eliminated.
+ 375 0000 80B4     		push	{r7}
+ 376              		.cfi_def_cfa_offset 4
+ 377              		.cfi_offset 7, -4
+ 378 0002 83B0     		sub	sp, sp, #12
+ 379              		.cfi_def_cfa_offset 16
+ 380 0004 00AF     		add	r7, sp, #0
+ 381              		.cfi_def_cfa_register 7
+ 382 0006 7860     		str	r0, [r7, #4]
+  50:./Core/Src/software_timer.c **** 	if(timer3_counter>0){
+ 383              		.loc 1 50 19
+ 384 0008 0A4B     		ldr	r3, .L23
+ 385 000a 1B68     		ldr	r3, [r3]
+ 386              		.loc 1 50 4
+ 387 000c 002B     		cmp	r3, #0
+ 388 000e 0BDD     		ble	.L22
+  51:./Core/Src/software_timer.c **** 		timer3_counter--;
+ 389              		.loc 1 51 17
+ 390 0010 084B     		ldr	r3, .L23
+ 391 0012 1B68     		ldr	r3, [r3]
+ 392 0014 013B     		subs	r3, r3, #1
+ 393 0016 074A     		ldr	r2, .L23
+ 394 0018 1360     		str	r3, [r2]
+  52:./Core/Src/software_timer.c **** 		if(timer3_counter<=0) timer3_flag=1;
+ 395              		.loc 1 52 20
+ 396 001a 064B     		ldr	r3, .L23
+ 397 001c 1B68     		ldr	r3, [r3]
+ 398              		.loc 1 52 5
+ 399 001e 002B     		cmp	r3, #0
+ 400 0020 02DC     		bgt	.L22
+ 401              		.loc 1 52 36 discriminator 1
+ 402 0022 054B     		ldr	r3, .L23+4
+ 403 0024 0122     		movs	r2, #1
+ 404 0026 1A60     		str	r2, [r3]
+ 405              	.L22:
+  53:./Core/Src/software_timer.c **** 	}
+  54:./Core/Src/software_timer.c **** }
+ 406              		.loc 1 54 1
+ 407 0028 00BF     		nop
+ 408 002a 0C37     		adds	r7, r7, #12
+ 409              		.cfi_def_cfa_offset 4
+ 410 002c BD46     		mov	sp, r7
+ 411              		.cfi_def_cfa_register 13
+ 412              		@ sp needed
+ 413 002e 80BC     		pop	{r7}
+ 414              		.cfi_restore 7
+ 415              		.cfi_def_cfa_offset 0
+ 416 0030 7047     		bx	lr
+ 417              	.L24:
+ 418 0032 00BF     		.align	2
+ 419              	.L23:
+ 420 0034 00000000 		.word	timer3_counter
+ 421 0038 00000000 		.word	timer3_flag
+ 422              		.cfi_endproc
+ 423              	.LFE5:
+ 425              		.text
+ 426              	.Letext0:
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccRh7SVt.s 			page 9
+
+
+ 427              		.file 2 "Core/Inc/software_timer.h"
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccRh7SVt.s 			page 10
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 software_timer.c
-C:\Users\ADMINI~1\AppData\Local\Temp\ccU6Amol.s:20     .bss.timer1_flag:0000000000000000 timer1_flag
-C:\Users\ADMINI~1\AppData\Local\Temp\ccU6Amol.s:17     .bss.timer1_flag:0000000000000000 $d
-C:\Users\ADMINI~1\AppData\Local\Temp\ccU6Amol.s:27     .bss.timer1_counter:0000000000000000 timer1_counter
-C:\Users\ADMINI~1\AppData\Local\Temp\ccU6Amol.s:24     .bss.timer1_counter:0000000000000000 $d
-C:\Users\ADMINI~1\AppData\Local\Temp\ccU6Amol.s:34     .bss.timer2_flag:0000000000000000 timer2_flag
-C:\Users\ADMINI~1\AppData\Local\Temp\ccU6Amol.s:31     .bss.timer2_flag:0000000000000000 $d
-C:\Users\ADMINI~1\AppData\Local\Temp\ccU6Amol.s:41     .bss.timer2_counter:0000000000000000 timer2_counter
-C:\Users\ADMINI~1\AppData\Local\Temp\ccU6Amol.s:38     .bss.timer2_counter:0000000000000000 $d
-C:\Users\ADMINI~1\AppData\Local\Temp\ccU6Amol.s:44     .text.setTimer1:0000000000000000 $t
-C:\Users\ADMINI~1\AppData\Local\Temp\ccU6Amol.s:52     .text.setTimer1:0000000000000000 setTimer1
-C:\Users\ADMINI~1\AppData\Local\Temp\ccU6Amol.s:96     .text.setTimer1:000000000000002c $d
-C:\Users\ADMINI~1\AppData\Local\Temp\ccU6Amol.s:103    .text.timer1_run:0000000000000000 $t
-C:\Users\ADMINI~1\AppData\Local\Temp\ccU6Amol.s:110    .text.timer1_run:0000000000000000 timer1_run
-C:\Users\ADMINI~1\AppData\Local\Temp\ccU6Amol.s:162    .text.timer1_run:0000000000000034 $d
-C:\Users\ADMINI~1\AppData\Local\Temp\ccU6Amol.s:168    .text.setTimer2:0000000000000000 $t
-C:\Users\ADMINI~1\AppData\Local\Temp\ccU6Amol.s:175    .text.setTimer2:0000000000000000 setTimer2
-C:\Users\ADMINI~1\AppData\Local\Temp\ccU6Amol.s:218    .text.setTimer2:000000000000002c $d
-C:\Users\ADMINI~1\AppData\Local\Temp\ccU6Amol.s:225    .text.timer2_run:0000000000000000 $t
-C:\Users\ADMINI~1\AppData\Local\Temp\ccU6Amol.s:232    .text.timer2_run:0000000000000000 timer2_run
-C:\Users\ADMINI~1\AppData\Local\Temp\ccU6Amol.s:284    .text.timer2_run:0000000000000034 $d
+C:\Users\ADMINI~1\AppData\Local\Temp\ccRh7SVt.s:20     .bss.timer1_flag:0000000000000000 timer1_flag
+C:\Users\ADMINI~1\AppData\Local\Temp\ccRh7SVt.s:17     .bss.timer1_flag:0000000000000000 $d
+C:\Users\ADMINI~1\AppData\Local\Temp\ccRh7SVt.s:27     .bss.timer1_counter:0000000000000000 timer1_counter
+C:\Users\ADMINI~1\AppData\Local\Temp\ccRh7SVt.s:24     .bss.timer1_counter:0000000000000000 $d
+C:\Users\ADMINI~1\AppData\Local\Temp\ccRh7SVt.s:34     .bss.timer2_flag:0000000000000000 timer2_flag
+C:\Users\ADMINI~1\AppData\Local\Temp\ccRh7SVt.s:31     .bss.timer2_flag:0000000000000000 $d
+C:\Users\ADMINI~1\AppData\Local\Temp\ccRh7SVt.s:41     .bss.timer2_counter:0000000000000000 timer2_counter
+C:\Users\ADMINI~1\AppData\Local\Temp\ccRh7SVt.s:38     .bss.timer2_counter:0000000000000000 $d
+C:\Users\ADMINI~1\AppData\Local\Temp\ccRh7SVt.s:48     .bss.timer3_flag:0000000000000000 timer3_flag
+C:\Users\ADMINI~1\AppData\Local\Temp\ccRh7SVt.s:45     .bss.timer3_flag:0000000000000000 $d
+C:\Users\ADMINI~1\AppData\Local\Temp\ccRh7SVt.s:55     .bss.timer3_counter:0000000000000000 timer3_counter
+C:\Users\ADMINI~1\AppData\Local\Temp\ccRh7SVt.s:52     .bss.timer3_counter:0000000000000000 $d
+C:\Users\ADMINI~1\AppData\Local\Temp\ccRh7SVt.s:58     .text.setTimer1:0000000000000000 $t
+C:\Users\ADMINI~1\AppData\Local\Temp\ccRh7SVt.s:66     .text.setTimer1:0000000000000000 setTimer1
+C:\Users\ADMINI~1\AppData\Local\Temp\ccRh7SVt.s:110    .text.setTimer1:000000000000002c $d
+C:\Users\ADMINI~1\AppData\Local\Temp\ccRh7SVt.s:117    .text.timer1_run:0000000000000000 $t
+C:\Users\ADMINI~1\AppData\Local\Temp\ccRh7SVt.s:124    .text.timer1_run:0000000000000000 timer1_run
+C:\Users\ADMINI~1\AppData\Local\Temp\ccRh7SVt.s:176    .text.timer1_run:0000000000000034 $d
+C:\Users\ADMINI~1\AppData\Local\Temp\ccRh7SVt.s:182    .text.setTimer2:0000000000000000 $t
+C:\Users\ADMINI~1\AppData\Local\Temp\ccRh7SVt.s:189    .text.setTimer2:0000000000000000 setTimer2
+C:\Users\ADMINI~1\AppData\Local\Temp\ccRh7SVt.s:232    .text.setTimer2:000000000000002c $d
+C:\Users\ADMINI~1\AppData\Local\Temp\ccRh7SVt.s:239    .text.timer2_run:0000000000000000 $t
+C:\Users\ADMINI~1\AppData\Local\Temp\ccRh7SVt.s:246    .text.timer2_run:0000000000000000 timer2_run
+C:\Users\ADMINI~1\AppData\Local\Temp\ccRh7SVt.s:298    .text.timer2_run:0000000000000034 $d
+C:\Users\ADMINI~1\AppData\Local\Temp\ccRh7SVt.s:304    .text.setTimer3:0000000000000000 $t
+C:\Users\ADMINI~1\AppData\Local\Temp\ccRh7SVt.s:311    .text.setTimer3:0000000000000000 setTimer3
+C:\Users\ADMINI~1\AppData\Local\Temp\ccRh7SVt.s:354    .text.setTimer3:000000000000002c $d
+C:\Users\ADMINI~1\AppData\Local\Temp\ccRh7SVt.s:361    .text.timer3_run:0000000000000000 $t
+C:\Users\ADMINI~1\AppData\Local\Temp\ccRh7SVt.s:368    .text.timer3_run:0000000000000000 timer3_run
+C:\Users\ADMINI~1\AppData\Local\Temp\ccRh7SVt.s:420    .text.timer3_run:0000000000000034 $d
                            .group:0000000000000000 wm4.0.e890922d021f7fff2fbf219cb2b38f03
                            .group:0000000000000000 wm4.software_timer.h.9.6bf986ebefe70bdf196105c9c027c70a
 

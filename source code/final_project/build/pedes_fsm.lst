@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccp5Hz7B.s 			page 1
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccz3SDPt.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -42,8 +42,10 @@ ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccp5Hz7B.s 			page 1
   14:./Core/Src/pedes_fsm.c **** #include "main.h"
   15:./Core/Src/pedes_fsm.c **** #include "stdint.h"
   16:./Core/Src/pedes_fsm.c **** 
-  17:./Core/Src/pedes_fsm.c **** void pedestrian_fsm(){
-  27              		.loc 1 17 22
+  17:./Core/Src/pedes_fsm.c **** extern TIM_HandleTypeDef htim3;
+  18:./Core/Src/pedes_fsm.c **** 
+  19:./Core/Src/pedes_fsm.c **** void pedestrian_fsm(){
+  27              		.loc 1 19 22
   28              		.cfi_startproc
   29              		@ args = 0, pretend = 0, frame = 0
   30              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -53,316 +55,356 @@ ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccp5Hz7B.s 			page 1
   34              		.cfi_offset 14, -4
   35 0002 00AF     		add	r7, sp, #0
   36              		.cfi_def_cfa_register 7
-  18:./Core/Src/pedes_fsm.c **** 	switch (pedes_state){
-  37              		.loc 1 18 2
-  38 0004 394B     		ldr	r3, .L21
+  20:./Core/Src/pedes_fsm.c **** 	switch (pedes_state){
+  37              		.loc 1 20 2
+  38 0004 444B     		ldr	r3, .L22
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccz3SDPt.s 			page 2
+
+
   39 0006 1B68     		ldr	r3, [r3]
   40 0008 0C2B     		cmp	r3, #12
-ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccp5Hz7B.s 			page 2
-
-
   41 000a 2FD0     		beq	.L2
   42 000c 0C2B     		cmp	r3, #12
-  43 000e 63DC     		bgt	.L16
+  43 000e 79DC     		bgt	.L17
   44 0010 0A2B     		cmp	r3, #10
   45 0012 02D0     		beq	.L4
   46 0014 0B2B     		cmp	r3, #11
-  47 0016 40D0     		beq	.L5
-  19:./Core/Src/pedes_fsm.c **** 	case NONE:
-  20:./Core/Src/pedes_fsm.c **** 		set_color_pedestrian_light(0);
-  21:./Core/Src/pedes_fsm.c **** 		if(is_button_pressed(PEDES_IDX)){
-  22:./Core/Src/pedes_fsm.c **** 			if(
-  23:./Core/Src/pedes_fsm.c **** 				(state==AUTO_RED&&counter1>=3)||
-  24:./Core/Src/pedes_fsm.c **** 			     state==SETTING_RED||
-  25:./Core/Src/pedes_fsm.c **** 			   ((state==MANUAL)&&(manual_state==1||manual_state==3))
-  26:./Core/Src/pedes_fsm.c **** 			) pedes_state = GREEN;
-  27:./Core/Src/pedes_fsm.c **** 			else pedes_state=RED;
-  28:./Core/Src/pedes_fsm.c **** 		}
-  29:./Core/Src/pedes_fsm.c **** 		break;
-  30:./Core/Src/pedes_fsm.c **** 	case GREEN:
-  31:./Core/Src/pedes_fsm.c **** 		set_color_pedestrian_light(XANH);
-  32:./Core/Src/pedes_fsm.c **** 		if(
-  33:./Core/Src/pedes_fsm.c **** 			(state==AUTO_GREEN)||
-  34:./Core/Src/pedes_fsm.c **** 			(state==SETTING_GREEN)||
-  35:./Core/Src/pedes_fsm.c **** 			(state==MANUAL&&manual_state==2)
-  36:./Core/Src/pedes_fsm.c **** 		) pedes_state=NONE;
-  37:./Core/Src/pedes_fsm.c **** 		//PWM
-  38:./Core/Src/pedes_fsm.c **** 		//__HAL_TIM_SetCompare (&htim3,TIM_CHANNEL_1, counter1/red_duration*100);
-  39:./Core/Src/pedes_fsm.c **** 		break;
-  40:./Core/Src/pedes_fsm.c **** 	case RED:
-  41:./Core/Src/pedes_fsm.c **** 		set_color_pedestrian_light(DO);
-  42:./Core/Src/pedes_fsm.c **** 		if(
-  43:./Core/Src/pedes_fsm.c **** 			(state==AUTO_RED&&counter1>=3)
-  44:./Core/Src/pedes_fsm.c **** 			||state==SETTING_RED
-  45:./Core/Src/pedes_fsm.c **** 			||((state==MANUAL)&&(manual_state==1||manual_state==3))
-  46:./Core/Src/pedes_fsm.c **** 		) pedes_state = GREEN;
-  47:./Core/Src/pedes_fsm.c **** 
-  48:./Core/Src/pedes_fsm.c **** 		break;
-  49:./Core/Src/pedes_fsm.c **** 	default:
-  50:./Core/Src/pedes_fsm.c **** 		break;
-  48              		.loc 1 50 3
-  49 0018 5EE0     		b	.L16
+  47 0016 56D0     		beq	.L5
+  21:./Core/Src/pedes_fsm.c **** 	case NONE:
+  22:./Core/Src/pedes_fsm.c **** 		set_color_pedestrian_light(0);
+  23:./Core/Src/pedes_fsm.c **** 		if(is_button_pressed(PEDES_IDX)){
+  24:./Core/Src/pedes_fsm.c **** 			if(
+  25:./Core/Src/pedes_fsm.c **** 				(state==AUTO_RED&&counter1>=3)||
+  26:./Core/Src/pedes_fsm.c **** 			     state==SETTING_RED||
+  27:./Core/Src/pedes_fsm.c **** 			   ((state==MANUAL)&&(manual_state==1||manual_state==3))
+  28:./Core/Src/pedes_fsm.c **** 			) pedes_state = GREEN;
+  29:./Core/Src/pedes_fsm.c **** 			else pedes_state=RED;
+  30:./Core/Src/pedes_fsm.c **** 		}
+  31:./Core/Src/pedes_fsm.c **** 		break;
+  32:./Core/Src/pedes_fsm.c **** 	case GREEN:
+  33:./Core/Src/pedes_fsm.c **** 		set_color_pedestrian_light(XANH);
+  34:./Core/Src/pedes_fsm.c **** 		if(
+  35:./Core/Src/pedes_fsm.c **** 			(state==AUTO_GREEN)||
+  36:./Core/Src/pedes_fsm.c **** 			(state==SETTING_GREEN)||
+  37:./Core/Src/pedes_fsm.c **** 			(state==MANUAL&&manual_state==2)
+  38:./Core/Src/pedes_fsm.c **** 		) {
+  39:./Core/Src/pedes_fsm.c **** 			pedes_state=NONE;
+  40:./Core/Src/pedes_fsm.c **** 			__HAL_TIM_SetCompare (&htim3,TIM_CHANNEL_1, 0);
+  41:./Core/Src/pedes_fsm.c **** 		}
+  42:./Core/Src/pedes_fsm.c **** 		//PWM
+  43:./Core/Src/pedes_fsm.c **** //		  if (timer3_flag==1){
+  44:./Core/Src/pedes_fsm.c **** 			  if (pedes_state==GREEN) __HAL_TIM_SetCompare (&htim3,TIM_CHANNEL_1, 100-(counter1*100/red_dura
+  45:./Core/Src/pedes_fsm.c **** //			  setTimer3(10);
+  46:./Core/Src/pedes_fsm.c **** //		  }
+  47:./Core/Src/pedes_fsm.c **** 		break;
+  48:./Core/Src/pedes_fsm.c **** 	case RED:
+  49:./Core/Src/pedes_fsm.c **** 		set_color_pedestrian_light(DO);
+  50:./Core/Src/pedes_fsm.c **** 		if(
+  51:./Core/Src/pedes_fsm.c **** 			(state==AUTO_RED&&counter1>=3)
+  52:./Core/Src/pedes_fsm.c **** 			||state==SETTING_RED
+  53:./Core/Src/pedes_fsm.c **** 			||((state==MANUAL)&&(manual_state==1||manual_state==3))
+  54:./Core/Src/pedes_fsm.c **** 		) pedes_state = GREEN;
+  55:./Core/Src/pedes_fsm.c **** 
+  56:./Core/Src/pedes_fsm.c **** 		break;
+  57:./Core/Src/pedes_fsm.c **** 	default:
+  58:./Core/Src/pedes_fsm.c **** 		break;
+  48              		.loc 1 58 3
+  49 0018 74E0     		b	.L17
   50              	.L4:
-  20:./Core/Src/pedes_fsm.c **** 		if(is_button_pressed(PEDES_IDX)){
-  51              		.loc 1 20 3
+  22:./Core/Src/pedes_fsm.c **** 		if(is_button_pressed(PEDES_IDX)){
+  51              		.loc 1 22 3
   52 001a 0020     		movs	r0, #0
   53 001c FFF7FEFF 		bl	set_color_pedestrian_light
-  21:./Core/Src/pedes_fsm.c **** 			if(
-  54              		.loc 1 21 6
+  23:./Core/Src/pedes_fsm.c **** 			if(
+  54              		.loc 1 23 6
   55 0020 0320     		movs	r0, #3
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccz3SDPt.s 			page 3
+
+
   56 0022 FFF7FEFF 		bl	is_button_pressed
   57 0026 0346     		mov	r3, r0
-  21:./Core/Src/pedes_fsm.c **** 			if(
-  58              		.loc 1 21 5
+  23:./Core/Src/pedes_fsm.c **** 			if(
+  58              		.loc 1 23 5
   59 0028 002B     		cmp	r3, #0
-  60 002a 57D0     		beq	.L17
-  23:./Core/Src/pedes_fsm.c **** 			     state==SETTING_RED||
-  61              		.loc 1 23 11
-ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccp5Hz7B.s 			page 3
-
-
-  62 002c 304B     		ldr	r3, .L21+4
+  60 002a 6DD0     		beq	.L18
+  25:./Core/Src/pedes_fsm.c **** 			     state==SETTING_RED||
+  61              		.loc 1 25 11
+  62 002c 3B4B     		ldr	r3, .L22+4
   63 002e 1B68     		ldr	r3, [r3]
-  22:./Core/Src/pedes_fsm.c **** 				(state==AUTO_RED&&counter1>=3)||
-  64              		.loc 1 22 6
+  24:./Core/Src/pedes_fsm.c **** 				(state==AUTO_RED&&counter1>=3)||
+  64              		.loc 1 24 6
   65 0030 012B     		cmp	r3, #1
   66 0032 03D1     		bne	.L7
-  23:./Core/Src/pedes_fsm.c **** 			     state==SETTING_RED||
-  67              		.loc 1 23 31
-  68 0034 2F4B     		ldr	r3, .L21+8
+  25:./Core/Src/pedes_fsm.c **** 			     state==SETTING_RED||
+  67              		.loc 1 25 31
+  68 0034 3A4B     		ldr	r3, .L22+8
   69 0036 1B68     		ldr	r3, [r3]
-  23:./Core/Src/pedes_fsm.c **** 			     state==SETTING_RED||
-  70              		.loc 1 23 21
+  25:./Core/Src/pedes_fsm.c **** 			     state==SETTING_RED||
+  70              		.loc 1 25 21
   71 0038 022B     		cmp	r3, #2
   72 003a 0FDC     		bgt	.L8
   73              	.L7:
-  24:./Core/Src/pedes_fsm.c **** 			   ((state==MANUAL)&&(manual_state==1||manual_state==3))
-  74              		.loc 1 24 14 discriminator 1
-  75 003c 2C4B     		ldr	r3, .L21+4
+  26:./Core/Src/pedes_fsm.c **** 			   ((state==MANUAL)&&(manual_state==1||manual_state==3))
+  74              		.loc 1 26 14 discriminator 1
+  75 003c 374B     		ldr	r3, .L22+4
   76 003e 1B68     		ldr	r3, [r3]
-  23:./Core/Src/pedes_fsm.c **** 			     state==SETTING_RED||
-  77              		.loc 1 23 35 discriminator 1
+  25:./Core/Src/pedes_fsm.c **** 			     state==SETTING_RED||
+  77              		.loc 1 25 35 discriminator 1
   78 0040 042B     		cmp	r3, #4
   79 0042 0BD0     		beq	.L8
-  25:./Core/Src/pedes_fsm.c **** 			) pedes_state = GREEN;
-  80              		.loc 1 25 14
-  81 0044 2A4B     		ldr	r3, .L21+4
+  27:./Core/Src/pedes_fsm.c **** 			) pedes_state = GREEN;
+  80              		.loc 1 27 14
+  81 0044 354B     		ldr	r3, .L22+4
   82 0046 1B68     		ldr	r3, [r3]
-  24:./Core/Src/pedes_fsm.c **** 			   ((state==MANUAL)&&(manual_state==1||manual_state==3))
-  83              		.loc 1 24 27
+  26:./Core/Src/pedes_fsm.c **** 			   ((state==MANUAL)&&(manual_state==1||manual_state==3))
+  83              		.loc 1 26 27
   84 0048 072B     		cmp	r3, #7
   85 004a 0BD1     		bne	.L9
-  25:./Core/Src/pedes_fsm.c **** 			) pedes_state = GREEN;
-  86              		.loc 1 25 38
-  87 004c 2A4B     		ldr	r3, .L21+12
+  27:./Core/Src/pedes_fsm.c **** 			) pedes_state = GREEN;
+  86              		.loc 1 27 38
+  87 004c 354B     		ldr	r3, .L22+12
   88 004e 1B68     		ldr	r3, [r3]
-  25:./Core/Src/pedes_fsm.c **** 			) pedes_state = GREEN;
-  89              		.loc 1 25 23
+  27:./Core/Src/pedes_fsm.c **** 			) pedes_state = GREEN;
+  89              		.loc 1 27 23
   90 0050 012B     		cmp	r3, #1
   91 0052 03D0     		beq	.L8
-  25:./Core/Src/pedes_fsm.c **** 			) pedes_state = GREEN;
-  92              		.loc 1 25 55 discriminator 1
-  93 0054 284B     		ldr	r3, .L21+12
+  27:./Core/Src/pedes_fsm.c **** 			) pedes_state = GREEN;
+  92              		.loc 1 27 55 discriminator 1
+  93 0054 334B     		ldr	r3, .L22+12
   94 0056 1B68     		ldr	r3, [r3]
-  25:./Core/Src/pedes_fsm.c **** 			) pedes_state = GREEN;
-  95              		.loc 1 25 41 discriminator 1
+  27:./Core/Src/pedes_fsm.c **** 			) pedes_state = GREEN;
+  95              		.loc 1 27 41 discriminator 1
   96 0058 032B     		cmp	r3, #3
   97 005a 03D1     		bne	.L9
   98              	.L8:
-  26:./Core/Src/pedes_fsm.c **** 			else pedes_state=RED;
-  99              		.loc 1 26 18
- 100 005c 234B     		ldr	r3, .L21
+  28:./Core/Src/pedes_fsm.c **** 			else pedes_state=RED;
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccz3SDPt.s 			page 4
+
+
+  99              		.loc 1 28 18
+ 100 005c 2E4B     		ldr	r3, .L22
  101 005e 0C22     		movs	r2, #12
  102 0060 1A60     		str	r2, [r3]
-  29:./Core/Src/pedes_fsm.c **** 	case GREEN:
- 103              		.loc 1 29 3
- 104 0062 3BE0     		b	.L17
+  31:./Core/Src/pedes_fsm.c **** 	case GREEN:
+ 103              		.loc 1 31 3
+ 104 0062 51E0     		b	.L18
  105              	.L9:
-ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccp5Hz7B.s 			page 4
-
-
-  27:./Core/Src/pedes_fsm.c **** 		}
- 106              		.loc 1 27 20
- 107 0064 214B     		ldr	r3, .L21
+  29:./Core/Src/pedes_fsm.c **** 		}
+ 106              		.loc 1 29 20
+ 107 0064 2C4B     		ldr	r3, .L22
  108 0066 0B22     		movs	r2, #11
  109 0068 1A60     		str	r2, [r3]
-  29:./Core/Src/pedes_fsm.c **** 	case GREEN:
- 110              		.loc 1 29 3
- 111 006a 37E0     		b	.L17
+  31:./Core/Src/pedes_fsm.c **** 	case GREEN:
+ 110              		.loc 1 31 3
+ 111 006a 4DE0     		b	.L18
  112              	.L2:
-  31:./Core/Src/pedes_fsm.c **** 		if(
- 113              		.loc 1 31 3
+  33:./Core/Src/pedes_fsm.c **** 		if(
+ 113              		.loc 1 33 3
  114 006c 0320     		movs	r0, #3
  115 006e FFF7FEFF 		bl	set_color_pedestrian_light
-  33:./Core/Src/pedes_fsm.c **** 			(state==SETTING_GREEN)||
- 116              		.loc 1 33 10
- 117 0072 1F4B     		ldr	r3, .L21+4
+  35:./Core/Src/pedes_fsm.c **** 			(state==SETTING_GREEN)||
+ 116              		.loc 1 35 10
+ 117 0072 2A4B     		ldr	r3, .L22+4
  118 0074 1B68     		ldr	r3, [r3]
-  32:./Core/Src/pedes_fsm.c **** 			(state==AUTO_GREEN)||
- 119              		.loc 1 32 5
+  34:./Core/Src/pedes_fsm.c **** 			(state==AUTO_GREEN)||
+ 119              		.loc 1 34 5
  120 0076 022B     		cmp	r3, #2
  121 0078 0BD0     		beq	.L11
-  34:./Core/Src/pedes_fsm.c **** 			(state==MANUAL&&manual_state==2)
- 122              		.loc 1 34 10
- 123 007a 1D4B     		ldr	r3, .L21+4
+  36:./Core/Src/pedes_fsm.c **** 			(state==MANUAL&&manual_state==2)
+ 122              		.loc 1 36 10
+ 123 007a 284B     		ldr	r3, .L22+4
  124 007c 1B68     		ldr	r3, [r3]
-  33:./Core/Src/pedes_fsm.c **** 			(state==SETTING_GREEN)||
- 125              		.loc 1 33 23
+  35:./Core/Src/pedes_fsm.c **** 			(state==SETTING_GREEN)||
+ 125              		.loc 1 35 23
  126 007e 052B     		cmp	r3, #5
  127 0080 07D0     		beq	.L11
-  35:./Core/Src/pedes_fsm.c **** 		) pedes_state=NONE;
- 128              		.loc 1 35 10
- 129 0082 1B4B     		ldr	r3, .L21+4
+  37:./Core/Src/pedes_fsm.c **** 		) {
+ 128              		.loc 1 37 10
+ 129 0082 264B     		ldr	r3, .L22+4
  130 0084 1B68     		ldr	r3, [r3]
-  34:./Core/Src/pedes_fsm.c **** 			(state==MANUAL&&manual_state==2)
- 131              		.loc 1 34 26
+  36:./Core/Src/pedes_fsm.c **** 			(state==MANUAL&&manual_state==2)
+ 131              		.loc 1 36 26
  132 0086 072B     		cmp	r3, #7
- 133 0088 2AD1     		bne	.L18
-  35:./Core/Src/pedes_fsm.c **** 		) pedes_state=NONE;
- 134              		.loc 1 35 32
- 135 008a 1B4B     		ldr	r3, .L21+12
+ 133 0088 0AD1     		bne	.L12
+  37:./Core/Src/pedes_fsm.c **** 		) {
+ 134              		.loc 1 37 32
+ 135 008a 264B     		ldr	r3, .L22+12
  136 008c 1B68     		ldr	r3, [r3]
-  35:./Core/Src/pedes_fsm.c **** 		) pedes_state=NONE;
- 137              		.loc 1 35 18
+  37:./Core/Src/pedes_fsm.c **** 		) {
+ 137              		.loc 1 37 18
  138 008e 022B     		cmp	r3, #2
- 139 0090 26D1     		bne	.L18
+ 139 0090 06D1     		bne	.L12
  140              	.L11:
-  36:./Core/Src/pedes_fsm.c **** 		//PWM
- 141              		.loc 1 36 16
- 142 0092 164B     		ldr	r3, .L21
+  39:./Core/Src/pedes_fsm.c **** 			__HAL_TIM_SetCompare (&htim3,TIM_CHANNEL_1, 0);
+ 141              		.loc 1 39 15
+ 142 0092 214B     		ldr	r3, .L22
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccz3SDPt.s 			page 5
+
+
  143 0094 0A22     		movs	r2, #10
  144 0096 1A60     		str	r2, [r3]
-  39:./Core/Src/pedes_fsm.c **** 	case RED:
- 145              		.loc 1 39 3
- 146 0098 22E0     		b	.L18
- 147              	.L5:
-  41:./Core/Src/pedes_fsm.c **** 		if(
- 148              		.loc 1 41 3
-ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccp5Hz7B.s 			page 5
-
-
- 149 009a 0120     		movs	r0, #1
- 150 009c FFF7FEFF 		bl	set_color_pedestrian_light
-  43:./Core/Src/pedes_fsm.c **** 			||state==SETTING_RED
- 151              		.loc 1 43 10
- 152 00a0 134B     		ldr	r3, .L21+4
+  40:./Core/Src/pedes_fsm.c **** 		}
+ 145              		.loc 1 40 4
+ 146 0098 234B     		ldr	r3, .L22+16
+ 147 009a 1B68     		ldr	r3, [r3]
+ 148 009c 0022     		movs	r2, #0
+ 149 009e 5A63     		str	r2, [r3, #52]
+ 150              	.L12:
+  44:./Core/Src/pedes_fsm.c **** //			  setTimer3(10);
+ 151              		.loc 1 44 21
+ 152 00a0 1D4B     		ldr	r3, .L22
  153 00a2 1B68     		ldr	r3, [r3]
-  42:./Core/Src/pedes_fsm.c **** 			(state==AUTO_RED&&counter1>=3)
- 154              		.loc 1 42 5
- 155 00a4 012B     		cmp	r3, #1
- 156 00a6 03D1     		bne	.L13
-  43:./Core/Src/pedes_fsm.c **** 			||state==SETTING_RED
- 157              		.loc 1 43 30
- 158 00a8 124B     		ldr	r3, .L21+8
+  44:./Core/Src/pedes_fsm.c **** //			  setTimer3(10);
+ 154              		.loc 1 44 9
+ 155 00a4 0C2B     		cmp	r3, #12
+ 156 00a6 31D1     		bne	.L19
+  44:./Core/Src/pedes_fsm.c **** //			  setTimer3(10);
+ 157              		.loc 1 44 30 discriminator 1
+ 158 00a8 1D4B     		ldr	r3, .L22+8
  159 00aa 1B68     		ldr	r3, [r3]
-  43:./Core/Src/pedes_fsm.c **** 			||state==SETTING_RED
- 160              		.loc 1 43 20
- 161 00ac 022B     		cmp	r3, #2
- 162 00ae 0FDC     		bgt	.L14
- 163              	.L13:
-  44:./Core/Src/pedes_fsm.c **** 			||((state==MANUAL)&&(manual_state==1||manual_state==3))
- 164              		.loc 1 44 11
- 165 00b0 0F4B     		ldr	r3, .L21+4
- 166 00b2 1B68     		ldr	r3, [r3]
-  44:./Core/Src/pedes_fsm.c **** 			||((state==MANUAL)&&(manual_state==1||manual_state==3))
- 167              		.loc 1 44 4
- 168 00b4 042B     		cmp	r3, #4
- 169 00b6 0BD0     		beq	.L14
-  45:./Core/Src/pedes_fsm.c **** 		) pedes_state = GREEN;
- 170              		.loc 1 45 13
- 171 00b8 0D4B     		ldr	r3, .L21+4
- 172 00ba 1B68     		ldr	r3, [r3]
-  45:./Core/Src/pedes_fsm.c **** 		) pedes_state = GREEN;
- 173              		.loc 1 45 4
- 174 00bc 072B     		cmp	r3, #7
- 175 00be 11D1     		bne	.L19
-  45:./Core/Src/pedes_fsm.c **** 		) pedes_state = GREEN;
- 176              		.loc 1 45 37 discriminator 1
- 177 00c0 0D4B     		ldr	r3, .L21+12
- 178 00c2 1B68     		ldr	r3, [r3]
-  45:./Core/Src/pedes_fsm.c **** 		) pedes_state = GREEN;
- 179              		.loc 1 45 22 discriminator 1
- 180 00c4 012B     		cmp	r3, #1
- 181 00c6 03D0     		beq	.L14
-  45:./Core/Src/pedes_fsm.c **** 		) pedes_state = GREEN;
- 182              		.loc 1 45 54 discriminator 2
- 183 00c8 0B4B     		ldr	r3, .L21+12
- 184 00ca 1B68     		ldr	r3, [r3]
-  45:./Core/Src/pedes_fsm.c **** 		) pedes_state = GREEN;
- 185              		.loc 1 45 40 discriminator 2
- 186 00cc 032B     		cmp	r3, #3
- 187 00ce 09D1     		bne	.L19
- 188              	.L14:
-  46:./Core/Src/pedes_fsm.c **** 
- 189              		.loc 1 46 17
- 190 00d0 064B     		ldr	r3, .L21
- 191 00d2 0C22     		movs	r2, #12
- 192 00d4 1A60     		str	r2, [r3]
-ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccp5Hz7B.s 			page 6
+ 160 00ac 6422     		movs	r2, #100
+ 161 00ae 02FB03F2 		mul	r2, r2, r3
+ 162 00b2 1E4B     		ldr	r3, .L22+20
+ 163 00b4 1B68     		ldr	r3, [r3]
+ 164 00b6 92FBF3F3 		sdiv	r3, r2, r3
+ 165 00ba C3F16402 		rsb	r2, r3, #100
+ 166 00be 1A4B     		ldr	r3, .L22+16
+ 167 00c0 1B68     		ldr	r3, [r3]
+ 168 00c2 5A63     		str	r2, [r3, #52]
+  47:./Core/Src/pedes_fsm.c **** 	case RED:
+ 169              		.loc 1 47 3 discriminator 1
+ 170 00c4 22E0     		b	.L19
+ 171              	.L5:
+  49:./Core/Src/pedes_fsm.c **** 		if(
+ 172              		.loc 1 49 3
+ 173 00c6 0120     		movs	r0, #1
+ 174 00c8 FFF7FEFF 		bl	set_color_pedestrian_light
+  51:./Core/Src/pedes_fsm.c **** 			||state==SETTING_RED
+ 175              		.loc 1 51 10
+ 176 00cc 134B     		ldr	r3, .L22+4
+ 177 00ce 1B68     		ldr	r3, [r3]
+  50:./Core/Src/pedes_fsm.c **** 			(state==AUTO_RED&&counter1>=3)
+ 178              		.loc 1 50 5
+ 179 00d0 012B     		cmp	r3, #1
+ 180 00d2 03D1     		bne	.L14
+  51:./Core/Src/pedes_fsm.c **** 			||state==SETTING_RED
+ 181              		.loc 1 51 30
+ 182 00d4 124B     		ldr	r3, .L22+8
+ 183 00d6 1B68     		ldr	r3, [r3]
+  51:./Core/Src/pedes_fsm.c **** 			||state==SETTING_RED
+ 184              		.loc 1 51 20
+ 185 00d8 022B     		cmp	r3, #2
+ 186 00da 0FDC     		bgt	.L15
+ 187              	.L14:
+  52:./Core/Src/pedes_fsm.c **** 			||((state==MANUAL)&&(manual_state==1||manual_state==3))
+ 188              		.loc 1 52 11
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccz3SDPt.s 			page 6
 
 
-  48:./Core/Src/pedes_fsm.c **** 	default:
- 193              		.loc 1 48 3
- 194 00d6 05E0     		b	.L19
- 195              	.L16:
- 196              		.loc 1 50 3
- 197 00d8 00BF     		nop
- 198 00da 04E0     		b	.L20
- 199              	.L17:
-  29:./Core/Src/pedes_fsm.c **** 	case GREEN:
- 200              		.loc 1 29 3
- 201 00dc 00BF     		nop
- 202 00de 02E0     		b	.L20
- 203              	.L18:
-  39:./Core/Src/pedes_fsm.c **** 	case RED:
- 204              		.loc 1 39 3
- 205 00e0 00BF     		nop
- 206 00e2 00E0     		b	.L20
- 207              	.L19:
-  48:./Core/Src/pedes_fsm.c **** 	default:
- 208              		.loc 1 48 3
- 209 00e4 00BF     		nop
- 210              	.L20:
-  51:./Core/Src/pedes_fsm.c **** 	}
-  52:./Core/Src/pedes_fsm.c **** }
- 211              		.loc 1 52 1
- 212 00e6 00BF     		nop
- 213 00e8 80BD     		pop	{r7, pc}
- 214              	.L22:
- 215 00ea 00BF     		.align	2
- 216              	.L21:
- 217 00ec 00000000 		.word	pedes_state
- 218 00f0 00000000 		.word	state
- 219 00f4 00000000 		.word	counter1
- 220 00f8 00000000 		.word	manual_state
- 221              		.cfi_endproc
- 222              	.LFE68:
- 224              		.text
- 225              	.Letext0:
- 226              		.file 2 "c:\\st\\stm32cubeide_1.7.0\\stm32cubeide\\plugins\\com.st.stm32cube.ide.mcu.externaltools
- 227              		.file 3 "c:\\st\\stm32cubeide_1.7.0\\stm32cubeide\\plugins\\com.st.stm32cube.ide.mcu.externaltools
- 228              		.file 4 "Drivers/CMSIS/Include/core_cm3.h"
- 229              		.file 5 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h"
- 230              		.file 6 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
- 231              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
- 232              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
- 233              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h"
- 234              		.file 10 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
- 235              		.file 11 "Core/Inc/global.h"
- 236              		.file 12 "Core/Inc/input_reading.h"
- 237              		.file 13 "Core/Inc/software_timer.h"
- 238              		.file 14 "c:\\st\\stm32cubeide_1.7.0\\stm32cubeide\\plugins\\com.st.stm32cube.ide.mcu.externaltool
- 239              		.file 15 "c:\\st\\stm32cubeide_1.7.0\\stm32cubeide\\plugins\\com.st.stm32cube.ide.mcu.externaltool
- 240              		.file 16 "c:\\st\\stm32cubeide_1.7.0\\stm32cubeide\\plugins\\com.st.stm32cube.ide.mcu.externaltool
- 241              		.file 17 "c:\\st\\stm32cubeide_1.7.0\\stm32cubeide\\plugins\\com.st.stm32cube.ide.mcu.externaltool
-ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccp5Hz7B.s 			page 7
+ 189 00dc 0F4B     		ldr	r3, .L22+4
+ 190 00de 1B68     		ldr	r3, [r3]
+  52:./Core/Src/pedes_fsm.c **** 			||((state==MANUAL)&&(manual_state==1||manual_state==3))
+ 191              		.loc 1 52 4
+ 192 00e0 042B     		cmp	r3, #4
+ 193 00e2 0BD0     		beq	.L15
+  53:./Core/Src/pedes_fsm.c **** 		) pedes_state = GREEN;
+ 194              		.loc 1 53 13
+ 195 00e4 0D4B     		ldr	r3, .L22+4
+ 196 00e6 1B68     		ldr	r3, [r3]
+  53:./Core/Src/pedes_fsm.c **** 		) pedes_state = GREEN;
+ 197              		.loc 1 53 4
+ 198 00e8 072B     		cmp	r3, #7
+ 199 00ea 11D1     		bne	.L20
+  53:./Core/Src/pedes_fsm.c **** 		) pedes_state = GREEN;
+ 200              		.loc 1 53 37 discriminator 1
+ 201 00ec 0D4B     		ldr	r3, .L22+12
+ 202 00ee 1B68     		ldr	r3, [r3]
+  53:./Core/Src/pedes_fsm.c **** 		) pedes_state = GREEN;
+ 203              		.loc 1 53 22 discriminator 1
+ 204 00f0 012B     		cmp	r3, #1
+ 205 00f2 03D0     		beq	.L15
+  53:./Core/Src/pedes_fsm.c **** 		) pedes_state = GREEN;
+ 206              		.loc 1 53 54 discriminator 2
+ 207 00f4 0B4B     		ldr	r3, .L22+12
+ 208 00f6 1B68     		ldr	r3, [r3]
+  53:./Core/Src/pedes_fsm.c **** 		) pedes_state = GREEN;
+ 209              		.loc 1 53 40 discriminator 2
+ 210 00f8 032B     		cmp	r3, #3
+ 211 00fa 09D1     		bne	.L20
+ 212              	.L15:
+  54:./Core/Src/pedes_fsm.c **** 
+ 213              		.loc 1 54 17
+ 214 00fc 064B     		ldr	r3, .L22
+ 215 00fe 0C22     		movs	r2, #12
+ 216 0100 1A60     		str	r2, [r3]
+  56:./Core/Src/pedes_fsm.c **** 	default:
+ 217              		.loc 1 56 3
+ 218 0102 05E0     		b	.L20
+ 219              	.L17:
+ 220              		.loc 1 58 3
+ 221 0104 00BF     		nop
+ 222 0106 04E0     		b	.L21
+ 223              	.L18:
+  31:./Core/Src/pedes_fsm.c **** 	case GREEN:
+ 224              		.loc 1 31 3
+ 225 0108 00BF     		nop
+ 226 010a 02E0     		b	.L21
+ 227              	.L19:
+  47:./Core/Src/pedes_fsm.c **** 	case RED:
+ 228              		.loc 1 47 3
+ 229 010c 00BF     		nop
+ 230 010e 00E0     		b	.L21
+ 231              	.L20:
+  56:./Core/Src/pedes_fsm.c **** 	default:
+ 232              		.loc 1 56 3
+ 233 0110 00BF     		nop
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccz3SDPt.s 			page 7
+
+
+ 234              	.L21:
+  59:./Core/Src/pedes_fsm.c **** 	}
+  60:./Core/Src/pedes_fsm.c **** }
+ 235              		.loc 1 60 1
+ 236 0112 00BF     		nop
+ 237 0114 80BD     		pop	{r7, pc}
+ 238              	.L23:
+ 239 0116 00BF     		.align	2
+ 240              	.L22:
+ 241 0118 00000000 		.word	pedes_state
+ 242 011c 00000000 		.word	state
+ 243 0120 00000000 		.word	counter1
+ 244 0124 00000000 		.word	manual_state
+ 245 0128 00000000 		.word	htim3
+ 246 012c 00000000 		.word	red_duration
+ 247              		.cfi_endproc
+ 248              	.LFE68:
+ 250              		.text
+ 251              	.Letext0:
+ 252              		.file 2 "c:\\st\\stm32cubeide_1.7.0\\stm32cubeide\\plugins\\com.st.stm32cube.ide.mcu.externaltools
+ 253              		.file 3 "c:\\st\\stm32cubeide_1.7.0\\stm32cubeide\\plugins\\com.st.stm32cube.ide.mcu.externaltools
+ 254              		.file 4 "Drivers/CMSIS/Include/core_cm3.h"
+ 255              		.file 5 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h"
+ 256              		.file 6 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
+ 257              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 258              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
+ 259              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h"
+ 260              		.file 10 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h"
+ 261              		.file 11 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
+ 262              		.file 12 "Core/Inc/global.h"
+ 263              		.file 13 "Core/Inc/input_reading.h"
+ 264              		.file 14 "Core/Inc/software_timer.h"
+ 265              		.file 15 "c:\\st\\stm32cubeide_1.7.0\\stm32cubeide\\plugins\\com.st.stm32cube.ide.mcu.externaltool
+ 266              		.file 16 "c:\\st\\stm32cubeide_1.7.0\\stm32cubeide\\plugins\\com.st.stm32cube.ide.mcu.externaltool
+ 267              		.file 17 "c:\\st\\stm32cubeide_1.7.0\\stm32cubeide\\plugins\\com.st.stm32cube.ide.mcu.externaltool
+ 268              		.file 18 "c:\\st\\stm32cubeide_1.7.0\\stm32cubeide\\plugins\\com.st.stm32cube.ide.mcu.externaltool
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccz3SDPt.s 			page 8
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 pedes_fsm.c
-C:\Users\ADMINI~1\AppData\Local\Temp\ccp5Hz7B.s:16     .text.pedestrian_fsm:0000000000000000 $t
-C:\Users\ADMINI~1\AppData\Local\Temp\ccp5Hz7B.s:24     .text.pedestrian_fsm:0000000000000000 pedestrian_fsm
-C:\Users\ADMINI~1\AppData\Local\Temp\ccp5Hz7B.s:217    .text.pedestrian_fsm:00000000000000ec $d
+C:\Users\ADMINI~1\AppData\Local\Temp\ccz3SDPt.s:16     .text.pedestrian_fsm:0000000000000000 $t
+C:\Users\ADMINI~1\AppData\Local\Temp\ccz3SDPt.s:24     .text.pedestrian_fsm:0000000000000000 pedestrian_fsm
+C:\Users\ADMINI~1\AppData\Local\Temp\ccz3SDPt.s:241    .text.pedestrian_fsm:0000000000000118 $d
                            .group:0000000000000000 wm4.0.e890922d021f7fff2fbf219cb2b38f03
                            .group:0000000000000000 wm4.stm32f1xx_hal_conf.h.21.98635006afa9a018cfa5e0632ed4968b
                            .group:0000000000000000 wm4.stm32f1xx.h.39.208bb8a61c892b7c37d899c49a031330
@@ -415,7 +457,7 @@ C:\Users\ADMINI~1\AppData\Local\Temp\ccp5Hz7B.s:217    .text.pedestrian_fsm:0000
                            .group:0000000000000000 wm4._types.h.20.dd0d04dca3800a0d2a6129b87f3adbb2
                            .group:0000000000000000 wm4.stddef.h.155.3588ebfdd1e8c7ede80509bb9c3b8009
                            .group:0000000000000000 wm4._types.h.127.34941de1b2539d59d5cac00e0dd27a45
-ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccp5Hz7B.s 			page 8
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccz3SDPt.s 			page 9
 
 
                            .group:0000000000000000 wm4.reent.h.17.e292bf8b0bec6c96e131a54347145a30
@@ -440,3 +482,5 @@ pedes_state
 state
 counter1
 manual_state
+htim3
+red_duration
